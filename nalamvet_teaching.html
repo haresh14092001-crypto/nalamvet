@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NalamVet Teaching Hospital — Academic Veterinary Medicine</title>
+    <title>Agadham Teaching Hospital — Academic Veterinary Medicine</title>
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiM4ZTQ0YWQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -207,7 +207,7 @@
 <div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
     <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(142,68,173,0.15);">
         <div style="font-size:48px;margin-bottom:12px;">🎓</div>
-        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Teaching</span></div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">Agadham <span style="color:var(--accent);">Teaching</span></div>
         <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">Academic Veterinary Medicine Platform</div>
         <div style="text-align:left;margin-bottom:12px;">
             <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">PIN</label>
@@ -228,7 +228,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo-area">
-            <div class="app-name">🎓 NalamVet <span>Teaching</span></div>
+            <div class="app-name">🎓 Agadham <span>Teaching</span></div>
             <div class="app-badge">Teaching Hospital</div>
         </div>
         <nav class="nav-menu">
@@ -245,9 +245,9 @@
         </nav>
         <div class="sidebar-footer">
             <div class="lang-toggle">
-                <div class="lang-btn active" onclick="setLang('en')">English</div>
-                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
-                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+                <div class="lang-btn active" onclick="setLang('en', this)">English</div>
+                <div class="lang-btn" onclick="setLang('ta', this)">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi', this)">हिंदी</div>
             </div>
             <div class="clinic-info" id="clinic-info"></div>
         </div>
@@ -271,7 +271,7 @@
                         <p>Gap 5: No teaching case format → Inconsistent documentation</p>
                         <p>Gap 6: Drug reference not integrated → Prescribing errors in training</p>
                         <p>Gap 7: No analytics → Can't measure teaching effectiveness</p>
-                        <p><strong>NalamVet Teaching closes all 7 gaps.</strong></p>
+                        <p><strong>Agadham Teaching closes all 7 gaps.</strong></p>
                     </div>
                 </div>
             </div>
@@ -437,13 +437,44 @@
 
     <!-- MODALS -->
     <div class="modal-overlay" id="caseModal" onclick="if(event.target===this) this.classList.remove('active')">
-        <div class="modal"><div class="modal-body">
-            <h2>Add Case</h2>
-            <div class="form-group"><label>Patient Name</label><input type="text" id="case-patient"></div>
-            <div class="form-group"><label>Department</label><select id="case-dept"><option>Medicine</option><option>Surgery</option><option>OBG</option></select></div>
-            <div class="form-group"><label>Diagnosis</label><input type="text" id="case-diag"></div>
-            <div class="form-group"><label>Date</label><input type="date" id="case-date"></div>
-            <button class="btn btn-primary" onclick="saveCase()">Save Case</button>
+        <div class="modal"><div class="modal-body" style="max-height: 90vh; overflow-y: auto;">
+            <h2>Add Case Sheet</h2>
+            <div class="form-group col-6"><label>Case ID</label><input type="text" id="case-id" placeholder="Auto-generated"></div>
+            <div class="form-group col-6"><label>Date</label><input type="date" id="case-date"></div>
+            
+            <h3 style="margin-top: 16px; margin-bottom: 8px;">Patient Information</h3>
+            <div class="form-group col-4"><label>Patient Name</label><input type="text" id="case-patient"></div>
+            <div class="form-group col-4"><label>Species</label><select id="case-species"><option>Canine</option><option>Feline</option><option>Avian</option><option>Exotic</option><option>Equine</option><option>Bovine</option></select></div>
+            <div class="form-group col-4"><label>Breed</label><input type="text" id="case-breed"></div>
+            <div class="form-group col-4"><label>Age</label><input type="text" id="case-age"></div>
+            <div class="form-group col-4"><label>Weight (kg)</label><input type="number" id="case-weight"></div>
+            <div class="form-group col-4"><label>Gender</label><select id="case-gender"><option>Male</option><option>Female</option></select></div>
+
+            <h3 style="margin-top: 16px; margin-bottom: 8px;">Case Details</h3>
+            <div class="form-group col-12"><label>Chief Complaint</label><textarea id="case-complaint" style="height: 60px;"></textarea></div>
+            <div class="form-group col-12"><label>History of Present Illness</label><textarea id="case-hpi" style="height: 60px;"></textarea></div>
+            
+            <h3 style="margin-top: 16px; margin-bottom: 8px;">Physical Examination</h3>
+            <div class="form-group col-3"><label>Temperature (°C)</label><input type="number" id="case-temp" step="0.1"></div>
+            <div class="form-group col-3"><label>Heart Rate (bpm)</label><input type="number" id="case-hr"></div>
+            <div class="form-group col-3"><label>Respiratory Rate</label><input type="number" id="case-rr"></div>
+            <div class="form-group col-3"><label>BP (mmHg)</label><input type="text" id="case-bp"></div>
+            <div class="form-group col-12"><label>Physical Exam Findings</label><textarea id="case-exam" style="height: 60px;"></textarea></div>
+
+            <h3 style="margin-top: 16px; margin-bottom: 8px;">Diagnosis & Plan</h3>
+            <div class="form-group col-12"><label>Differential Diagnoses</label><textarea id="case-diff-diag" style="height: 60px;"></textarea></div>
+            <div class="form-group col-12"><label>Final Diagnosis</label><input type="text" id="case-diag"></div>
+            <div class="form-group col-12"><label>Department</label><select id="case-dept"><option>Medicine</option><option>Surgery</option><option>OBG</option><option>Orthopedics</option><option>Dentistry</option><option>Ophthalmology</option></select></div>
+            
+            <h3 style="margin-top: 16px; margin-bottom: 8px;">Treatment Plan</h3>
+            <div class="form-group col-12"><label>Medications & Dosages</label><textarea id="case-meds" style="height: 60px;"></textarea></div>
+            <div class="form-group col-12"><label>Procedures/Interventions</label><textarea id="case-procedures" style="height: 60px;"></textarea></div>
+            <div class="form-group col-12"><label>Prognosis</label><textarea id="case-prognosis" style="height: 40px;"></textarea></div>
+            
+            <div style="display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end;">
+                <button class="btn btn-secondary" onclick="document.getElementById('caseModal').classList.remove('active')">Cancel</button>
+                <button class="btn btn-primary" onclick="saveCase()">Save Case Sheet</button>
+            </div>
         </div></div>
     </div>
 </div>
@@ -499,10 +530,10 @@
         }
     };
 
-    function setLang(code) {
+    function setLang(code, target) {
         State.lang = code;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        if (target) target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
         Object.keys(TMap[code]).forEach(cls => {
             document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
@@ -577,16 +608,34 @@
     function saveCase() {
         const caseData = {
             id: Date.now().toString(),
+            date: document.getElementById('case-date').value,
             patient: document.getElementById('case-patient').value,
+            species: document.getElementById('case-species').value,
+            breed: document.getElementById('case-breed').value,
+            age: document.getElementById('case-age').value,
+            weight: document.getElementById('case-weight').value,
+            gender: document.getElementById('case-gender').value,
+            complaint: document.getElementById('case-complaint').value,
+            hpi: document.getElementById('case-hpi').value,
+            temp: document.getElementById('case-temp').value,
+            hr: document.getElementById('case-hr').value,
+            rr: document.getElementById('case-rr').value,
+            bp: document.getElementById('case-bp').value,
+            exam: document.getElementById('case-exam').value,
+            diffDiag: document.getElementById('case-diff-diag').value,
             dept: document.getElementById('case-dept').value,
             diag: document.getElementById('case-diag').value,
-            date: document.getElementById('case-date').value
+            meds: document.getElementById('case-meds').value,
+            procedures: document.getElementById('case-procedures').value,
+            prognosis: document.getElementById('case-prognosis').value
         };
         State.cases.push(caseData);
         localStorage.setItem(PREFIX + 'cases', JSON.stringify(State.cases));
         renderRegistry();
         document.getElementById('caseModal').classList.remove('active');
-        showToast('Case added!');
+        // Clear form
+        document.getElementById('caseModal').querySelector('form')?.reset();
+        showToast('Case sheet added!');
     }
 
     // ===== DEPARTMENTS =====
@@ -670,7 +719,7 @@
             return !q || txt.includes(q);
         });
         const countEl = document.getElementById('dbCountStr');
-        if (countEl) countEl.textContent = `${arr.length} drugs in NalamVet Formulary`;
+        if (countEl) countEl.textContent = `${arr.length} drugs in Agadham Formulary`;
         const grid = document.getElementById('refGrid');
         if (!grid) return;
         if (q) {
@@ -680,7 +729,7 @@
                         <strong>${d.generic}</strong>
                         <div class="dc-brands">${(d.brands||'-').substring(0,60)}${d.brands && d.brands.length > 60 ? '...' : ''}</div>
                         <div style="font-size:11px;color:var(--text);margin:6px 0 6px;">${(d.indications||'').substring(0,80)}...</div>
-                        <div class="dc-dose">${(d.route||'').substring(0,40)}</div>
+                        <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,50)} | 🐈 ${(d.doseCat||'-').substring(0,30)}</div>
                     </div>`).join('') + '</div>';
         } else {
             const cats = getCategories(arr);
@@ -695,7 +744,7 @@
                         <div class="drug-card" onclick="showDrugDetail('${d.id}')">
                             <strong>${d.generic}</strong>
                             <div class="dc-brands">${(d.brands||'-').substring(0,50)}</div>
-                            <div class="dc-dose">${(d.route||'').substring(0,45)}</div>
+                            <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,45)} | 🐈 ${(d.doseCat||'-').substring(0,30)}</div>
                         </div>`).join('')}
                     </div>
                 </div>`).join('');
@@ -705,7 +754,7 @@
     function getCategories(arr) {
         const groups = {};
         arr.forEach(d => {
-            const key = d.route || d.source || 'Miscellaneous';
+            const key = d.category || 'Miscellaneous';
             if (!groups[key]) groups[key] = [];
             groups[key].push(d);
         });
@@ -781,7 +830,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'nalamvet_teach_backup.json';
+        a.download = 'agadham_teach_backup.json';
         a.click();
         URL.revokeObjectURL(url);
         showToast('Backup exported!');
@@ -821,12 +870,12 @@
         document.getElementById('hospital-name').value = State.settings.hospitalName || '';
         document.getElementById('vci-reg').value = State.settings.vciReg || '';
 
-        console.log("NalamVet Teaching Loaded.");
+        console.log("Agadham Teaching Loaded.");
     };
 
     // ===== PWA =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-teach-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('agadham-teach-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
         self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));

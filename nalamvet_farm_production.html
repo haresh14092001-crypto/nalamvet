@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NalamVet Agri-Pro — Dairy Farms, Cooperatives, Production Units</title>
+    <title>Agadham Agri-Pro — Dairy Farms, Cooperatives, Production Units</title>
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNmNGE4MjUiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -207,7 +207,7 @@
 <div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
     <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(244,168,37,0.15);">
         <div style="font-size:48px;margin-bottom:12px;">🐄</div>
-        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Agri-Pro</span></div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">Agadham <span style="color:var(--accent);">Agri-Pro</span></div>
         <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">India's Comprehensive Farm Veterinary System</div>
         <div style="text-align:left;margin-bottom:12px;">
             <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Master Passcode</label>
@@ -228,7 +228,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo-area">
-            <div class="app-name">🐄 NalamVet <span>Agri-Pro</span></div>
+            <div class="app-name">🐄 Agadham <span>Agri-Pro</span></div>
             <div class="app-badge">Agri-Pro | Farm & Cooperative</div>
         </div>
         <nav class="nav-menu">
@@ -239,14 +239,16 @@
             <div class="nav-item" onclick="nav('health', this)"><i>🩺</i> <span class="t-health">Herd Health</span></div>
             <div class="nav-item" onclick="nav('vaccines', this)"><i>💉</i> <span class="t-vacc">Vaccination Programs</span></div>
             <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv">Stock & Consumables</span></div>
+            <div class="nav-item" onclick="nav('feed', this)"><i>🌾</i> <span class="t-feed">Feed Management</span></div>
+            <div class="nav-item" onclick="nav('feed-optimizer', this)"><i>⚖️</i> <span class="t-feed-opt">Feed Optimizer</span></div>
             <div class="nav-item" onclick="nav('reports', this)"><i>📈</i> <span class="t-reports">Reports & Export</span></div>
             <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
         </nav>
         <div class="sidebar-footer">
             <div class="lang-toggle">
-                <div class="lang-btn active" onclick="setLang('en')">English</div>
-                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
-                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+                <div class="lang-btn active" onclick="setLang('en', this)">English</div>
+                <div class="lang-btn" onclick="setLang('ta', this)">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi', this)">हिंदी</div>
             </div>
             <div class="clinic-info" id="clinic-info"></div>
         </div>
@@ -270,7 +272,7 @@
                         <p>Gap 5: No herd-level disease aggregation → outbreak spreads to 60% before noticed</p>
                         <p>Gap 6: No calving-to-dry-off workflow → incorrect dry period = mastitis risk</p>
                         <p>Gap 7: Feed cost vs yield ratio unknown → 15-20% feed wastage common</p>
-                        <p><strong>NalamVet Agri-Pro closes all 7 gaps.</strong></p>
+                        <p><strong>Agadham Agri-Pro closes all 7 gaps.</strong></p>
                     </div>
                 </div>
             </div>
@@ -426,6 +428,71 @@
             </div>
         </div>
 
+        <!-- FEED MANAGEMENT -->
+        <div id="page-feed" class="page">
+            <div class="header">
+                <div><h1 class="title t-feed">Feed Management</h1></div>
+            </div>
+            <div class="card">
+                <div class="card-header">Common Feeds Available in India</div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <p>Green Fodder: Maize, Sorghum, Bajra, Lucerne, Berseem</p>
+                        <p>Dry Fodder: Rice Straw, Wheat Straw, Paddy Straw</p>
+                        <p>Concentrates: Maize, Wheat Bran, Rice Bran, Cotton Seed Cake, Groundnut Cake, Soybean Meal</p>
+                        <p>Mineral Supplements: Salt, Calcium, Phosphorus, Vitamins</p>
+                        <p>Silage: Maize Silage, Sorghum Silage</p>
+                        <p>Hay: Lucerne Hay, Berseem Hay</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Feed Inventory</div>
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Feed Type</label><input type="text" id="feed-name"></div>
+                    <div class="form-group col-2"><label>Quantity (kg)</label><input type="number" id="feed-qty"></div>
+                    <div class="form-group col-2"><label>Cost/kg</label><input type="number" id="feed-cost"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="addFeedItem()">Add Feed</button></div>
+                </div>
+            </div>
+            <div class="card">
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead><tr><th>Feed Type</th><th>Quantity (kg)</th><th>Cost/kg</th><th>Total Cost</th><th>Action</th></tr></thead>
+                        <tbody id="feedTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEED OPTIMIZER -->
+        <div id="page-feed-optimizer" class="page">
+            <div class="header">
+                <div><h1 class="title t-feed-opt">Feed Optimizer</h1></div>
+            </div>
+            <div class="card">
+                <div class="card-header">Feed Ration Calculator</div>
+                <div class="card-body">
+                    <div class="form-group col-3"><label>Animal Type</label>
+                        <select id="animal-type">
+                            <option value="cow">Cow</option>
+                            <option value="buffalo">Buffalo</option>
+                            <option value="goat">Goat</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3"><label>Weight (kg)</label><input type="number" id="animal-weight"></div>
+                    <div class="form-group col-3"><label>Milk Yield (L/day)</label><input type="number" id="milk-yield"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="calculateRation()">Calculate Ration</button></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Recommended Ration</div>
+                <div class="card-body" id="ration-result">
+                    <p>Enter details and click Calculate to see recommended feed ration.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- REPORTS -->
         <div id="page-reports" class="page">
             <div class="header"><div><h1 class="title t-reports">Reports & Export</h1></div></div>
@@ -486,7 +553,7 @@
 // LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
 // ============================================================
 // As a former Supreme Court Justice and medical patent legal advisor with 25+ years experience,
-// I have reviewed NalamVet's IP and liability framework. Here are the key loopholes and protections:
+// I have reviewed Agadham's IP and liability framework. Here are the key loopholes and protections:
 //
 // 1. IPC (Indian Penal Code) Loopholes:
 //    - Section 304A (rash/negligent act causing death): Does not apply as this is software tool, not direct veterinary practice.
@@ -529,6 +596,7 @@
         en: {
             'dash': 'Dashboard', 'reg': 'Animal Registry', 'prod': 'Milk / Yield Tracker', 'breed': 'Reproductive Log',
             'health': 'Herd Health', 'vacc': 'Vaccination Programs', 'drugs': 'Drug Reference', 'inv': 'Stock & Consumables',
+            'feed': 'Feed Management', 'feed-opt': 'Feed Optimizer',
             'reports': 'Reports & Export', 'settings': 'Settings', 'yield': 'Milk Yield', 'milk_yield': 'Milk Yield (L)',
             'heat_detection': 'Heat Detection', 'artificial_insemination': 'Artificial Insemination', 'calving': 'Calving',
             'dry_period': 'Dry Period', 'mastitis': 'Mastitis', 'fmd': 'FMD', 'deworming': 'Deworming',
@@ -538,6 +606,7 @@
         ta: {
             'dash': 'முகப்பு பக்கம்', 'reg': 'விலங்கு பதிவு', 'prod': 'பால் / மகசூல் கண்காணிப்பு', 'breed': 'இனப்பெருக்க பதிவு',
             'health': 'மந்தை சுகாதாரம்', 'vacc': 'தடுப்பூசி திட்டங்கள்', 'drugs': 'மருந்து குறிப்பு', 'inv': 'பங்கு & நுகர்வு பொருட்கள்',
+            'feed': 'உணவு நிர்வாகம்', 'feed-opt': 'உணவு மேம்பாட்டாளர்',
             'reports': 'அறிக்கைகள் & ஏற்றுமதி', 'settings': 'அமைப்புகள்', 'yield': 'பால் மகசூல்', 'milk_yield': 'பால் மகசூல் (லிட்டர்)',
             'heat_detection': 'ஈரம் கண்டறிதல்', 'artificial_insemination': 'செயற்கை கருவூட்டல்', 'calving': 'ஈனுதல்',
             'dry_period': 'உலர் காலம்', 'mastitis': 'மடிவீக்கம்', 'fmd': 'கோமாரி நோய்', 'deworming': 'புழு நீக்கம்',
@@ -547,6 +616,7 @@
         hi: {
             'dash': 'मुख्य पृष्ठ', 'reg': 'पशु रजिस्ट्री', 'prod': 'दूध / उत्पादन ट्रैकर', 'breed': 'प्रजनन लॉग',
             'health': 'झुंड स्वास्थ्य', 'vacc': 'टीकाकरण कार्यक्रम', 'drugs': 'दवा संदर्भ', 'inv': 'स्टॉक & उपभोग्य',
+            'feed': 'चारा प्रबंधन', 'feed-opt': 'चारा अनुकूलक',
             'reports': 'रिपोर्ट & निर्यात', 'settings': 'सेटिंग्स', 'yield': 'दूध उत्पादन', 'milk_yield': 'दूध उत्पादन (लीटर)',
             'heat_detection': 'गर्मी पहचान', 'artificial_insemination': 'कृत्रिम गर्भाधान', 'calving': 'व्याना',
             'dry_period': 'सूखा काल', 'mastitis': 'थन की सूजन', 'fmd': 'खुरपका-मुंहपका रोग', 'deworming': 'कृमिनाशन',
@@ -555,10 +625,10 @@
         }
     };
 
-    function setLang(code) {
+    function setLang(code, target) {
         State.lang = code;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        if (target) target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
         Object.keys(TMap[code]).forEach(cls => {
             document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
@@ -780,6 +850,77 @@
         renderInv();
     }
 
+    function addFeedItem() {
+        if (!State.feeds) State.feeds = [];
+        const feedItem = {
+            id: Date.now().toString(),
+            name: document.getElementById('feed-name').value,
+            qty: parseInt(document.getElementById('feed-qty').value),
+            cost: parseFloat(document.getElementById('feed-cost').value)
+        };
+        State.feeds.push(feedItem);
+        localStorage.setItem(PREFIX + 'feeds', JSON.stringify(State.feeds));
+        document.getElementById('feed-name').value = '';
+        document.getElementById('feed-qty').value = '';
+        document.getElementById('feed-cost').value = '';
+        renderFeedTable();
+        showToast('Feed added!');
+    }
+
+    function deleteFeed(id) {
+        State.feeds = State.feeds.filter(f => f.id !== id);
+        localStorage.setItem(PREFIX + 'feeds', JSON.stringify(State.feeds));
+        renderFeedTable();
+    }
+
+    function renderFeedTable() {
+        const tbody = document.getElementById('feedTableBody');
+        tbody.innerHTML = (State.feeds || []).map(f => `
+            <tr>
+                <td>${f.name}</td>
+                <td>${f.qty}</td>
+                <td>₹${f.cost}</td>
+                <td>₹${(f.qty * f.cost).toFixed(2)}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="deleteFeed('${f.id}')">Delete</button></td>
+            </tr>
+        `).join('');
+    }
+
+    function calculateRation() {
+        const animalType = document.getElementById('animal-type').value;
+        const weight = parseInt(document.getElementById('animal-weight').value);
+        const milkYield = parseInt(document.getElementById('milk-yield').value);
+        
+        let rationText = '';
+        if (animalType === 'cow') {
+            const greenFodder = (weight * 0.025).toFixed(1);
+            const dryFodder = (weight * 0.01).toFixed(1);
+            const concentrate = (milkYield * 0.6).toFixed(1);
+            rationText = `<p><strong>Daily Ration for Cow (${weight}kg, ${milkYield}L milk):</strong></p>
+                <p>Green Fodder: ${greenFodder} kg</p>
+                <p>Dry Fodder: ${dryFodder} kg</p>
+                <p>Concentrate: ${concentrate} kg (0.6kg per liter of milk)</p>
+                <p>Total Feed Cost/day: ₹${(dryFodder * 2 + greenFodder * 1 + concentrate * 5).toFixed(2)}</p>`;
+        } else if (animalType === 'buffalo') {
+            const greenFodder = (weight * 0.028).toFixed(1);
+            const dryFodder = (weight * 0.012).toFixed(1);
+            const concentrate = (milkYield * 0.7).toFixed(1);
+            rationText = `<p><strong>Daily Ration for Buffalo (${weight}kg, ${milkYield}L milk):</strong></p>
+                <p>Green Fodder: ${greenFodder} kg</p>
+                <p>Dry Fodder: ${dryFodder} kg</p>
+                <p>Concentrate: ${concentrate} kg (0.7kg per liter of milk)</p>
+                <p>Total Feed Cost/day: ₹${(dryFodder * 2.5 + greenFodder * 1.2 + concentrate * 6).toFixed(2)}</p>`;
+        } else {
+            const greenFodder = (weight * 0.03).toFixed(1);
+            const concentrate = (milkYield * 0.3).toFixed(1);
+            rationText = `<p><strong>Daily Ration for Goat (${weight}kg, ${milkYield}L milk):</strong></p>
+                <p>Green Fodder: ${greenFodder} kg</p>
+                <p>Concentrate: ${concentrate} kg (0.3kg per liter of milk)</p>
+                <p>Total Feed Cost/day: ₹${(greenFodder * 1 + concentrate * 4).toFixed(2)}</p>`;
+        }
+        document.getElementById('ration-result').innerHTML = rationText;
+    }
+
     // ===== SETTINGS =====
     function saveFarmSettings() {
         State.settings.farmName = document.getElementById('farm-name').value;
@@ -806,7 +947,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'nalamvet_farm_backup.json';
+        a.download = 'agadham_farm_backup.json';
         a.click();
         URL.revokeObjectURL(url);
         showToast('Backup exported!');
@@ -851,12 +992,12 @@
         document.getElementById('farm-owner').value = State.settings.owner || '';
         document.getElementById('farm-coop').value = State.settings.coop || '';
 
-        console.log("NalamVet Farm Loaded.");
+        console.log("Agadham Farm Loaded.");
     };
 
     // ===== PWA =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-farm-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('agadham-farm-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
         self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));

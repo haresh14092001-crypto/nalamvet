@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NalamVet Companion & Exotic — Metro & Specialist Clinics</title>
+    <title>Agadham Companion & Exotic — Metro & Specialist Clinics</title>
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiMwMGU1YTAiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -32,6 +32,8 @@
         .app-name .logo-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(0,229,160,0.5)); }
         .app-name span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .app-badge { font-size: 9px; font-weight: 700; background: rgba(0,229,160,0.12); color: var(--accent); padding: 3px 8px; border-radius: 20px; margin-top: 8px; display: inline-block; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(0,229,160,0.2);}
+        .brand-mark { font-size: 24px; color: var(--accent); font-weight: 900; }
+        .brand-rest { font-size: 20px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         
         .nav-menu { padding: 12px 10px; flex: 1; display: flex; flex-direction: column; gap: 2px; overflow-y: auto;}
         .nav-section { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; padding: 12px 12px 6px; }
@@ -47,6 +49,7 @@
         .lang-btn { flex: 1; text-align: center; font-size: 11px; font-weight: 600; padding: 8px; cursor: pointer; color: var(--muted); transition: all 0.2s; }
         .lang-btn.active { background: linear-gradient(135deg, #00e5a0, #00b87d); color: #000; }
         .clinic-info { font-size: 11px; color: var(--muted); text-align: center; padding: 8px 0 0; opacity: 0.7; }
+        .powered-by { font-size: 10px; color: var(--muted); text-align: center; padding: 6px 0 0; opacity: 0.5; border-top: 1px solid var(--border); margin-top: 8px; }
         
         /* Main Container */
         .main-content { flex: 1; overflow-y: auto; scroll-behavior: smooth; position: relative; background: var(--bg); }
@@ -207,7 +210,7 @@
 <div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
     <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,229,160,0.15);">
         <div style="font-size:48px;margin-bottom:12px;">🐾</div>
-        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Companion & Exotic</span></div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;"><span class="brand-mark">அ</span><span class="brand-rest">gadham</span> <span style="color:var(--accent);">Companion & Exotic</span></div>
         <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">India's Comprehensive Veterinary Clinical System</div>
         <div style="text-align:left;margin-bottom:12px;">
             <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Select Doctor</label>
@@ -234,7 +237,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo-area">
-            <div class="app-name">🐾 NalamVet <span>Companion & Exotic</span></div>
+            <div class="app-name">🐾 <span class="brand-mark">அ</span><span class="brand-rest">gadham</span> <span>Companion & Exotic</span></div>
             <div class="app-badge">Companion & Exotic | Metro & Specialist</div>
         </div>
         <nav class="nav-menu">
@@ -249,11 +252,12 @@
         </nav>
         <div class="sidebar-footer">
             <div class="lang-toggle">
-                <div class="lang-btn active" onclick="setLang('en')">English</div>
-                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
-                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+                <div class="lang-btn active" onclick="setLang('en', this)">English</div>
+                <div class="lang-btn" onclick="setLang('ta', this)">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi', this)">हिंदी</div>
             </div>
             <div class="clinic-info" id="clinic-info"></div>
+            <div class="powered-by">✨ Powered by Hareshkumar.P.S</div>
         </div>
     </aside>
 
@@ -555,10 +559,10 @@
                     <table>
                         <thead><tr><th>Client / Patient</th><th>Alert Type</th><th>Due</th><th>Action</th></tr></thead>
                         <tbody id="crmAlerts">
-                            <tr><td>Rajesh / Tommy (Dog)</td><td>Annual DHLPPi Vaccine</td><td style="color:var(--warn)">Today</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543210?text=Hi Rajesh, Tommy\'s annual DHLPPi vaccination is due today at NalamVet. Please visit us!')">📱 WhatsApp</button></td></tr>
-                            <tr><td>Meena / Lucy (Cat)</td><td>Tick Fever Follow-up</td><td style="color:var(--danger)">Overdue 2d</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543211?text=Hi Meena, Lucy\'s follow-up is overdue. Please update us on her health at NalamVet.')">📱 WhatsApp</button></td></tr>
-                            <tr><td>Suresh / Max (Dog)</td><td>Deworming Due</td><td style="color:var(--warn)">Tomorrow</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543212?text=Hi Suresh, Max\'s deworming is scheduled for tomorrow at NalamVet.')">📱 WhatsApp</button></td></tr>
-                            <tr><td>Kavitha / Roja (Cow)</td><td>Foot & Mouth Vaccine</td><td style="color:var(--accent)">In 3 days</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543213?text=Hi Kavitha, Roja\'s FMD vaccination is due in 3 days at NalamVet.')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Rajesh / Tommy (Dog)</td><td>Annual DHLPPi Vaccine</td><td style="color:var(--warn)">Today</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543210?text=Hi Rajesh, Tommy\'s annual DHLPPi vaccination is due today at Agadham. Please visit us!')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Meena / Lucy (Cat)</td><td>Tick Fever Follow-up</td><td style="color:var(--danger)">Overdue 2d</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543211?text=Hi Meena, Lucy\'s follow-up is overdue. Please update us on her health at Agadham.')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Suresh / Max (Dog)</td><td>Deworming Due</td><td style="color:var(--warn)">Tomorrow</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543212?text=Hi Suresh, Max\'s deworming is scheduled for tomorrow at Agadham.')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Kavitha / Roja (Cow)</td><td>Foot & Mouth Vaccine</td><td style="color:var(--accent)">In 3 days</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543213?text=Hi Kavitha, Roja\'s FMD vaccination is due in 3 days at Agadham.')">📱 WhatsApp</button></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -605,7 +609,7 @@
 // LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
 // ============================================================
 // As a former Supreme Court Justice and medical patent legal advisor with 25+ years experience,
-// I have reviewed NalamVet's IP and liability framework. Here are the key loopholes and protections:
+// I have reviewed Agadham's IP and liability framework. Here are the key loopholes and protections:
 //
 // 1. IPC (Indian Penal Code) Loopholes:
 //    - Section 304A (rash/negligent act causing death): Does not apply as this is software tool, not direct veterinary practice.
@@ -652,7 +656,7 @@
 
     const doctorTemplate = {
         id: 'DOC-001',
-        name: 'Dr. Priya Sharma',
+        name: 'Dr. Hareshkumar',
         designation: 'BVSc & AH, MVSc (Medicine)',
         vciReg: 'TN/VCI/2019/1234',
         phone: '+91 98765 43210',
@@ -692,38 +696,38 @@
     // ===== LANGUAGE SYSTEM =====
     const TMap = {
         en: {
-            'dash': 'Dashboard', 'consult': 'New Consultation', 'sched': 'Schedule & Follow-ups',
-            'vacc': 'Vaccination Schedules', 'drugs': 'Drug Reference', 'inv1': 'Stock Inventory',
-            'crm': 'CRM & Retention', 'settings': 'Settings', 'cid': 'Case ID', 'date': 'Date',
-            'owner': 'Owner Name', 'animal': 'Animal Name', 'species': 'Species', 'weight': 'Weight (kg)',
-            'complaint': 'Chief Complaint', 'exam': 'Examination Notes', 'diag': 'Diagnosis',
-            'adddrug': 'Add Drug', 'save': 'Save Case', 'print': 'Prescription', 'invoice': 'Invoice',
-            'recent': 'Recent Cases', 'batch': 'Batch Number', 'exp': 'Expiry Date'
+            't-dash': 'Dashboard', 't-consult': 'New Consultation', 't-sched': 'Schedule & Follow-ups',
+            't-vacc': 'Vaccination Schedules', 't-drugs': 'Drug Reference', 't-inv1': 'Stock Inventory',
+            't-crm': 'CRM & Retention', 't-settings': 'Settings', 't-cid': 'Case ID', 't-date': 'Date',
+            't-owner': 'Owner Name', 't-animal': 'Animal Name', 't-species': 'Species', 't-weight': 'Weight (kg)',
+            't-complaint': 'Chief Complaint', 't-exam': 'Examination Notes', 't-diag': 'Diagnosis',
+            't-adddrug': 'Add Drug', 't-save': 'Save Case', 't-print': 'Prescription', 't-invoice': 'Invoice',
+            't-recent': 'Recent Cases', 't-batch': 'Batch Number', 't-exp': 'Expiry Date'
         },
         ta: {
-            'dash': 'முகப்பு பக்கம்', 'consult': 'புதிய பரிசோதனை', 'sched': 'அட்டவணை & மறு வருகை',
-            'vacc': 'தடுப்பூசி அட்டவணை', 'drugs': 'மருந்து குறிப்பு', 'inv1': 'பங்கு சரக்கு',
-            'crm': 'CRM & தக்கவைப்பு', 'settings': 'அமைப்புகள்', 'cid': 'வழக்கு அடையாளம்', 'date': 'தேதி',
-            'owner': 'உரிமையாளர் பெயர்', 'animal': 'விலங்கின் பெயர்', 'species': 'இனம்', 'weight': 'எடை (கிலோ)',
-            'complaint': 'முதன்மை புகார்', 'exam': 'பரிசோதனை குறிப்புகள்', 'diag': 'நோயறிதல்',
-            'adddrug': 'மருந்து சேர்', 'save': 'வழக்கை சேமி', 'print': 'மருந்துச் சீட்டு', 'invoice': 'ரசீது',
-            'recent': 'சமீபத்திய வழக்குகள்', 'batch': 'தொகுதி எண்', 'exp': 'காலாவதி தேதி'
+            't-dash': 'முகப்பு பக்கம்', 't-consult': 'புதிய பரிசோதனை', 't-sched': 'அட்டவணை & மறு வருகை',
+            't-vacc': 'தடுப்பூசி அட்டவணை', 't-drugs': 'மருந்து குறிப்பு', 't-inv1': 'பங்கு சரக்கு',
+            't-crm': 'CRM & தக்கவைப்பு', 't-settings': 'அமைப்புகள்', 't-cid': 'வழக்கு அடையாளம்', 't-date': 'தேதி',
+            't-owner': 'உரிமையாளர் பெயர்', 't-animal': 'விலங்கின் பெயர்', 't-species': 'இனம்', 't-weight': 'எடை (கிலோ)',
+            't-complaint': 'முதன்மை புகார்', 't-exam': 'பரிசோதனை குறிப்புகள்', 't-diag': 'நோயறிதல்',
+            't-adddrug': 'மருந்து சேர்', 't-save': 'வழக்கை சேமி', 't-print': 'மருந்துச் சீட்டு', 't-invoice': 'ரசீது',
+            't-recent': 'சமீபத்திய வழக்குகள்', 't-batch': 'தொகுதி எண்', 't-exp': 'காலாவதி தேதி'
         },
         hi: {
-            'dash': 'मुख्य पृष्ठ', 'consult': 'नया परामर्श', 'sched': 'अनुसूची & फॉलो-अप',
-            'vacc': 'टीकाकरण अनुसूची', 'drugs': 'दवा संदर्भ', 'inv1': 'स्टॉक इन्वेंटरी',
-            'crm': 'CRM & प्रतिधारण', 'settings': 'सेटिंग्स', 'cid': 'केस ID', 'date': 'तारीख',
-            'owner': 'मालिक का नाम', 'animal': 'पशु का नाम', 'species': 'प्रजाति', 'weight': 'वजन (किलोग्राम)',
-            'complaint': 'मुख्य शिकायत', 'exam': 'परीक्षा नोट्स', 'diag': 'निदान',
-            'adddrug': 'दवा जोड़ें', 'save': 'केस सहेजें', 'print': 'दवा की पर्ची', 'invoice': 'चालान',
-            'recent': 'हाल के केस', 'batch': 'बैच नंबर', 'exp': 'समाप्ति तारीख'
+            't-dash': 'मुख्य पृष्ठ', 't-consult': 'नया परामर्श', 't-sched': 'अनुसूची & फॉलो-अप',
+            't-vacc': 'टीकाकरण अनुसूची', 't-drugs': 'दवा संदर्भ', 't-inv1': 'स्टॉक इन्वेंटरी',
+            't-crm': 'CRM & प्रतिधारण', 't-settings': 'सेटिंग्स', 't-cid': 'केस ID', 't-date': 'तारीख',
+            't-owner': 'मालिक का नाम', 't-animal': 'पशु का नाम', 't-species': 'प्रजाति', 't-weight': 'वजन (किलोग्राम)',
+            't-complaint': 'मुख्य शिकायत', 't-exam': 'परीक्षा नोट्स', 't-diag': 'निदान',
+            't-adddrug': 'दवा जोड़ें', 't-save': 'केस सहेजें', 't-print': 'दवा की पर्ची', 't-invoice': 'चालान',
+            't-recent': 'हाल के केस', 't-batch': 'बैच नंबर', 't-exp': 'समाप्ति तारीख'
         }
     };
 
-    function setLang(code) {
+    function setLang(code, target) {
         State.lang = code;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        if (target) target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
         Object.keys(TMap[code]).forEach(cls => {
             document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
@@ -732,9 +736,9 @@
 
     function getWhatsAppTemplate(followup, lang) {
         const templates = {
-            en: `Hi ${followup.ownerName}, reminder from NalamVet: ${followup.typeLabel} for ${followup.patientName} is due on ${followup.scheduledDate}. 🐾`,
-            ta: `வணக்கம் ${followup.ownerName}, NalamVet நினைவூட்டல்: ${followup.patientName}-க்கு ${followup.scheduledDate} அன்று ${followup.typeLabel} உள்ளது. 🐾`,
-            hi: `नमस्ते ${followup.ownerName}, NalamVet अनुस्मारक: ${followup.patientName} का ${followup.typeLabel} ${followup.scheduledDate} को है। 🐾`
+            en: `Hi ${followup.ownerName}, reminder from Agadham: ${followup.typeLabel} for ${followup.patientName} is due on ${followup.scheduledDate}. 🐾`,
+            ta: `வணக்கம் ${followup.ownerName}, Agadham நினைவூட்டல்: ${followup.patientName}-க்கு ${followup.scheduledDate} அன்று ${followup.typeLabel} உள்ளது. 🐾`,
+            hi: `नमस्ते ${followup.ownerName}, Agadham अनुस्मारक: ${followup.patientName} का ${followup.typeLabel} ${followup.scheduledDate} को है। 🐾`
         };
         return templates[lang] || templates.en;
     }
@@ -893,7 +897,7 @@
             const matchSp = !sp || (d.species && d.species.includes(sp)) || (d['dose'+sp] && d['dose'+sp].length > 2);
             return matchQ && matchSp;
         });
-        document.getElementById('dbCountStr').textContent = `${arr.length} drugs in NalamVet Formulary`;
+        document.getElementById('dbCountStr').textContent = `${arr.length} drugs in Agadham Formulary`;
 
         const grid = document.getElementById('refGrid');
         if (!grid) return;
@@ -920,7 +924,7 @@
                         <div class="drug-card" onclick="showDrugDetail('${d.id}')">
                             <strong>${d.generic}</strong>
                             <div class="dc-brands">${(d.brands||'-').substring(0,50)}</div>
-                            <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,45)}</div>
+                            <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,45)} | 🐈 ${(d.doseCat||'-').substring(0,30)}</div>
                         </div>`).join('')}
                     </div>
                 </div>`).join('');
@@ -930,7 +934,7 @@
     function getCategories(arr) {
         const groups = {};
         arr.forEach(d => {
-            const key = d.route || d.source || 'Miscellaneous';
+            const key = d.category || 'Miscellaneous';
             if (!groups[key]) groups[key] = [];
             groups[key].push(d);
         });
@@ -1189,7 +1193,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'nalamvet_backup.json';
+        a.download = 'agadham_backup.json';
         a.click();
         URL.revokeObjectURL(url);
         showToast('Backup exported!');
@@ -1226,6 +1230,12 @@
         // Populate doctor dropdown
         const doctorSel = document.getElementById('auth-doctor');
         if (State.doctors.length) {
+            // Ensure default doctor is included
+            const hasDefault = State.doctors.some(d => d.id === 'DOC-001');
+            if (!hasDefault) {
+                State.doctors.unshift(doctorTemplate);
+                localStorage.setItem(PREFIX + 'doctors', JSON.stringify(State.doctors));
+            }
             doctorSel.innerHTML = '<option value="">Choose Doctor...</option>' + State.doctors.map(d => `<option value="${d.id}">${d.name} (${d.role})</option>`).join('');
         } else {
             // Default doctor
@@ -1240,7 +1250,7 @@
         document.getElementById('st-vet').value = State.settings.vet || '';
         document.getElementById('st-upi').value = State.settings.upi || '';
 
-        console.log("NalamVet Pets & Exotic Loaded.");
+        console.log("Agadham Pets & Exotic Loaded.");
     };
 
     // ===== TOGGLE CARDS =====
@@ -1261,7 +1271,7 @@
         const content = `
             <div class="print-paper">
                 <div class="print-header">
-                    <div style="font-size:24px;font-weight:800;">NalamVet</div>
+                    <div style="font-size:24px;font-weight:800;">Agadham</div>
                     <div>${State.settings.clinic || 'Veterinary Clinic'}</div>
                     <div>${currentDoctor.name} (${currentDoctor.designation})</div>
                 </div>
@@ -1292,7 +1302,7 @@
         const content = `
             <div class="print-paper">
                 <div class="print-header">
-                    <div style="font-size:24px;font-weight:800;">NalamVet</div>
+                    <div style="font-size:24px;font-weight:800;">Agadham</div>
                     <div>${State.settings.clinic || 'Veterinary Clinic'}</div>
                     <div>GST Invoice</div>
                 </div>
@@ -1352,8 +1362,8 @@
 
     // ===== PWA SERVICE WORKER =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-pets-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
-        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('agadham-pets-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); })`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
