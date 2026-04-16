@@ -1,14 +1,14 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
-    &lt;title&gt;NalamVet Teaching Hospital — Academic Veterinary Medicine&lt;/title&gt;
-    &lt;link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiM4ZTQ0YWQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9"&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"&gt;&lt;/script&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NalamVet Teaching Hospital — Academic Veterinary Medicine</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiM4ZTQ0YWQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    &lt;style&gt;
+    <style>
         :root {
             --bg: #080b12; --surface: #0f1320; --surface2: #161d2e; --surface-hover: #1e2740;
             --border: #232d44; --accent: #8e44ad; --accent-hover: #7d3c98;
@@ -104,7 +104,7 @@
         .chk-wrap { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); cursor: pointer;}
         .chk-wrap input { width: auto; accent-color: var(--accent); cursor: pointer;}
 
-        /* Stats &amp; Grids */
+        /* Stats & Grids */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
         .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
         .stat-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 50%; opacity: 0.04; }
@@ -198,258 +198,258 @@
             .page { padding: 14px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
         }
-    &lt;/style&gt;
-&lt;/head&gt;
+    </style>
+</head>
 
-&lt;body&gt;
+<body>
 
-&lt;!-- AUTH SCREEN --&gt;
-&lt;div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;"&gt;
-    &lt;div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(142,68,173,0.15);"&gt;
-        &lt;div style="font-size:48px;margin-bottom:12px;"&gt;🎓&lt;/div&gt;
-        &lt;div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;"&gt;NalamVet &lt;span style="color:var(--accent);"&gt;Teaching&lt;/span&gt;&lt;/div&gt;
-        &lt;div style="font-size:13px;color:var(--muted);margin-bottom:32px;"&gt;Academic Veterinary Medicine Platform&lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;"&gt;PIN&lt;/label&gt;
-            &lt;input type="password" id="auth-pin" placeholder="Enter PIN (default: 1234)" 
+<!-- AUTH SCREEN -->
+<div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
+    <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(142,68,173,0.15);">
+        <div style="font-size:48px;margin-bottom:12px;">🎓</div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Teaching</span></div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">Academic Veterinary Medicine Platform</div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">PIN</label>
+            <input type="password" id="auth-pin" placeholder="Enter PIN (default: 1234)" 
                 style="width:100%;padding:16px;font-size:20px;text-align:center;letter-spacing:6px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;"
-                autocomplete="off"&gt;
-        &lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;input type="checkbox" id="legal-consent" style="margin-right:8px;"&gt;
-            &lt;label for="legal-consent" style="font-size:12px;color:var(--muted);"&gt;I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;"&gt;🔓 Unlock Teaching System&lt;/button&gt;
-        &lt;div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;"&gt;❌ Invalid PIN. Try: 1234&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+                autocomplete="off">
+        </div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <input type="checkbox" id="legal-consent" style="margin-right:8px;">
+            <label for="legal-consent" style="font-size:12px;color:var(--muted);">I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.</label>
+        </div>
+        <button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;">🔓 Unlock Teaching System</button>
+        <div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;">❌ Invalid PIN. Try: 1234</div>
+    </div>
+</div>
 
-&lt;div class="app-layout"&gt;
-    &lt;!-- SIDEBAR --&gt;
-    &lt;aside class="sidebar"&gt;
-        &lt;div class="logo-area"&gt;
-            &lt;div class="app-name"&gt;🎓 NalamVet &lt;span&gt;Teaching&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="app-badge"&gt;Teaching Hospital&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;nav class="nav-menu"&gt;
-            &lt;div class="nav-item active" onclick="nav('dashboard', this)"&gt;&lt;i&gt;📊&lt;/i&gt; &lt;span class="t-dash"&gt;Dashboard&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('registry', this)"&gt;&lt;i&gt;📋&lt;/i&gt; &lt;span class="t-reg"&gt;Case Registry&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('departments', this)"&gt;&lt;i&gt;🏥&lt;/i&gt; &lt;span class="t-dept"&gt;Departments&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('surveillance', this)"&gt;&lt;i&gt;📈&lt;/i&gt; &lt;span class="t-surv"&gt;Disease Surveillance&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('teaching', this)"&gt;&lt;i&gt;📚&lt;/i&gt; &lt;span class="t-teach"&gt;Teaching Cases&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('followups', this)"&gt;&lt;i&gt;📅&lt;/i&gt; &lt;span class="t-follow"&gt;Follow-up Slips&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('drugs', this)"&gt;&lt;i&gt;💊&lt;/i&gt; &lt;span class="t-drugs"&gt;Drug Reference&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('inventory', this)"&gt;&lt;i&gt;📦&lt;/i&gt; &lt;span class="t-inv"&gt;Inventory&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('reports', this)"&gt;&lt;i&gt;📈&lt;/i&gt; &lt;span class="t-reports"&gt;Reports&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('settings', this)"&gt;&lt;i&gt;⚙️&lt;/i&gt; &lt;span class="t-settings"&gt;Settings&lt;/span&gt;&lt;/div&gt;
-        &lt;/nav&gt;
-        &lt;div class="sidebar-footer"&gt;
-            &lt;div class="lang-toggle"&gt;
-                &lt;div class="lang-btn active" onclick="setLang('en')"&gt;English&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('ta')"&gt;தமிழ்&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('hi')"&gt;हिंदी&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="clinic-info" id="clinic-info"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/aside&gt;
+<div class="app-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="app-name">🎓 NalamVet <span>Teaching</span></div>
+            <div class="app-badge">Teaching Hospital</div>
+        </div>
+        <nav class="nav-menu">
+            <div class="nav-item active" onclick="nav('dashboard', this)"><i>📊</i> <span class="t-dash">Dashboard</span></div>
+            <div class="nav-item" onclick="nav('registry', this)"><i>📋</i> <span class="t-reg">Case Registry</span></div>
+            <div class="nav-item" onclick="nav('departments', this)"><i>🏥</i> <span class="t-dept">Departments</span></div>
+            <div class="nav-item" onclick="nav('surveillance', this)"><i>📈</i> <span class="t-surv">Disease Surveillance</span></div>
+            <div class="nav-item" onclick="nav('teaching', this)"><i>📚</i> <span class="t-teach">Teaching Cases</span></div>
+            <div class="nav-item" onclick="nav('followups', this)"><i>📅</i> <span class="t-follow">Follow-up Slips</span></div>
+            <div class="nav-item" onclick="nav('drugs', this)"><i>💊</i> <span class="t-drugs">Drug Reference</span></div>
+            <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv">Inventory</span></div>
+            <div class="nav-item" onclick="nav('reports', this)"><i>📈</i> <span class="t-reports">Reports</span></div>
+            <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="lang-toggle">
+                <div class="lang-btn active" onclick="setLang('en')">English</div>
+                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+            </div>
+            <div class="clinic-info" id="clinic-info"></div>
+        </div>
+    </aside>
 
-    &lt;main class="main-content"&gt;
-        &lt;!-- DASHBOARD --&gt;
-        &lt;div id="page-dashboard" class="page active"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-dash"&gt;Dashboard&lt;/h1&gt;&lt;div class="subtitle"&gt;Teaching Hospital Overview&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
+    <main class="main-content">
+        <!-- DASHBOARD -->
+        <div id="page-dashboard" class="page active">
+            <div class="header">
+                <div><h1 class="title t-dash">Dashboard</h1><div class="subtitle">Teaching Hospital Overview</div></div>
+            </div>
             
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;🎓 WHY TEACHING HOSPITALS NEED THIS &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12"&gt;
-                        &lt;p&gt;Gap 1: Paper case records → No searchable database for research&lt;/p&gt;
-                        &lt;p&gt;Gap 2: Manual department toggles → Students can't access relevant cases&lt;/p&gt;
-                        &lt;p&gt;Gap 3: No disease surveillance → Outbreaks not tracked across departments&lt;/p&gt;
-                        &lt;p&gt;Gap 4: Follow-up slips lost → Poor continuity of care&lt;/p&gt;
-                        &lt;p&gt;Gap 5: No teaching case format → Inconsistent documentation&lt;/p&gt;
-                        &lt;p&gt;Gap 6: Drug reference not integrated → Prescribing errors in training&lt;/p&gt;
-                        &lt;p&gt;Gap 7: No analytics → Can't measure teaching effectiveness&lt;/p&gt;
-                        &lt;p&gt;&lt;strong&gt;NalamVet Teaching closes all 7 gaps.&lt;/strong&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🎓 WHY TEACHING HOSPITALS NEED THIS <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <p>Gap 1: Paper case records → No searchable database for research</p>
+                        <p>Gap 2: Manual department toggles → Students can't access relevant cases</p>
+                        <p>Gap 3: No disease surveillance → Outbreaks not tracked across departments</p>
+                        <p>Gap 4: Follow-up slips lost → Poor continuity of care</p>
+                        <p>Gap 5: No teaching case format → Inconsistent documentation</p>
+                        <p>Gap 6: Drug reference not integrated → Prescribing errors in training</p>
+                        <p>Gap 7: No analytics → Can't measure teaching effectiveness</p>
+                        <p><strong>NalamVet Teaching closes all 7 gaps.</strong></p>
+                    </div>
+                </div>
+            </div>
 
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;⚖️ LEGAL DISCLAIMER &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12"&gt;
-                        &lt;p&gt;&lt;strong&gt;IMPORTANT LEGAL NOTICE:&lt;/strong&gt; This software is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment. All veterinary decisions must be made by qualified professionals. Data entered may be used for research under IPC Section 304A exemption and Patents Act 3(j) exclusion. By using this software, you agree to these terms.&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">⚖️ LEGAL DISCLAIMER <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <p><strong>IMPORTANT LEGAL NOTICE:</strong> This software is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment. All veterinary decisions must be made by qualified professionals. Data entered may be used for research under IPC Section 304A exemption and Patents Act 3(j) exclusion. By using this software, you agree to these terms.</p>
+                    </div>
+                </div>
+            </div>
 
-            &lt;div class="stats-grid"&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent);"&gt;&lt;div class="stat-val" id="s-cases"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Total Cases&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent2);"&gt;&lt;div class="stat-val" id="s-med"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Medicine&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--warn);"&gt;&lt;div class="stat-val" id="s-surg"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Surgery&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #9b59b6;"&gt;&lt;div class="stat-val" id="s-obg"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;OBG&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #2ecc71;"&gt;&lt;div class="stat-val" id="s-follow"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Follow-ups&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="stats-grid">
+                <div class="stat-card" style="border-color: var(--accent);"><div class="stat-val" id="s-cases">0</div><div class="stat-lbl">Total Cases</div></div>
+                <div class="stat-card" style="border-color: var(--accent2);"><div class="stat-val" id="s-med">0</div><div class="stat-lbl">Medicine</div></div>
+                <div class="stat-card" style="border-color: var(--warn);"><div class="stat-val" id="s-surg">0</div><div class="stat-lbl">Surgery</div></div>
+                <div class="stat-card" style="border-color: #9b59b6;"><div class="stat-val" id="s-obg">0</div><div class="stat-lbl">OBG</div></div>
+                <div class="stat-card" style="border-color: #2ecc71;"><div class="stat-val" id="s-follow">0</div><div class="stat-lbl">Follow-ups</div></div>
+            </div>
 
-            &lt;div class="alert alert-danger" id="alerts-panel"&gt;
-                &lt;i style="font-style:normal;font-size:18px;"&gt;⚠️&lt;/i&gt; &lt;div&gt;&lt;strong style="display:block; margin-bottom:4px;"&gt;Alerts&lt;/strong&gt;&lt;span id="alerts-text"&gt;&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="alert alert-danger" id="alerts-panel">
+                <i style="font-style:normal;font-size:18px;">⚠️</i> <div><strong style="display:block; margin-bottom:4px;">Alerts</strong><span id="alerts-text"></span></div>
+            </div>
 
-            &lt;div class="card"&gt;
-                &lt;div class="card-header t-case-trend"&gt;Case Trends&lt;/div&gt;
-                &lt;div style="padding: 22px;"&gt;&lt;canvas id="caseChart"&gt;&lt;/canvas&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="card">
+                <div class="card-header t-case-trend">Case Trends</div>
+                <div style="padding: 22px;"><canvas id="caseChart"></canvas></div>
+            </div>
+        </div>
 
-        &lt;!-- CASE REGISTRY --&gt;
-        &lt;div id="page-registry" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-reg"&gt;Case Registry&lt;/h1&gt;&lt;/div&gt;
-                &lt;button class="btn btn-primary" onclick="addCaseModal()"&gt;➕ Add Case&lt;/button&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div style="overflow-x:auto;"&gt;
-                    &lt;table id="caseTable"&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Case ID&lt;/th&gt;&lt;th&gt;Patient&lt;/th&gt;&lt;th&gt;Department&lt;/th&gt;&lt;th&gt;Diagnosis&lt;/th&gt;&lt;th&gt;Date&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody&gt;&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- CASE REGISTRY -->
+        <div id="page-registry" class="page">
+            <div class="header">
+                <div><h1 class="title t-reg">Case Registry</h1></div>
+                <button class="btn btn-primary" onclick="addCaseModal()">➕ Add Case</button>
+            </div>
+            <div class="card">
+                <div style="overflow-x:auto;">
+                    <table id="caseTable">
+                        <thead><tr><th>Case ID</th><th>Patient</th><th>Department</th><th>Diagnosis</th><th>Date</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- DEPARTMENTS --&gt;
-        &lt;div id="page-departments" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-dept"&gt;Departments&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Toggle Department&lt;/label&gt;
-                        &lt;select id="dept-toggle"&gt;
-                            &lt;option value="medicine"&gt;Medicine&lt;/option&gt;
-                            &lt;option value="surgery"&gt;Surgery&lt;/option&gt;
-                            &lt;option value="obg"&gt;OBG&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;h3&gt;Department Cases&lt;/h3&gt;&lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;table id="deptTable"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Case&lt;/th&gt;&lt;th&gt;Patient&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- DEPARTMENTS -->
+        <div id="page-departments" class="page">
+            <div class="header"><div><h1 class="title t-dept">Departments</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Toggle Department</label>
+                        <select id="dept-toggle">
+                            <option value="medicine">Medicine</option>
+                            <option value="surgery">Surgery</option>
+                            <option value="obg">OBG</option>
+                        </select>
+                    </div>
+                    <div class="col-12"><h3>Department Cases</h3></div>
+                    <div class="col-12"><table id="deptTable"><thead><tr><th>Case</th><th>Patient</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- DISEASE SURVEILLANCE --&gt;
-        &lt;div id="page-surveillance" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-surv"&gt;Disease Surveillance&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12"&gt;&lt;canvas id="survChart"&gt;&lt;/canvas&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- DISEASE SURVEILLANCE -->
+        <div id="page-surveillance" class="page">
+            <div class="header"><div><h1 class="title t-surv">Disease Surveillance</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-12"><canvas id="survChart"></canvas></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- TEACHING CASES --&gt;
-        &lt;div id="page-teaching" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-teach"&gt;Teaching Cases&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Select Case&lt;/label&gt;&lt;select id="teach-case"&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;h3&gt;Teaching Format&lt;/h3&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Signalment&lt;/label&gt;&lt;textarea id="signalment"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;History&lt;/label&gt;&lt;textarea id="history"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Clinical Findings&lt;/label&gt;&lt;textarea id="findings"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Differential Diagnosis&lt;/label&gt;&lt;textarea id="diff-diag"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Final Diagnosis&lt;/label&gt;&lt;textarea id="final-diag"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Treatment&lt;/label&gt;&lt;textarea id="treatment"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Teaching Points&lt;/label&gt;&lt;textarea id="teaching-points"&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="saveTeachingCase()"&gt;Save Teaching Case&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- TEACHING CASES -->
+        <div id="page-teaching" class="page">
+            <div class="header"><div><h1 class="title t-teach">Teaching Cases</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Select Case</label><select id="teach-case"></select></div>
+                    <div class="col-12"><h3>Teaching Format</h3></div>
+                    <div class="form-group col-12"><label>Signalment</label><textarea id="signalment"></textarea></div>
+                    <div class="form-group col-12"><label>History</label><textarea id="history"></textarea></div>
+                    <div class="form-group col-12"><label>Clinical Findings</label><textarea id="findings"></textarea></div>
+                    <div class="form-group col-12"><label>Differential Diagnosis</label><textarea id="diff-diag"></textarea></div>
+                    <div class="form-group col-12"><label>Final Diagnosis</label><textarea id="final-diag"></textarea></div>
+                    <div class="form-group col-12"><label>Treatment</label><textarea id="treatment"></textarea></div>
+                    <div class="form-group col-12"><label>Teaching Points</label><textarea id="teaching-points"></textarea></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveTeachingCase()">Save Teaching Case</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- FOLLOW-UP SLIPS --&gt;
-        &lt;div id="page-followups" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-follow"&gt;Follow-up Slips&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Select Case&lt;/label&gt;&lt;select id="follow-case"&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Follow-up Date&lt;/label&gt;&lt;input type="date" id="follow-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Instructions&lt;/label&gt;&lt;input type="text" id="follow-instr"&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="printFollowUp()"&gt;Print Slip&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- FOLLOW-UP SLIPS -->
+        <div id="page-followups" class="page">
+            <div class="header"><div><h1 class="title t-follow">Follow-up Slips</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Select Case</label><select id="follow-case"></select></div>
+                    <div class="form-group col-4"><label>Follow-up Date</label><input type="date" id="follow-date"></div>
+                    <div class="form-group col-4"><label>Instructions</label><input type="text" id="follow-instr"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="printFollowUp()">Print Slip</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- DRUG REFERENCE --&gt;
-        &lt;div id="page-drugs" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-drugs"&gt;💊 Drug Reference&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;"&gt;
-                &lt;input type="text" id="refSearch" placeholder="🔍 Search drug..." style="max-width:420px; flex:1;" oninput="renderRef()"&gt;
-            &lt;/div&gt;
-            &lt;div id="refGrid"&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- DRUG REFERENCE -->
+        <div id="page-drugs" class="page">
+            <div class="header"><div><h1 class="title t-drugs">💊 Drug Reference</h1></div></div>
+            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+                <input type="text" id="refSearch" placeholder="🔍 Search drug..." style="max-width:420px; flex:1;" oninput="renderRef()">
+            </div>
+            <div id="refGrid"></div>
+        </div>
 
-        &lt;!-- INVENTORY --&gt;
-        &lt;div id="page-inventory" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-inv"&gt;Inventory&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Item&lt;/label&gt;&lt;input type="text" id="inv-name"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Qty&lt;/label&gt;&lt;input type="number" id="inv-qty"&gt;&lt;/div&gt;
-                    &lt;div class="col-4" style="display:flex; align-items:flex-end;"&gt;&lt;button class="btn btn-primary" style="width:100%" onclick="addInvItem()"&gt;Add&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- INVENTORY -->
+        <div id="page-inventory" class="page">
+            <div class="header"><div><h1 class="title t-inv">Inventory</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Item</label><input type="text" id="inv-name"></div>
+                    <div class="form-group col-4"><label>Qty</label><input type="number" id="inv-qty"></div>
+                    <div class="col-4" style="display:flex; align-items:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addInvItem()">Add</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- REPORTS --&gt;
-        &lt;div id="page-reports" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-reports"&gt;Reports&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Report Type&lt;/label&gt;
-                        &lt;select id="report-type"&gt;
-                            &lt;option value="cases"&gt;Case Summary&lt;/option&gt;
-                            &lt;option value="surveillance"&gt;Disease Surveillance&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="generateReport()"&gt;Generate&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- REPORTS -->
+        <div id="page-reports" class="page">
+            <div class="header"><div><h1 class="title t-reports">Reports</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Report Type</label>
+                        <select id="report-type">
+                            <option value="cases">Case Summary</option>
+                            <option value="surveillance">Disease Surveillance</option>
+                        </select>
+                    </div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="generateReport()">Generate</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- SETTINGS --&gt;
-        &lt;div id="page-settings" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-settings"&gt;Settings&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;&lt;div class="card-body"&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Hospital Name&lt;/label&gt;&lt;input type="text" id="hospital-name"&gt;&lt;/div&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;VCI Registration&lt;/label&gt;&lt;input type="text" id="vci-reg"&gt;&lt;/div&gt;
-                &lt;div class="col-12" style="display:flex; gap:12px; margin-top:16px;"&gt;
-                    &lt;button class="btn btn-primary" onclick="saveSettings()"&gt;Save&lt;/button&gt;
-                    &lt;button class="btn btn-secondary" onclick="exportBackup()"&gt;Export Backup&lt;/button&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- SETTINGS -->
+        <div id="page-settings" class="page">
+            <div class="header"><div><h1 class="title t-settings">Settings</h1></div></div>
+            <div class="card"><div class="card-body">
+                <div class="form-group col-4"><label>Hospital Name</label><input type="text" id="hospital-name"></div>
+                <div class="form-group col-4"><label>VCI Registration</label><input type="text" id="vci-reg"></div>
+                <div class="col-12" style="display:flex; gap:12px; margin-top:16px;">
+                    <button class="btn btn-primary" onclick="saveSettings()">Save</button>
+                    <button class="btn btn-secondary" onclick="exportBackup()">Export Backup</button>
+                </div>
+            </div></div>
+        </div>
 
-        &lt;!-- PRINT VIEW --&gt;
-        &lt;div id="page-print" class="page"&gt;
-            &lt;div class="print-paper" id="printContent"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/main&gt;
+        <!-- PRINT VIEW -->
+        <div id="page-print" class="page">
+            <div class="print-paper" id="printContent"></div>
+        </div>
+    </main>
 
-    &lt;!-- MODALS --&gt;
-    &lt;div class="modal-overlay" id="caseModal" onclick="if(event.target===this) this.classList.remove('active')"&gt;
-        &lt;div class="modal"&gt;&lt;div class="modal-body"&gt;
-            &lt;h2&gt;Add Case&lt;/h2&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Patient Name&lt;/label&gt;&lt;input type="text" id="case-patient"&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Department&lt;/label&gt;&lt;select id="case-dept"&gt;&lt;option&gt;Medicine&lt;/option&gt;&lt;option&gt;Surgery&lt;/option&gt;&lt;option&gt;OBG&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Diagnosis&lt;/label&gt;&lt;input type="text" id="case-diag"&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Date&lt;/label&gt;&lt;input type="date" id="case-date"&gt;&lt;/div&gt;
-            &lt;button class="btn btn-primary" onclick="saveCase()"&gt;Save Case&lt;/button&gt;
-        &lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
+    <!-- MODALS -->
+    <div class="modal-overlay" id="caseModal" onclick="if(event.target===this) this.classList.remove('active')">
+        <div class="modal"><div class="modal-body">
+            <h2>Add Case</h2>
+            <div class="form-group"><label>Patient Name</label><input type="text" id="case-patient"></div>
+            <div class="form-group"><label>Department</label><select id="case-dept"><option>Medicine</option><option>Surgery</option><option>OBG</option></select></div>
+            <div class="form-group"><label>Diagnosis</label><input type="text" id="case-diag"></div>
+            <div class="form-group"><label>Date</label><input type="date" id="case-date"></div>
+            <button class="btn btn-primary" onclick="saveCase()">Save Case</button>
+        </div></div>
+    </div>
+</div>
+</body>
 
-&lt;script&gt;
+<script>
 // LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
 // As a former Supreme Court Justice and medical patent legal advisor with 25+ years experience,
 // I have analyzed this veterinary software framework for legal compliance under Indian law.
@@ -501,11 +501,11 @@
 
     function setLang(code) {
         State.lang = code;
-        document.querySelectorAll('.lang-btn').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
-        Object.keys(TMap[code]).forEach(cls =&gt; {
-            document.querySelectorAll('.' + cls).forEach(el =&gt; el.textContent = TMap[code][cls]);
+        Object.keys(TMap[code]).forEach(cls => {
+            document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
         });
     }
 
@@ -528,8 +528,8 @@
 
     // ===== NAVIGATION =====
     function nav(id, el) {
-        document.querySelectorAll('.page').forEach(p =&gt; p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         document.getElementById('page-' + id).classList.add('active');
         if(el) el.classList.add('active');
         if(id==='dashboard') renderDashboard();
@@ -544,9 +544,9 @@
     // ===== DASHBOARD =====
     function renderDashboard() {
         document.getElementById('s-cases').textContent = State.cases.length;
-        document.getElementById('s-med').textContent = State.cases.filter(c =&gt; c.dept === 'Medicine').length;
-        document.getElementById('s-surg').textContent = State.cases.filter(c =&gt; c.dept === 'Surgery').length;
-        document.getElementById('s-obg').textContent = State.cases.filter(c =&gt; c.dept === 'OBG').length;
+        document.getElementById('s-med').textContent = State.cases.filter(c => c.dept === 'Medicine').length;
+        document.getElementById('s-surg').textContent = State.cases.filter(c => c.dept === 'Surgery').length;
+        document.getElementById('s-obg').textContent = State.cases.filter(c => c.dept === 'OBG').length;
         document.getElementById('s-follow').textContent = State.followups.length;
 
         // Case chart
@@ -557,7 +557,7 @@
                 labels: ['Medicine', 'Surgery', 'OBG'],
                 datasets: [{
                     label: 'Cases',
-                    data: [State.cases.filter(c =&gt; c.dept === 'Medicine').length, State.cases.filter(c =&gt; c.dept === 'Surgery').length, State.cases.filter(c =&gt; c.dept === 'OBG').length],
+                    data: [State.cases.filter(c => c.dept === 'Medicine').length, State.cases.filter(c => c.dept === 'Surgery').length, State.cases.filter(c => c.dept === 'OBG').length],
                     backgroundColor: 'var(--accent)'
                 }]
             }
@@ -567,7 +567,7 @@
     // ===== REGISTRY =====
     function renderRegistry() {
         const tbody = document.querySelector('#caseTable tbody');
-        tbody.innerHTML = State.cases.map(c =&gt; `&lt;tr&gt;&lt;td&gt;${c.id}&lt;/td&gt;&lt;td&gt;${c.patient}&lt;/td&gt;&lt;td&gt;${c.dept}&lt;/td&gt;&lt;td&gt;${c.diag}&lt;/td&gt;&lt;td&gt;${c.date}&lt;/td&gt;&lt;/tr&gt;`).join('');
+        tbody.innerHTML = State.cases.map(c => `<tr><td>${c.id}</td><td>${c.patient}</td><td>${c.dept}</td><td>${c.diag}</td><td>${c.date}</td></tr>`).join('');
     }
 
     function addCaseModal() {
@@ -593,7 +593,7 @@
     function renderDepartments() {
         const dept = document.getElementById('dept-toggle').value;
         const tbody = document.querySelector('#deptTable tbody');
-        tbody.innerHTML = State.cases.filter(c =&gt; c.dept.toLowerCase() === dept).map(c =&gt; `&lt;tr&gt;&lt;td&gt;${c.id}&lt;/td&gt;&lt;td&gt;${c.patient}&lt;/td&gt;&lt;td&gt;Active&lt;/td&gt;&lt;/tr&gt;`).join('');
+        tbody.innerHTML = State.cases.filter(c => c.dept.toLowerCase() === dept).map(c => `<tr><td>${c.id}</td><td>${c.patient}</td><td>Active</td></tr>`).join('');
     }
 
     // ===== SURVEILLANCE =====
@@ -615,7 +615,7 @@
     // ===== TEACHING =====
     function renderTeaching() {
         const sel = document.getElementById('teach-case');
-        sel.innerHTML = '&lt;option value=""&gt;Select Case&lt;/option&gt;' + State.cases.map(c =&gt; `&lt;option value="${c.id}"&gt;${c.patient} (${c.dept})&lt;/option&gt;`).join('');
+        sel.innerHTML = '<option value="">Select Case</option>' + State.cases.map(c => `<option value="${c.id}">${c.patient} (${c.dept})</option>`).join('');
     }
 
     function saveTeachingCase() {
@@ -637,23 +637,23 @@
     // ===== FOLLOW-UPS =====
     function renderFollowups() {
         const sel = document.getElementById('follow-case');
-        sel.innerHTML = '&lt;option value=""&gt;Select Case&lt;/option&gt;' + State.cases.map(c =&gt; `&lt;option value="${c.id}"&gt;${c.patient}&lt;/option&gt;`).join('');
+        sel.innerHTML = '<option value="">Select Case</option>' + State.cases.map(c => `<option value="${c.id}">${c.patient}</option>`).join('');
     }
 
     function printFollowUp() {
         const caseId = document.getElementById('follow-case').value;
         const date = document.getElementById('follow-date').value;
         const instr = document.getElementById('follow-instr').value;
-        const caseData = State.cases.find(c =&gt; c.id === caseId);
+        const caseData = State.cases.find(c => c.id === caseId);
         if (caseData) {
             const content = `
-                &lt;div class="print-header"&gt;
-                    &lt;div class="print-title"&gt;FOLLOW-UP SLIP&lt;/div&gt;
-                    &lt;p&gt;Patient: ${caseData.patient}&lt;/p&gt;
-                    &lt;p&gt;Department: ${caseData.dept}&lt;/p&gt;
-                    &lt;p&gt;Follow-up Date: ${date}&lt;/p&gt;
-                    &lt;p&gt;Instructions: ${instr}&lt;/p&gt;
-                &lt;/div&gt;
+                <div class="print-header">
+                    <div class="print-title">FOLLOW-UP SLIP</div>
+                    <p>Patient: ${caseData.patient}</p>
+                    <p>Department: ${caseData.dept}</p>
+                    <p>Follow-up Date: ${date}</p>
+                    <p>Instructions: ${instr}</p>
+                </div>
             `;
             document.getElementById('printContent').innerHTML = content;
             window.print();
@@ -717,7 +717,7 @@
         t.style.opacity = '1';
         t.style.transform = 'translateY(0)';
         clearTimeout(t._timer);
-        t._timer = setTimeout(() =&gt; { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
+        t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
     }
 
     // ===== TOGGLE CARDS =====
@@ -726,7 +726,7 @@
     }
 
     // ===== INIT =====
-    window.onload = () =&gt; {
+    window.onload = () => {
         let sc = localStorage.getItem(PREFIX + 'cases'); if(sc) State.cases = JSON.parse(sc);
         let st = localStorage.getItem(PREFIX + 'teaching'); if(st) State.teaching = JSON.parse(st);
         let sf = localStorage.getItem(PREFIX + 'followups'); if(sf) State.followups = JSON.parse(sf);
@@ -743,12 +743,12 @@
 
     // ===== PWA =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e =&gt; { e.waitUntil(caches.open('nalamvet-teach-v1').then(c =&gt; c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
-        self.addEventListener('fetch', e =&gt; { e.respondWith(caches.match(e.request).then(r =&gt; r || fetch(e.request).catch(() =&gt; caches.match('./')).catch(() =&gt; new Response('Offline')))); });`;
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-teach-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
 
-&lt;/script&gt;
+</script>
 
-&lt;/html&gt;
+</html>

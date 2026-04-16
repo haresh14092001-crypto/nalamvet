@@ -1,14 +1,14 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
-    &lt;title&gt;NalamVet Agri-Pro — Dairy Farms, Cooperatives, Production Units&lt;/title&gt;
-    &lt;link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNmNGE4MjUiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9"&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"&gt;&lt;/script&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NalamVet Agri-Pro — Dairy Farms, Cooperatives, Production Units</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNmNGE4MjUiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    &lt;style&gt;
+    <style>
         :root {
             --bg: #080b12; --surface: #0f1320; --surface2: #161d2e; --surface-hover: #1e2740;
             --border: #232d44; --accent: #f4a825; --accent-hover: #e6931a;
@@ -104,7 +104,7 @@
         .chk-wrap { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); cursor: pointer;}
         .chk-wrap input { width: auto; accent-color: var(--accent); cursor: pointer;}
 
-        /* Stats &amp; Grids */
+        /* Stats & Grids */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
         .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
         .stat-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 50%; opacity: 0.04; }
@@ -198,307 +198,307 @@
             .page { padding: 14px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
         }
-    &lt;/style&gt;
-&lt;/head&gt;
+    </style>
+</head>
 
-&lt;body&gt;
+<body>
 
-&lt;!-- AUTH SCREEN --&gt;
-&lt;div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;"&gt;
-    &lt;div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(244,168,37,0.15);"&gt;
-        &lt;div style="font-size:48px;margin-bottom:12px;"&gt;🐄&lt;/div&gt;
-        &lt;div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;"&gt;NalamVet &lt;span style="color:var(--accent);"&gt;Agri-Pro&lt;/span&gt;&lt;/div&gt;
-        &lt;div style="font-size:13px;color:var(--muted);margin-bottom:32px;"&gt;India's Comprehensive Farm Veterinary System&lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;"&gt;Master Passcode&lt;/label&gt;
-            &lt;input type="password" id="auth-pin" placeholder="Enter Farm PIN (default: 1234)" 
+<!-- AUTH SCREEN -->
+<div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
+    <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(244,168,37,0.15);">
+        <div style="font-size:48px;margin-bottom:12px;">🐄</div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Agri-Pro</span></div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">India's Comprehensive Farm Veterinary System</div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Master Passcode</label>
+            <input type="password" id="auth-pin" placeholder="Enter Farm PIN (default: 1234)" 
                 style="width:100%;padding:16px;font-size:20px;text-align:center;letter-spacing:6px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;"
-                autocomplete="off"&gt;
-        &lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;input type="checkbox" id="legal-consent" style="margin-right:8px;"&gt;
-            &lt;label for="legal-consent" style="font-size:12px;color:var(--muted);"&gt;I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#000;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;"&gt;🔓 Unlock Farm System&lt;/button&gt;
-        &lt;div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;"&gt;❌ Invalid PIN. Try: 1234&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+                autocomplete="off">
+        </div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <input type="checkbox" id="legal-consent" style="margin-right:8px;">
+            <label for="legal-consent" style="font-size:12px;color:var(--muted);">I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.</label>
+        </div>
+        <button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#000;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;">🔓 Unlock Farm System</button>
+        <div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;">❌ Invalid PIN. Try: 1234</div>
+    </div>
+</div>
 
-&lt;div class="app-layout"&gt;
-    &lt;!-- SIDEBAR --&gt;
-    &lt;aside class="sidebar"&gt;
-        &lt;div class="logo-area"&gt;
-            &lt;div class="app-name"&gt;🐄 NalamVet &lt;span&gt;Agri-Pro&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="app-badge"&gt;Agri-Pro | Farm &amp; Cooperative&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;nav class="nav-menu"&gt;
-            &lt;div class="nav-item active" onclick="nav('dashboard', this)"&gt;&lt;i&gt;📊&lt;/i&gt; &lt;span class="t-dash"&gt;Dashboard&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('registry', this)"&gt;&lt;i&gt;📋&lt;/i&gt; &lt;span class="t-reg"&gt;Animal Registry&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('production', this)"&gt;&lt;i&gt;🥛&lt;/i&gt; &lt;span class="t-prod"&gt;Milk / Yield Tracker&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('breeding', this)"&gt;&lt;i&gt;🐄&lt;/i&gt; &lt;span class="t-breed"&gt;Reproductive Log&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('health', this)"&gt;&lt;i&gt;🩺&lt;/i&gt; &lt;span class="t-health"&gt;Herd Health&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('vaccines', this)"&gt;&lt;i&gt;💉&lt;/i&gt; &lt;span class="t-vacc"&gt;Vaccination Programs&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('drugs', this)"&gt;&lt;i&gt;💊&lt;/i&gt; &lt;span class="t-drugs"&gt;Drug Reference&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('inventory', this)"&gt;&lt;i&gt;📦&lt;/i&gt; &lt;span class="t-inv"&gt;Stock &amp; Consumables&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('reports', this)"&gt;&lt;i&gt;📈&lt;/i&gt; &lt;span class="t-reports"&gt;Reports &amp; Export&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('settings', this)"&gt;&lt;i&gt;⚙️&lt;/i&gt; &lt;span class="t-settings"&gt;Settings&lt;/span&gt;&lt;/div&gt;
-        &lt;/nav&gt;
-        &lt;div class="sidebar-footer"&gt;
-            &lt;div class="lang-toggle"&gt;
-                &lt;div class="lang-btn active" onclick="setLang('en')"&gt;English&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('ta')"&gt;தமிழ்&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('hi')"&gt;हिंदी&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="clinic-info" id="clinic-info"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/aside&gt;
+<div class="app-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="app-name">🐄 NalamVet <span>Agri-Pro</span></div>
+            <div class="app-badge">Agri-Pro | Farm & Cooperative</div>
+        </div>
+        <nav class="nav-menu">
+            <div class="nav-item active" onclick="nav('dashboard', this)"><i>📊</i> <span class="t-dash">Dashboard</span></div>
+            <div class="nav-item" onclick="nav('registry', this)"><i>📋</i> <span class="t-reg">Animal Registry</span></div>
+            <div class="nav-item" onclick="nav('production', this)"><i>🥛</i> <span class="t-prod">Milk / Yield Tracker</span></div>
+            <div class="nav-item" onclick="nav('breeding', this)"><i>🐄</i> <span class="t-breed">Reproductive Log</span></div>
+            <div class="nav-item" onclick="nav('health', this)"><i>🩺</i> <span class="t-health">Herd Health</span></div>
+            <div class="nav-item" onclick="nav('vaccines', this)"><i>💉</i> <span class="t-vacc">Vaccination Programs</span></div>
+            <div class="nav-item" onclick="nav('drugs', this)"><i>💊</i> <span class="t-drugs">Drug Reference</span></div>
+            <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv">Stock & Consumables</span></div>
+            <div class="nav-item" onclick="nav('reports', this)"><i>📈</i> <span class="t-reports">Reports & Export</span></div>
+            <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="lang-toggle">
+                <div class="lang-btn active" onclick="setLang('en')">English</div>
+                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+            </div>
+            <div class="clinic-info" id="clinic-info"></div>
+        </div>
+    </aside>
 
-    &lt;main class="main-content"&gt;
-        &lt;!-- DASHBOARD --&gt;
-        &lt;div id="page-dashboard" class="page active"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-dash"&gt;Dashboard&lt;/h1&gt;&lt;div class="subtitle"&gt;Farm Overview&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
+    <main class="main-content">
+        <!-- DASHBOARD -->
+        <div id="page-dashboard" class="page active">
+            <div class="header">
+                <div><h1 class="title t-dash">Dashboard</h1><div class="subtitle">Farm Overview</div></div>
+            </div>
             
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;🏭 WHY MILMA/AAVIN FARMS NEED THIS &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12"&gt;
-                        &lt;p&gt;Gap 1: Paper milk records → ₹40,000 loss/year from missed peak yield detection&lt;/p&gt;
-                        &lt;p&gt;Gap 2: Manual heat detection → 35% missed conception → ₹800-2000/missed AI cycle&lt;/p&gt;
-                        &lt;p&gt;Gap 3: No withdrawal tracking → milk rejection at collection center (FSSAI violation)&lt;/p&gt;
-                        &lt;p&gt;Gap 4: No vaccination schedule → FMD outbreak = 30-40% production drop&lt;/p&gt;
-                        &lt;p&gt;Gap 5: No herd-level disease aggregation → outbreak spreads to 60% before noticed&lt;/p&gt;
-                        &lt;p&gt;Gap 6: No calving-to-dry-off workflow → incorrect dry period = mastitis risk&lt;/p&gt;
-                        &lt;p&gt;Gap 7: Feed cost vs yield ratio unknown → 15-20% feed wastage common&lt;/p&gt;
-                        &lt;p&gt;&lt;strong&gt;NalamVet Agri-Pro closes all 7 gaps.&lt;/strong&gt;&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🏭 WHY MILMA/AAVIN FARMS NEED THIS <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <p>Gap 1: Paper milk records → ₹40,000 loss/year from missed peak yield detection</p>
+                        <p>Gap 2: Manual heat detection → 35% missed conception → ₹800-2000/missed AI cycle</p>
+                        <p>Gap 3: No withdrawal tracking → milk rejection at collection center (FSSAI violation)</p>
+                        <p>Gap 4: No vaccination schedule → FMD outbreak = 30-40% production drop</p>
+                        <p>Gap 5: No herd-level disease aggregation → outbreak spreads to 60% before noticed</p>
+                        <p>Gap 6: No calving-to-dry-off workflow → incorrect dry period = mastitis risk</p>
+                        <p>Gap 7: Feed cost vs yield ratio unknown → 15-20% feed wastage common</p>
+                        <p><strong>NalamVet Agri-Pro closes all 7 gaps.</strong></p>
+                    </div>
+                </div>
+            </div>
 
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;⚖️ LEGAL DISCLAIMER &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12"&gt;
-                        &lt;p&gt;&lt;strong&gt;IMPORTANT LEGAL NOTICE:&lt;/strong&gt; This software is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment. All veterinary decisions must be made by qualified professionals. Data entered may be used for research under IPC Section 304A exemption and Patents Act 3(j) exclusion. By using this software, you agree to these terms.&lt;/p&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">⚖️ LEGAL DISCLAIMER <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <p><strong>IMPORTANT LEGAL NOTICE:</strong> This software is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment. All veterinary decisions must be made by qualified professionals. Data entered may be used for research under IPC Section 304A exemption and Patents Act 3(j) exclusion. By using this software, you agree to these terms.</p>
+                    </div>
+                </div>
+            </div>
 
-            &lt;div class="stats-grid"&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent);"&gt;&lt;div class="stat-val" id="s-total"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Total Animals&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent2);"&gt;&lt;div class="stat-val" id="s-milk"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;In Milk&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--warn);"&gt;&lt;div class="stat-val" id="s-dry"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Dry&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #9b59b6;"&gt;&lt;div class="stat-val" id="s-preg"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Pregnant&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #2ecc71;"&gt;&lt;div class="stat-val" id="s-sick"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Sick/Treated&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="stats-grid">
+                <div class="stat-card" style="border-color: var(--accent);"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total Animals</div></div>
+                <div class="stat-card" style="border-color: var(--accent2);"><div class="stat-val" id="s-milk">0</div><div class="stat-lbl">In Milk</div></div>
+                <div class="stat-card" style="border-color: var(--warn);"><div class="stat-val" id="s-dry">0</div><div class="stat-lbl">Dry</div></div>
+                <div class="stat-card" style="border-color: #9b59b6;"><div class="stat-val" id="s-preg">0</div><div class="stat-lbl">Pregnant</div></div>
+                <div class="stat-card" style="border-color: #2ecc71;"><div class="stat-val" id="s-sick">0</div><div class="stat-lbl">Sick/Treated</div></div>
+            </div>
 
-            &lt;div class="alert alert-danger" id="alerts-panel"&gt;
-                &lt;i style="font-style:normal;font-size:18px;"&gt;⚠️&lt;/i&gt; &lt;div&gt;&lt;strong style="display:block; margin-bottom:4px;"&gt;Farm Alerts&lt;/strong&gt;&lt;span id="alerts-text"&gt;&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="alert alert-danger" id="alerts-panel">
+                <i style="font-style:normal;font-size:18px;">⚠️</i> <div><strong style="display:block; margin-bottom:4px;">Farm Alerts</strong><span id="alerts-text"></span></div>
+            </div>
 
-            &lt;div class="card"&gt;
-                &lt;div class="card-header t-yield"&gt;Today's Yield (L)&lt;/div&gt;
-                &lt;div style="padding: 22px;"&gt;&lt;canvas id="yieldChart"&gt;&lt;/canvas&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="card">
+                <div class="card-header t-yield">Today's Yield (L)</div>
+                <div style="padding: 22px;"><canvas id="yieldChart"></canvas></div>
+            </div>
+        </div>
 
-        &lt;!-- ANIMAL REGISTRY --&gt;
-        &lt;div id="page-registry" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-reg"&gt;Animal Registry&lt;/h1&gt;&lt;div class="subtitle"&gt;Register each animal&lt;/div&gt;&lt;/div&gt;
-                &lt;button class="btn btn-primary" onclick="addAnimalModal()"&gt;➕ Add Animal&lt;/button&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div style="overflow-x:auto;"&gt;
-                    &lt;table id="animalTable"&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Tag&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Species&lt;/th&gt;&lt;th&gt;Breed&lt;/th&gt;&lt;th&gt;Sex&lt;/th&gt;&lt;th&gt;DOB&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody&gt;&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- ANIMAL REGISTRY -->
+        <div id="page-registry" class="page">
+            <div class="header">
+                <div><h1 class="title t-reg">Animal Registry</h1><div class="subtitle">Register each animal</div></div>
+                <button class="btn btn-primary" onclick="addAnimalModal()">➕ Add Animal</button>
+            </div>
+            <div class="card">
+                <div style="overflow-x:auto;">
+                    <table id="animalTable">
+                        <thead><tr><th>Tag</th><th>Name</th><th>Species</th><th>Breed</th><th>Sex</th><th>DOB</th><th>Status</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- PRODUCTION TRACKER --&gt;
-        &lt;div id="page-production" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-prod"&gt;Milk / Yield Tracker&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Select Animal&lt;/label&gt;&lt;select id="prod-animal" onchange="loadProdChart()"&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;canvas id="prodChart"&gt;&lt;/canvas&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;Add Record&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Date&lt;/label&gt;&lt;input type="date" id="prod-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Yield (L)&lt;/label&gt;&lt;input type="number" step="0.1" id="prod-yield"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;BCS (1-5)&lt;/label&gt;&lt;input type="number" step="0.1" id="prod-bcs"&gt;&lt;/div&gt;
-                    &lt;div class="col-3" style="display:flex; align-items:flex-end;"&gt;&lt;button class="btn btn-primary" style="width:100%" onclick="addProdRecord()"&gt;Save&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- PRODUCTION TRACKER -->
+        <div id="page-production" class="page">
+            <div class="header"><div><h1 class="title t-prod">Milk / Yield Tracker</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Select Animal</label><select id="prod-animal" onchange="loadProdChart()"></select></div>
+                    <div class="col-12"><canvas id="prodChart"></canvas></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Add Record</div>
+                <div class="card-body">
+                    <div class="form-group col-3"><label>Date</label><input type="date" id="prod-date"></div>
+                    <div class="form-group col-3"><label>Yield (L)</label><input type="number" step="0.1" id="prod-yield"></div>
+                    <div class="form-group col-3"><label>BCS (1-5)</label><input type="number" step="0.1" id="prod-bcs"></div>
+                    <div class="col-3" style="display:flex; align-items:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addProdRecord()">Save</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- BREEDING LOG --&gt;
-        &lt;div id="page-breeding" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-breed"&gt;Reproductive Log&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Select Animal&lt;/label&gt;&lt;select id="breed-animal" onchange="loadBreedLog()"&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;h3&gt;Heat &amp; AI Log&lt;/h3&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Heat Date&lt;/label&gt;&lt;input type="date" id="heat-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Signs&lt;/label&gt;&lt;input type="text" id="heat-signs" placeholder="Mounting, discharge..."&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;AI Date&lt;/label&gt;&lt;input type="date" id="ai-date"&gt;&lt;/div&gt;
-                    &lt;div class="col-12"&gt;&lt;h3&gt;Calving &amp; Dry&lt;/h3&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Last Calving&lt;/label&gt;&lt;input type="date" id="calv-date" onchange="calcNextHeat()"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Dry-off Date&lt;/label&gt;&lt;input type="date" id="dry-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;
-                        &lt;div style="background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.3); padding:16px; border-radius:8px; height:100%;"&gt;
-                            &lt;label style="color:var(--text)"&gt;Expected Next Heat&lt;/label&gt;
-                            &lt;div id="next-heat" style="font-size:20px; font-weight:800; color:var(--accent2); margin-top:4px;"&gt;- Select last calving -&lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="saveBreedLog()"&gt;Save Log&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- BREEDING LOG -->
+        <div id="page-breeding" class="page">
+            <div class="header"><div><h1 class="title t-breed">Reproductive Log</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Select Animal</label><select id="breed-animal" onchange="loadBreedLog()"></select></div>
+                    <div class="col-12"><h3>Heat & AI Log</h3></div>
+                    <div class="form-group col-3"><label>Heat Date</label><input type="date" id="heat-date"></div>
+                    <div class="form-group col-6"><label>Signs</label><input type="text" id="heat-signs" placeholder="Mounting, discharge..."></div>
+                    <div class="form-group col-3"><label>AI Date</label><input type="date" id="ai-date"></div>
+                    <div class="col-12"><h3>Calving & Dry</h3></div>
+                    <div class="form-group col-3"><label>Last Calving</label><input type="date" id="calv-date" onchange="calcNextHeat()"></div>
+                    <div class="form-group col-3"><label>Dry-off Date</label><input type="date" id="dry-date"></div>
+                    <div class="form-group col-6">
+                        <div style="background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.3); padding:16px; border-radius:8px; height:100%;">
+                            <label style="color:var(--text)">Expected Next Heat</label>
+                            <div id="next-heat" style="font-size:20px; font-weight:800; color:var(--accent2); margin-top:4px;">- Select last calving -</div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveBreedLog()">Save Log</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- HERD HEALTH --&gt;
-        &lt;div id="page-health" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-health"&gt;Herd Health&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;Treatment Record&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Animal(s)&lt;/label&gt;&lt;select id="health-animal" multiple&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Diagnosis&lt;/label&gt;&lt;input type="text" id="health-diag"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Treatment Date&lt;/label&gt;&lt;input type="date" id="health-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Drugs Used&lt;/label&gt;&lt;input type="text" id="health-drugs"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Withdrawal Period&lt;/label&gt;&lt;input type="text" id="health-withdrawal" readonly&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="saveHealthRecord()"&gt;Save Treatment&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- HERD HEALTH -->
+        <div id="page-health" class="page">
+            <div class="header"><div><h1 class="title t-health">Herd Health</h1></div></div>
+            <div class="card">
+                <div class="card-header">Treatment Record</div>
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Animal(s)</label><select id="health-animal" multiple></select></div>
+                    <div class="form-group col-4"><label>Diagnosis</label><input type="text" id="health-diag"></div>
+                    <div class="form-group col-4"><label>Treatment Date</label><input type="date" id="health-date"></div>
+                    <div class="form-group col-6"><label>Drugs Used</label><input type="text" id="health-drugs"></div>
+                    <div class="form-group col-6"><label>Withdrawal Period</label><input type="text" id="health-withdrawal" readonly></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveHealthRecord()">Save Treatment</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- VACCINATION PROGRAMS --&gt;
-        &lt;div id="page-vaccines" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-vacc"&gt;Vaccination Programs&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Program&lt;/label&gt;
-                        &lt;select id="vacc-program"&gt;
-                            &lt;option value="fmd"&gt;FMD (Foot &amp; Mouth Disease)&lt;/option&gt;
-                            &lt;option value="bq"&gt;BQ (Black Quarter)&lt;/option&gt;
-                            &lt;option value="hs"&gt;HS (Haemorrhagic Septicaemia)&lt;/option&gt;
-                            &lt;option value="brucella"&gt;Brucella&lt;/option&gt;
-                            &lt;option value="ppr"&gt;PPR (Goat)&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Animals&lt;/label&gt;&lt;select id="vacc-animals" multiple&gt;&lt;/select&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Vaccination Date&lt;/label&gt;&lt;input type="date" id="vacc-date"&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="recordVaccination()"&gt;Record Vaccination&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- VACCINATION PROGRAMS -->
+        <div id="page-vaccines" class="page">
+            <div class="header"><div><h1 class="title t-vacc">Vaccination Programs</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Program</label>
+                        <select id="vacc-program">
+                            <option value="fmd">FMD (Foot & Mouth Disease)</option>
+                            <option value="bq">BQ (Black Quarter)</option>
+                            <option value="hs">HS (Haemorrhagic Septicaemia)</option>
+                            <option value="brucella">Brucella</option>
+                            <option value="ppr">PPR (Goat)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4"><label>Animals</label><select id="vacc-animals" multiple></select></div>
+                    <div class="form-group col-4"><label>Vaccination Date</label><input type="date" id="vacc-date"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="recordVaccination()">Record Vaccination</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- DRUG REFERENCE --&gt;
-        &lt;div id="page-drugs" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-drugs"&gt;💊 Drug Reference&lt;/h1&gt;&lt;div class="subtitle" id="dbCountStr"&gt;Farm formulary&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;"&gt;
-                &lt;input type="text" id="refSearch" placeholder="🔍 Search drug..." style="max-width:420px; flex:1;" oninput="renderRef()"&gt;
-                &lt;select id="refSpecies" onchange="renderRef()" style="max-width:160px;"&gt;
-                    &lt;option value=""&gt;All Species&lt;/option&gt;
-                    &lt;option value="Cattle"&gt;🐄 Cattle&lt;/option&gt;
-                    &lt;option value="Goat"&gt;🐐 Goat&lt;/option&gt;
-                    &lt;option value="Sheep"&gt;🐑 Sheep&lt;/option&gt;
-                    &lt;option value="Poultry"&gt;🐔 Poultry&lt;/option&gt;
-                &lt;/select&gt;
-            &lt;/div&gt;
-            &lt;div id="refGrid"&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- DRUG REFERENCE -->
+        <div id="page-drugs" class="page">
+            <div class="header"><div><h1 class="title t-drugs">💊 Drug Reference</h1><div class="subtitle" id="dbCountStr">Farm formulary</div></div></div>
+            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+                <input type="text" id="refSearch" placeholder="🔍 Search drug..." style="max-width:420px; flex:1;" oninput="renderRef()">
+                <select id="refSpecies" onchange="renderRef()" style="max-width:160px;">
+                    <option value="">All Species</option>
+                    <option value="Cattle">🐄 Cattle</option>
+                    <option value="Goat">🐐 Goat</option>
+                    <option value="Sheep">🐑 Sheep</option>
+                    <option value="Poultry">🐔 Poultry</option>
+                </select>
+            </div>
+            <div id="refGrid"></div>
+        </div>
 
-        &lt;!-- STOCK &amp; CONSUMABLES --&gt;
-        &lt;div id="page-inventory" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-inv"&gt;Stock &amp; Consumables&lt;/h1&gt;&lt;/div&gt;
-                &lt;button class="btn btn-secondary" onclick="exportInvCSV()"&gt;📥 Export CSV&lt;/button&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;Add Item&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Item Name&lt;/label&gt;&lt;input type="text" id="inv-name"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label&gt;Batch&lt;/label&gt;&lt;input type="text" id="inv-batch"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label&gt;Qty&lt;/label&gt;&lt;input type="number" id="inv-qty"&gt;&lt;/div&gt;
-                    &lt class="form-group col-2"&gt;&lt;label&gt;Unit Price&lt;/label&gt;&lt;input type="number" id="inv-price"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label&gt;Expiry&lt;/label&gt;&lt;input type="date" id="inv-exp"&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" style="width:100%" onclick="addInvItem()"&gt;Add Item&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div style="overflow-x:auto;"&gt;
-                    &lt;table&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Item&lt;/th&gt;&lt;th&gt;Batch&lt;/th&gt;&lt;th&gt;Qty&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Expiry&lt;/th&gt;&lt;th&gt;Action&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody id="invTableBody"&gt;&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- STOCK & CONSUMABLES -->
+        <div id="page-inventory" class="page">
+            <div class="header">
+                <div><h1 class="title t-inv">Stock & Consumables</h1></div>
+                <button class="btn btn-secondary" onclick="exportInvCSV()">📥 Export CSV</button>
+            </div>
+            <div class="card">
+                <div class="card-header">Add Item</div>
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Item Name</label><input type="text" id="inv-name"></div>
+                    <div class="form-group col-2"><label>Batch</label><input type="text" id="inv-batch"></div>
+                    <div class="form-group col-2"><label>Qty</label><input type="number" id="inv-qty"></div>
+                    &lt class="form-group col-2"><label>Unit Price</label><input type="number" id="inv-price"></div>
+                    <div class="form-group col-2"><label>Expiry</label><input type="date" id="inv-exp"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addInvItem()">Add Item</button></div>
+                </div>
+            </div>
+            <div class="card">
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead><tr><th>Item</th><th>Batch</th><th>Qty</th><th>Price</th><th>Expiry</th><th>Action</th></tr></thead>
+                        <tbody id="invTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- REPORTS --&gt;
-        &lt;div id="page-reports" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-reports"&gt;Reports &amp; Export&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Report Type&lt;/label&gt;
-                        &lt;select id="report-type"&gt;
-                            &lt;option value="production"&gt;Monthly Production&lt;/option&gt;
-                            &lt;option value="vaccination"&gt;Vaccination Log&lt;/option&gt;
-                            &lt;option value="health"&gt;Health Records&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;From Date&lt;/label&gt;&lt;input type="date" id="report-from"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;To Date&lt;/label&gt;&lt;input type="date" id="report-to"&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" onclick="generateReport()"&gt;Generate CSV&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- REPORTS -->
+        <div id="page-reports" class="page">
+            <div class="header"><div><h1 class="title t-reports">Reports & Export</h1></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Report Type</label>
+                        <select id="report-type">
+                            <option value="production">Monthly Production</option>
+                            <option value="vaccination">Vaccination Log</option>
+                            <option value="health">Health Records</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-4"><label>From Date</label><input type="date" id="report-from"></div>
+                    <div class="form-group col-4"><label>To Date</label><input type="date" id="report-to"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="generateReport()">Generate CSV</button></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- SETTINGS --&gt;
-        &lt;div id="page-settings" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-settings"&gt;Settings&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;&lt;div class="card-body"&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Farm Name&lt;/label&gt;&lt;input type="text" id="farm-name"&gt;&lt;/div&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Owner Name&lt;/label&gt;&lt;input type="text" id="farm-owner"&gt;&lt;/div&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Cooperative ID&lt;/label&gt;&lt;input type="text" id="farm-coop"&gt;&lt;/div&gt;
-                &lt;div class="col-12" style="display:flex; gap:12px; margin-top:16px;"&gt;
-                    &lt;button class="btn btn-primary" onclick="saveFarmSettings()"&gt;Save Settings&lt;/button&gt;
-                    &lt;button class="btn btn-secondary" onclick="exportBackup()"&gt;Export Backup&lt;/button&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- SETTINGS -->
+        <div id="page-settings" class="page">
+            <div class="header"><div><h1 class="title t-settings">Settings</h1></div></div>
+            <div class="card"><div class="card-body">
+                <div class="form-group col-4"><label>Farm Name</label><input type="text" id="farm-name"></div>
+                <div class="form-group col-4"><label>Owner Name</label><input type="text" id="farm-owner"></div>
+                <div class="form-group col-4"><label>Cooperative ID</label><input type="text" id="farm-coop"></div>
+                <div class="col-12" style="display:flex; gap:12px; margin-top:16px;">
+                    <button class="btn btn-primary" onclick="saveFarmSettings()">Save Settings</button>
+                    <button class="btn btn-secondary" onclick="exportBackup()">Export Backup</button>
+                </div>
+            </div></div>
+        </div>
 
-        &lt;!-- PRINT VIEW --&gt;
-        &lt;div id="page-print" class="page"&gt;
-            &lt;div class="print-paper" id="printContent"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/main&gt;
+        <!-- PRINT VIEW -->
+        <div id="page-print" class="page">
+            <div class="print-paper" id="printContent"></div>
+        </div>
+    </main>
 
-    &lt;!-- MODALS --&gt;
-    &lt;div class="modal-overlay" id="animalModal" onclick="if(event.target===this) this.classList.remove('active')"&gt;
-        &lt;div class="modal"&gt;&lt;div class="modal-body"&gt;
-            &lt;h2&gt;Add Animal&lt;/h2&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Tag Number&lt;/label&gt;&lt;input type="text" id="animal-tag"&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Name (Optional)&lt;/label&gt;&lt;input type="text" id="animal-name"&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Species&lt;/label&gt;&lt;select id="animal-species"&gt;&lt;option&gt;Cattle&lt;/option&gt;&lt;option&gt;Buffalo&lt;/option&gt;&lt;option&gt;Goat&lt;/option&gt;&lt;option&gt;Sheep&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Breed&lt;/label&gt;&lt;input type="text" id="animal-breed"&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Sex&lt;/label&gt;&lt;select id="animal-sex"&gt;&lt;option&gt;Female&lt;/option&gt;&lt;option&gt;Male&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
-            &lt;div class="form-group"&gt;&lt;label&gt;Date of Birth&lt;/label&gt;&lt;input type="date" id="animal-dob"&gt;&lt;/div&gt;
-            &lt;button class="btn btn-primary" onclick="saveAnimal()"&gt;Save Animal&lt;/button&gt;
-        &lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
+    <!-- MODALS -->
+    <div class="modal-overlay" id="animalModal" onclick="if(event.target===this) this.classList.remove('active')">
+        <div class="modal"><div class="modal-body">
+            <h2>Add Animal</h2>
+            <div class="form-group"><label>Tag Number</label><input type="text" id="animal-tag"></div>
+            <div class="form-group"><label>Name (Optional)</label><input type="text" id="animal-name"></div>
+            <div class="form-group"><label>Species</label><select id="animal-species"><option>Cattle</option><option>Buffalo</option><option>Goat</option><option>Sheep</option></select></div>
+            <div class="form-group"><label>Breed</label><input type="text" id="animal-breed"></div>
+            <div class="form-group"><label>Sex</label><select id="animal-sex"><option>Female</option><option>Male</option></select></div>
+            <div class="form-group"><label>Date of Birth</label><input type="date" id="animal-dob"></div>
+            <button class="btn btn-primary" onclick="saveAnimal()">Save Animal</button>
+        </div></div>
+    </div>
+</div>
+</body>
 
-&lt;script&gt;
+<script>
 // ============================================================
 // LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
 // ============================================================
@@ -545,8 +545,8 @@
     const TMap = {
         en: {
             'dash': 'Dashboard', 'reg': 'Animal Registry', 'prod': 'Milk / Yield Tracker', 'breed': 'Reproductive Log',
-            'health': 'Herd Health', 'vacc': 'Vaccination Programs', 'drugs': 'Drug Reference', 'inv': 'Stock &amp; Consumables',
-            'reports': 'Reports &amp; Export', 'settings': 'Settings', 'yield': 'Milk Yield', 'milk_yield': 'Milk Yield (L)',
+            'health': 'Herd Health', 'vacc': 'Vaccination Programs', 'drugs': 'Drug Reference', 'inv': 'Stock & Consumables',
+            'reports': 'Reports & Export', 'settings': 'Settings', 'yield': 'Milk Yield', 'milk_yield': 'Milk Yield (L)',
             'heat_detection': 'Heat Detection', 'artificial_insemination': 'Artificial Insemination', 'calving': 'Calving',
             'dry_period': 'Dry Period', 'mastitis': 'Mastitis', 'fmd': 'FMD', 'deworming': 'Deworming',
             'withdrawal_period': 'Withdrawal Period', 'milk_safe_from': 'Milk Safe From', 'vaccination_due': 'Vaccination Due',
@@ -554,8 +554,8 @@
         },
         ta: {
             'dash': 'முகப்பு பக்கம்', 'reg': 'விலங்கு பதிவு', 'prod': 'பால் / மகசூல் கண்காணிப்பு', 'breed': 'இனப்பெருக்க பதிவு',
-            'health': 'மந்தை சுகாதாரம்', 'vacc': 'தடுப்பூசி திட்டங்கள்', 'drugs': 'மருந்து குறிப்பு', 'inv': 'பங்கு &amp; நுகர்வு பொருட்கள்',
-            'reports': 'அறிக்கைகள் &amp; ஏற்றுமதி', 'settings': 'அமைப்புகள்', 'yield': 'பால் மகசூல்', 'milk_yield': 'பால் மகசூல் (லிட்டர்)',
+            'health': 'மந்தை சுகாதாரம்', 'vacc': 'தடுப்பூசி திட்டங்கள்', 'drugs': 'மருந்து குறிப்பு', 'inv': 'பங்கு & நுகர்வு பொருட்கள்',
+            'reports': 'அறிக்கைகள் & ஏற்றுமதி', 'settings': 'அமைப்புகள்', 'yield': 'பால் மகசூல்', 'milk_yield': 'பால் மகசூல் (லிட்டர்)',
             'heat_detection': 'ஈரம் கண்டறிதல்', 'artificial_insemination': 'செயற்கை கருவூட்டல்', 'calving': 'ஈனுதல்',
             'dry_period': 'உலர் காலம்', 'mastitis': 'மடிவீக்கம்', 'fmd': 'கோமாரி நோய்', 'deworming': 'புழு நீக்கம்',
             'withdrawal_period': 'காத்திருப்பு காலம்', 'milk_safe_from': 'பால் பாதுகாப்பான தேதி', 'vaccination_due': 'தடுப்பூசி நிலுவை',
@@ -563,8 +563,8 @@
         },
         hi: {
             'dash': 'मुख्य पृष्ठ', 'reg': 'पशु रजिस्ट्री', 'prod': 'दूध / उत्पादन ट्रैकर', 'breed': 'प्रजनन लॉग',
-            'health': 'झुंड स्वास्थ्य', 'vacc': 'टीकाकरण कार्यक्रम', 'drugs': 'दवा संदर्भ', 'inv': 'स्टॉक &amp; उपभोग्य',
-            'reports': 'रिपोर्ट &amp; निर्यात', 'settings': 'सेटिंग्स', 'yield': 'दूध उत्पादन', 'milk_yield': 'दूध उत्पादन (लीटर)',
+            'health': 'झुंड स्वास्थ्य', 'vacc': 'टीकाकरण कार्यक्रम', 'drugs': 'दवा संदर्भ', 'inv': 'स्टॉक & उपभोग्य',
+            'reports': 'रिपोर्ट & निर्यात', 'settings': 'सेटिंग्स', 'yield': 'दूध उत्पादन', 'milk_yield': 'दूध उत्पादन (लीटर)',
             'heat_detection': 'गर्मी पहचान', 'artificial_insemination': 'कृत्रिम गर्भाधान', 'calving': 'व्याना',
             'dry_period': 'सूखा काल', 'mastitis': 'थन की सूजन', 'fmd': 'खुरपका-मुंहपका रोग', 'deworming': 'कृमिनाशन',
             'withdrawal_period': 'प्रतीक्षा अवधि', 'milk_safe_from': 'दूध सुरक्षित तिथि', 'vaccination_due': 'टीकाकरण बकाया',
@@ -574,11 +574,11 @@
 
     function setLang(code) {
         State.lang = code;
-        document.querySelectorAll('.lang-btn').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
-        Object.keys(TMap[code]).forEach(cls =&gt; {
-            document.querySelectorAll('.' + cls).forEach(el =&gt; el.textContent = TMap[code][cls]);
+        Object.keys(TMap[code]).forEach(cls => {
+            document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
         });
     }
 
@@ -603,8 +603,8 @@
 
     // ===== NAVIGATION =====
     function nav(id, el) {
-        document.querySelectorAll('.page').forEach(p =&gt; p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         document.getElementById('page-' + id).classList.add('active');
         if(el) el.classList.add('active');
         if(id==='dashboard') renderDashboard();
@@ -621,17 +621,17 @@
     function renderDashboard() {
         // Stats
         document.getElementById('s-total').textContent = State.animals.length;
-        document.getElementById('s-milk').textContent = State.animals.filter(a =&gt; a.status === 'in_milk').length;
-        document.getElementById('s-dry').textContent = State.animals.filter(a =&gt; a.status === 'dry').length;
-        document.getElementById('s-preg').textContent = State.animals.filter(a =&gt; a.status === 'pregnant').length;
+        document.getElementById('s-milk').textContent = State.animals.filter(a => a.status === 'in_milk').length;
+        document.getElementById('s-dry').textContent = State.animals.filter(a => a.status === 'dry').length;
+        document.getElementById('s-preg').textContent = State.animals.filter(a => a.status === 'pregnant').length;
         document.getElementById('s-sick').textContent = State.health.length;
 
         // Alerts
         const alerts = [];
         const today = new Date().toISOString().split('T')[0];
-        const heatMissed = State.animals.filter(a =&gt; a.nextHeat &amp;&amp; a.nextHeat &lt; today &amp;&amp; !a.lastAI);
+        const heatMissed = State.animals.filter(a => a.nextHeat && a.nextHeat < today && !a.lastAI);
         if (heatMissed.length) alerts.push(`${heatMissed.length} animals heat signs missed`);
-        const vaccDue = State.vaccination.filter(v =&gt; v.nextDue &amp;&amp; v.nextDue === today);
+        const vaccDue = State.vaccination.filter(v => v.nextDue && v.nextDue === today);
         if (vaccDue.length) alerts.push(`${vaccDue.length} vaccinations due today`);
         
         if (alerts.length) {
@@ -660,7 +660,7 @@
     // ===== REGISTRY =====
     function renderRegistry() {
         const tbody = document.querySelector('#animalTable tbody');
-        tbody.innerHTML = State.animals.map(a =&gt; `&lt;tr&gt;&lt;td&gt;${a.tag}&lt;/td&gt;&lt;td&gt;${a.name||'-'}&lt;/td&gt;&lt;td&gt;${a.species}&lt;/td&gt;&lt;td&gt;${a.breed}&lt;/td&gt;&lt;td&gt;${a.sex}&lt;/td&gt;&lt;td&gt;${a.dob}&lt;/td&gt;&lt;td&gt;${a.status}&lt;/td&gt;&lt;/tr&gt;`).join('');
+        tbody.innerHTML = State.animals.map(a => `<tr><td>${a.tag}</td><td>${a.name||'-'}</td><td>${a.species}</td><td>${a.breed}</td><td>${a.sex}</td><td>${a.dob}</td><td>${a.status}</td></tr>`).join('');
     }
 
     function addAnimalModal() {
@@ -688,7 +688,7 @@
     // ===== PRODUCTION =====
     function renderProduction() {
         const sel = document.getElementById('prod-animal');
-        sel.innerHTML = '&lt;option value=""&gt;Select Animal&lt;/option&gt;' + State.animals.map(a =&gt; `&lt;option value="${a.id}"&gt;${a.tag} (${a.name||'No name'})&lt;/option&gt;`).join('');
+        sel.innerHTML = '<option value="">Select Animal</option>' + State.animals.map(a => `<option value="${a.id}">${a.tag} (${a.name||'No name'})</option>`).join('');
     }
 
     function addProdRecord() {
@@ -706,7 +706,7 @@
     // ===== BREEDING =====
     function renderBreeding() {
         const sel = document.getElementById('breed-animal');
-        sel.innerHTML = '&lt;option value=""&gt;Select Animal&lt;/option&gt;' + State.animals.filter(a =&gt; a.sex === 'Female').map(a =&gt; `&lt;option value="${a.id}"&gt;${a.tag}&lt;/option&gt;`).join('');
+        sel.innerHTML = '<option value="">Select Animal</option>' + State.animals.filter(a => a.sex === 'Female').map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
     }
 
     function calcNextHeat() {
@@ -735,12 +735,12 @@
     // ===== HEALTH =====
     function renderHealth() {
         const sel = document.getElementById('health-animal');
-        sel.innerHTML = State.animals.map(a =&gt; `&lt;option value="${a.id}"&gt;${a.tag}&lt;/option&gt;`).join('');
+        sel.innerHTML = State.animals.map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
     }
 
     function saveHealthRecord() {
         const record = {
-            animals: Array.from(document.getElementById('health-animal').selectedOptions).map(o =&gt; o.value),
+            animals: Array.from(document.getElementById('health-animal').selectedOptions).map(o => o.value),
             diag: document.getElementById('health-diag').value,
             date: document.getElementById('health-date').value,
             drugs: document.getElementById('health-drugs').value,
@@ -754,13 +754,13 @@
     // ===== VACCINES =====
     function renderVaccines() {
         const sel = document.getElementById('vacc-animals');
-        sel.innerHTML = State.animals.map(a =&gt; `&lt;option value="${a.id}"&gt;${a.tag}&lt;/option&gt;`).join('');
+        sel.innerHTML = State.animals.map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
     }
 
     function recordVaccination() {
         const record = {
             program: document.getElementById('vacc-program').value,
-            animals: Array.from(document.getElementById('vacc-animals').selectedOptions).map(o =&gt; o.value),
+            animals: Array.from(document.getElementById('vacc-animals').selectedOptions).map(o => o.value),
             date: document.getElementById('vacc-date').value
         };
         State.vaccination.push(record);
@@ -774,7 +774,7 @@
     // ===== INVENTORY =====
     function renderInv() {
         const tbody = document.getElementById('invTableBody');
-        tbody.innerHTML = State.inventory.map(i =&gt; `&lt;tr&gt;&lt;td&gt;${i.name}&lt;/td&gt;&lt;td&gt;${i.batch||'-'}&lt;/td&gt;&lt;td&gt;${i.qty}&lt;/td&gt;&lt;td&gt;₹${i.price}&lt;/td&gt;&lt;td&gt;${i.exp||'-'}&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-danger" onclick="delInv('${i.id}')"&gt;Delete&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join('');
+        tbody.innerHTML = State.inventory.map(i => `<tr><td>${i.name}</td><td>${i.batch||'-'}</td><td>${i.qty}</td><td>₹${i.price}</td><td>${i.exp||'-'}</td><td><button class="btn btn-sm btn-danger" onclick="delInv('${i.id}')">Delete</button></td></tr>`).join('');
     }
 
     function addInvItem() {
@@ -793,7 +793,7 @@
     }
 
     function delInv(id) {
-        State.inventory = State.inventory.filter(i =&gt; i.id !== id);
+        State.inventory = State.inventory.filter(i => i.id !== id);
         localStorage.setItem(PREFIX + 'inventory', JSON.stringify(State.inventory));
         renderInv();
     }
@@ -843,7 +843,7 @@
         t.style.opacity = '1';
         t.style.transform = 'translateY(0)';
         clearTimeout(t._timer);
-        t._timer = setTimeout(() =&gt; { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
+        t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
     }
 
     // ===== TOGGLE CARDS =====
@@ -852,7 +852,7 @@
     }
 
     // ===== INIT =====
-    window.onload = () =&gt; {
+    window.onload = () => {
         // Load data
         let sa = localStorage.getItem(PREFIX + 'animals'); if(sa) State.animals = JSON.parse(sa);
         let sp = localStorage.getItem(PREFIX + 'production'); if(sp) State.production = JSON.parse(sp);
@@ -874,12 +874,12 @@
 
     // ===== PWA =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e =&gt; { e.waitUntil(caches.open('nalamvet-farm-v1').then(c =&gt; c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
-        self.addEventListener('fetch', e =&gt; { e.respondWith(caches.match(e.request).then(r =&gt; r || fetch(e.request).catch(() =&gt; caches.match('./')).catch(() =&gt; new Response('Offline')))); });`;
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-farm-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
 
-&lt;/script&gt;
+</script>
 
-&lt;/html&gt;
+</html>

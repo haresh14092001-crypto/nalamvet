@@ -1,14 +1,14 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
-    &lt;title&gt;NalamVet Companion &amp; Exotic — Metro &amp; Specialist Clinics&lt;/title&gt;
-    &lt;link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiMwMGU1YTAiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9"&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;
-    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"&gt;&lt;/script&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NalamVet Companion & Exotic — Metro & Specialist Clinics</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiMwMGU1YTAiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    &lt;style&gt;
+    <style>
         :root {
             --bg: #080b12; --surface: #0f1320; --surface2: #161d2e; --surface-hover: #1e2740;
             --border: #232d44; --accent: #00e5a0; --accent-hover: #00cc8e;
@@ -104,7 +104,7 @@
         .chk-wrap { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); cursor: pointer;}
         .chk-wrap input { width: auto; accent-color: var(--accent); cursor: pointer;}
 
-        /* Stats &amp; Grids */
+        /* Stats & Grids */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
         .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
         .stat-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 50%; opacity: 0.04; }
@@ -198,409 +198,409 @@
             .page { padding: 14px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
         }
-    &lt;/style&gt;
-&lt;/head&gt;
+    </style>
+</head>
 
-&lt;body&gt;
+<body>
 
-&lt;!-- AUTH GUARD --&gt;
-&lt;div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;"&gt;
-    &lt;div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,229,160,0.15);"&gt;
-        &lt;div style="font-size:48px;margin-bottom:12px;"&gt;🐾&lt;/div&gt;
-        &lt;div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;"&gt;NalamVet &lt;span style="color:var(--accent);"&gt;Companion &amp; Exotic&lt;/span&gt;&lt;/div&gt;
-        &lt;div style="font-size:13px;color:var(--muted);margin-bottom:32px;"&gt;India's Comprehensive Veterinary Clinical System&lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;"&gt;Select Doctor&lt;/label&gt;
-            &lt;select id="auth-doctor" style="width:100%;padding:16px;font-size:16px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;"&gt;
-                &lt;option value=""&gt;Choose Doctor...&lt;/option&gt;
-            &lt;/select&gt;
-        &lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;"&gt;Master Passcode&lt;/label&gt;
-            &lt;input type="password" id="auth-pin" placeholder="Enter PIN" 
+<!-- AUTH GUARD -->
+<div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
+    <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,229,160,0.15);">
+        <div style="font-size:48px;margin-bottom:12px;">🐾</div>
+        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">NalamVet <span style="color:var(--accent);">Companion & Exotic</span></div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">India's Comprehensive Veterinary Clinical System</div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Select Doctor</label>
+            <select id="auth-doctor" style="width:100%;padding:16px;font-size:16px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;">
+                <option value="">Choose Doctor...</option>
+            </select>
+        </div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Master Passcode</label>
+            <input type="password" id="auth-pin" placeholder="Enter PIN" 
                 style="width:100%;padding:16px;font-size:20px;text-align:center;letter-spacing:6px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;"
-                autocomplete="off"&gt;
-        &lt;/div&gt;
-        &lt;div style="text-align:left;margin-bottom:12px;"&gt;
-            &lt;input type="checkbox" id="legal-consent" style="margin-right:8px;"&gt;
-            &lt;label for="legal-consent" style="font-size:12px;color:var(--muted);"&gt;I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#000;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;"&gt;🔓 Unlock System&lt;/button&gt;
-        &lt;div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;"&gt;❌ Invalid PIN. Try again.&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+                autocomplete="off">
+        </div>
+        <div style="text-align:left;margin-bottom:12px;">
+            <input type="checkbox" id="legal-consent" style="margin-right:8px;">
+            <label for="legal-consent" style="font-size:12px;color:var(--muted);">I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.</label>
+        </div>
+        <button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#000;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;">🔓 Unlock System</button>
+        <div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;">❌ Invalid PIN. Try again.</div>
+    </div>
+</div>
 
-&lt;div class="app-layout"&gt;
-    &lt;!-- SIDEBAR --&gt;
-    &lt;aside class="sidebar"&gt;
-        &lt;div class="logo-area"&gt;
-            &lt;div class="app-name"&gt;🐾 NalamVet &lt;span&gt;Companion &amp; Exotic&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="app-badge"&gt;Companion &amp; Exotic | Metro &amp; Specialist&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;nav class="nav-menu"&gt;
-            &lt;div class="nav-item active" onclick="nav('dashboard', this)"&gt;&lt;i&gt;📊&lt;/i&gt; &lt;span class="t-dash"&gt;Dashboard&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('consult', this)"&gt;&lt;i&gt;🩺&lt;/i&gt; &lt;span class="t-consult"&gt;New Consultation&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('schedules', this)"&gt;&lt;i&gt;📅&lt;/i&gt; &lt;span class="t-sched"&gt;Schedule &amp; Follow-ups&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('vaccines', this)"&gt;&lt;i&gt;💉&lt;/i&gt; &lt;span class="t-vacc"&gt;Vaccination Schedules&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('drugs', this)"&gt;&lt;i&gt;💊&lt;/i&gt; &lt;span class="t-drugs"&gt;Drug Reference&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('inventory', this)"&gt;&lt;i&gt;📦&lt;/i&gt; &lt;span class="t-inv1"&gt;Stock Inventory&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('crm', this)"&gt;&lt;i&gt;📱&lt;/i&gt; &lt;span class="t-crm"&gt;CRM &amp; Retention&lt;/span&gt;&lt;/div&gt;
-            &lt;div class="nav-item" onclick="nav('settings', this)"&gt;&lt;i&gt;⚙️&lt;/i&gt; &lt;span class="t-settings"&gt;Settings&lt;/span&gt;&lt;/div&gt;
-        &lt;/nav&gt;
-        &lt;div class="sidebar-footer"&gt;
-            &lt;div class="lang-toggle"&gt;
-                &lt;div class="lang-btn active" onclick="setLang('en')"&gt;English&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('ta')"&gt;தமிழ்&lt;/div&gt;
-                &lt;div class="lang-btn" onclick="setLang('hi')"&gt;हिंदी&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="clinic-info" id="clinic-info"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/aside&gt;
+<div class="app-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="app-name">🐾 NalamVet <span>Companion & Exotic</span></div>
+            <div class="app-badge">Companion & Exotic | Metro & Specialist</div>
+        </div>
+        <nav class="nav-menu">
+            <div class="nav-item active" onclick="nav('dashboard', this)"><i>📊</i> <span class="t-dash">Dashboard</span></div>
+            <div class="nav-item" onclick="nav('consult', this)"><i>🩺</i> <span class="t-consult">New Consultation</span></div>
+            <div class="nav-item" onclick="nav('schedules', this)"><i>📅</i> <span class="t-sched">Schedule & Follow-ups</span></div>
+            <div class="nav-item" onclick="nav('vaccines', this)"><i>💉</i> <span class="t-vacc">Vaccination Schedules</span></div>
+            <div class="nav-item" onclick="nav('drugs', this)"><i>💊</i> <span class="t-drugs">Drug Reference</span></div>
+            <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv1">Stock Inventory</span></div>
+            <div class="nav-item" onclick="nav('crm', this)"><i>📱</i> <span class="t-crm">CRM & Retention</span></div>
+            <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="lang-toggle">
+                <div class="lang-btn active" onclick="setLang('en')">English</div>
+                <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
+                <div class="lang-btn" onclick="setLang('hi')">हिंदी</div>
+            </div>
+            <div class="clinic-info" id="clinic-info"></div>
+        </div>
+    </aside>
 
-    &lt;main class="main-content"&gt;
-        &lt;!-- DASHBOARD --&gt;
-        &lt;div id="page-dashboard" class="page active"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-dash"&gt;Dashboard&lt;/h1&gt;&lt;div class="subtitle"&gt;Clinical Overview&lt;/div&gt;&lt;/div&gt;
-                &lt;button class="btn btn-primary" onclick="nav('consult', document.querySelectorAll('.nav-item')[1])"&gt;➕ New Case&lt;/button&gt;
-            &lt;/div&gt;
+    <main class="main-content">
+        <!-- DASHBOARD -->
+        <div id="page-dashboard" class="page active">
+            <div class="header">
+                <div><h1 class="title t-dash">Dashboard</h1><div class="subtitle">Clinical Overview</div></div>
+                <button class="btn btn-primary" onclick="nav('consult', document.querySelectorAll('.nav-item')[1])">➕ New Case</button>
+            </div>
             
-            &lt;div class="card" style="background: rgba(255,176,32,0.05); border-color: rgba(255,176,32,0.2);"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="col-12" style="text-align: center; color: var(--warn); font-size: 13px; font-weight: 600;"&gt;
+            <div class="card" style="background: rgba(255,176,32,0.05); border-color: rgba(255,176,32,0.2);">
+                <div class="card-body">
+                    <div class="col-12" style="text-align: center; color: var(--warn); font-size: 13px; font-weight: 600;">
                         ⚖️ LEGAL DISCLAIMER: This software is for educational and reference purposes only. It does not constitute veterinary medical advice, diagnosis, or treatment. Always consult a licensed veterinarian. Use at your own risk. Data may be used for research with consent.
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+                    </div>
+                </div>
+            </div>
             
-            &lt;div class="alert alert-danger" id="lowStockAlert" style="display:none; align-items:center;"&gt;
-                &lt;i&gt;⚠️&lt;/i&gt; &lt;div&gt;&lt;strong&gt;Low Stock Warning&lt;/strong&gt; &lt;span id="lowStockText"&gt;&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="stats-grid"&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent);"&gt;&lt;div class="stat-val" id="s-total"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Total Cases&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--accent2);"&gt;&lt;div class="stat-val" id="s-active"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Active Cases&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: var(--warn);"&gt;&lt;div class="stat-val" id="s-fup"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Follow-ups Due&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #9b59b6;"&gt;&lt;div class="stat-val" id="s-vacc"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Vaccinations Due&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color: #2ecc71;"&gt;&lt;div class="stat-val" id="s-recovered"&gt;0&lt;/div&gt;&lt;div class="stat-lbl"&gt;Recovered&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header t-recent"&gt;Recent Cases&lt;/div&gt;
-                &lt;div style="overflow-x: auto;"&gt;
-                    &lt;table id="caseTable"&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th class="t-cid"&gt;Case ID&lt;/th&gt;&lt;th class="t-date"&gt;Date&lt;/th&gt;&lt;th class="t-owner"&gt;Owner&lt;/th&gt;&lt;th class="t-animal"&gt;Animal&lt;/th&gt;&lt;th class="t-species"&gt;Species&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody&gt;&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="alert alert-danger" id="lowStockAlert" style="display:none; align-items:center;">
+                <i>⚠️</i> <div><strong>Low Stock Warning</strong> <span id="lowStockText"></span></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" style="border-color: var(--accent);"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total Cases</div></div>
+                <div class="stat-card" style="border-color: var(--accent2);"><div class="stat-val" id="s-active">0</div><div class="stat-lbl">Active Cases</div></div>
+                <div class="stat-card" style="border-color: var(--warn);"><div class="stat-val" id="s-fup">0</div><div class="stat-lbl">Follow-ups Due</div></div>
+                <div class="stat-card" style="border-color: #9b59b6;"><div class="stat-val" id="s-vacc">0</div><div class="stat-lbl">Vaccinations Due</div></div>
+                <div class="stat-card" style="border-color: #2ecc71;"><div class="stat-val" id="s-recovered">0</div><div class="stat-lbl">Recovered</div></div>
+            </div>
+            <div class="card">
+                <div class="card-header t-recent">Recent Cases</div>
+                <div style="overflow-x: auto;">
+                    <table id="caseTable">
+                        <thead><tr><th class="t-cid">Case ID</th><th class="t-date">Date</th><th class="t-owner">Owner</th><th class="t-animal">Animal</th><th class="t-species">Species</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- CONSULTATION FORM --&gt;
-        &lt;div id="page-consult" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-consult"&gt;New Consultation&lt;/h1&gt;&lt;div class="subtitle"&gt;Complete clinical record — all sections are auto-saved&lt;/div&gt;&lt;/div&gt;
-                &lt;button class="btn btn-primary" onclick="saveCase()"&gt;💾 Save Case&lt;/button&gt;
-            &lt;/div&gt;
+        <!-- CONSULTATION FORM -->
+        <div id="page-consult" class="page">
+            <div class="header">
+                <div><h1 class="title t-consult">New Consultation</h1><div class="subtitle">Complete clinical record — all sections are auto-saved</div></div>
+                <button class="btn btn-primary" onclick="saveCase()">💾 Save Case</button>
+            </div>
             
-            &lt;div class="alert alert-danger" id="interactionBanner"&gt;
-                &lt;i style="font-style:normal;font-size:18px;"&gt;⚠️&lt;/i&gt; &lt;div&gt;&lt;strong style="display:block; margin-bottom:4px;"&gt;Drug Interaction Warning!&lt;/strong&gt;&lt;span id="interactionText"&gt;&lt;/span&gt;&lt;/div&gt;
-            &lt;/div&gt;
+            <div class="alert alert-danger" id="interactionBanner">
+                <i style="font-style:normal;font-size:18px;">⚠️</i> <div><strong style="display:block; margin-bottom:4px;">Drug Interaction Warning!</strong><span id="interactionText"></span></div>
+            </div>
 
-            &lt;!-- Section 1: Patient Identity --&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;🪪 1. Patient Identity &amp; Signalment &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Case ID&lt;/label&gt;&lt;input type="text" id="c-id" readonly style="opacity:0.6;"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Date&lt;/label&gt;&lt;input type="date" id="c-date"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Owner / Client Name&lt;/label&gt;&lt;input type="text" id="c-owner" placeholder="Full name"&gt;&lt;/div&gt;
+            <!-- Section 1: Patient Identity -->
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🪪 1. Patient Identity & Signalment <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="form-group col-3"><label>Case ID</label><input type="text" id="c-id" readonly style="opacity:0.6;"></div>
+                    <div class="form-group col-3"><label>Date</label><input type="date" id="c-date"></div>
+                    <div class="form-group col-6"><label>Owner / Client Name</label><input type="text" id="c-owner" placeholder="Full name"></div>
 
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Animal Name / Tag&lt;/label&gt;&lt;input type="text" id="c-animal" placeholder="e.g. Tommy, Cow #34"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Species&lt;/label&gt;
-                        &lt;select id="c-species" onchange="updateVitals(); updateBreedList();"&gt;
-                            &lt;option value=""&gt;- Select -&lt;/option&gt;
-                            &lt;option value="Dog"&gt;🐕 Dog&lt;/option&gt;&lt;option value="Cat"&gt;🐈 Cat&lt;/option&gt;
-                            &lt;option value="Rabbit"&gt;🐇 Rabbit&lt;/option&gt;&lt;option value="Guinea Pig"&gt;🐹 Guinea Pig&lt;/option&gt;
-                            &lt;option value="Ferret"&gt;🦦 Ferret&lt;/option&gt;&lt;option value="Parrot"&gt;🦜 Parrot&lt;/option&gt;
-                            &lt;option value="Cockatiel"&gt;🦜 Cockatiel&lt;/option&gt;&lt;option value="Macaw"&gt;🦜 Macaw&lt;/option&gt;
-                            &lt;option value="Budgerigar"&gt;🦜 Budgerigar&lt;/option&gt;&lt;option value="Tortoise"&gt;🐢 Tortoise&lt;/option&gt;
-                            &lt;option value="Bearded Dragon"&gt;🦎 Bearded Dragon&lt;/option&gt;&lt;option value="Gecko"&gt;🦎 Gecko&lt;/option&gt;
-                            &lt;option value="Chameleon"&gt;🦎 Chameleon&lt;/option&gt;&lt;option value="Ball Python"&gt;🐍 Ball Python&lt;/option&gt;
-                            &lt;option value="Monitor Lizard"&gt;🦎 Monitor Lizard&lt;/option&gt;&lt;option value="Hedgehog"&gt;🦔 Hedgehog&lt;/option&gt;
-                            &lt;option value="Sugar Glider"&gt;🦘 Sugar Glider&lt;/option&gt;&lt;option value="Other"&gt;Other Exotic&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Breed&lt;/label&gt;
-                        &lt;select id="c-breed"&gt;&lt;option value=""&gt;- Select Species First -&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Sex&lt;/label&gt;
-                        &lt;select id="c-sex"&gt;
-                            &lt;option value=""&gt;- Select -&lt;/option&gt;
-                            &lt;option value="Male (Intact)"&gt;Male (Intact)&lt;/option&gt;&lt;option value="Female (Intact)"&gt;Female (Intact)&lt;/option&gt;
-                            &lt;option value="Male (Neutered)"&gt;Male (Neutered)&lt;/option&gt;&lt;option value="Female (Spayed)"&gt;Female (Spayed)&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Age&lt;/label&gt;&lt;input type="text" id="c-age" placeholder="e.g. 3 years, 6 months"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Weight (kg)&lt;/label&gt;&lt;input type="number" step="0.1" id="c-weight" placeholder="0.0"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;BCS (1-9)&lt;/label&gt;
-                        &lt;select id="c-bcs"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;1 - Emaciated&lt;/option&gt;&lt;option&gt;2 - Very Thin&lt;/option&gt;&lt;option&gt;3 - Thin&lt;/option&gt;&lt;option&gt;4 - Underweight&lt;/option&gt;&lt;option&gt;5 - Ideal&lt;/option&gt;&lt;option&gt;6 - Overweight&lt;/option&gt;&lt;option&gt;7 - Heavy&lt;/option&gt;&lt;option&gt;8 - Obese&lt;/option&gt;&lt;option&gt;9 - Severely Obese&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-3"&gt;&lt;label&gt;Color / Markings&lt;/label&gt;&lt;input type="text" id="c-color" placeholder="Coat color"&gt;&lt;/div&gt;
-                    &lt;hr class="section-divider"&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Owner Phone&lt;/label&gt;&lt;input type="text" id="c-phone" placeholder="+91 XXXXXXXXXX"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Owner Address / Village&lt;/label&gt;&lt;input type="text" id="c-address" placeholder="Village, District"&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+                    <div class="form-group col-3"><label>Animal Name / Tag</label><input type="text" id="c-animal" placeholder="e.g. Tommy, Cow #34"></div>
+                    <div class="form-group col-3"><label>Species</label>
+                        <select id="c-species" onchange="updateVitals(); updateBreedList();">
+                            <option value="">- Select -</option>
+                            <option value="Dog">🐕 Dog</option><option value="Cat">🐈 Cat</option>
+                            <option value="Rabbit">🐇 Rabbit</option><option value="Guinea Pig">🐹 Guinea Pig</option>
+                            <option value="Ferret">🦦 Ferret</option><option value="Parrot">🦜 Parrot</option>
+                            <option value="Cockatiel">🦜 Cockatiel</option><option value="Macaw">🦜 Macaw</option>
+                            <option value="Budgerigar">🦜 Budgerigar</option><option value="Tortoise">🐢 Tortoise</option>
+                            <option value="Bearded Dragon">🦎 Bearded Dragon</option><option value="Gecko">🦎 Gecko</option>
+                            <option value="Chameleon">🦎 Chameleon</option><option value="Ball Python">🐍 Ball Python</option>
+                            <option value="Monitor Lizard">🦎 Monitor Lizard</option><option value="Hedgehog">🦔 Hedgehog</option>
+                            <option value="Sugar Glider">🦘 Sugar Glider</option><option value="Other">Other Exotic</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3"><label>Breed</label>
+                        <select id="c-breed"><option value="">- Select Species First -</option></select>
+                    </div>
+                    <div class="form-group col-3"><label>Sex</label>
+                        <select id="c-sex">
+                            <option value="">- Select -</option>
+                            <option value="Male (Intact)">Male (Intact)</option><option value="Female (Intact)">Female (Intact)</option>
+                            <option value="Male (Neutered)">Male (Neutered)</option><option value="Female (Spayed)">Female (Spayed)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3"><label>Age</label><input type="text" id="c-age" placeholder="e.g. 3 years, 6 months"></div>
+                    <div class="form-group col-3"><label>Weight (kg)</label><input type="number" step="0.1" id="c-weight" placeholder="0.0"></div>
+                    <div class="form-group col-3"><label>BCS (1-9)</label>
+                        <select id="c-bcs"><option value="">-</option><option>1 - Emaciated</option><option>2 - Very Thin</option><option>3 - Thin</option><option>4 - Underweight</option><option>5 - Ideal</option><option>6 - Overweight</option><option>7 - Heavy</option><option>8 - Obese</option><option>9 - Severely Obese</option></select>
+                    </div>
+                    <div class="form-group col-3"><label>Color / Markings</label><input type="text" id="c-color" placeholder="Coat color"></div>
+                    <hr class="section-divider">
+                    <div class="form-group col-6"><label>Owner Phone</label><input type="text" id="c-phone" placeholder="+91 XXXXXXXXXX"></div>
+                    <div class="form-group col-6"><label>Owner Address / Village</label><input type="text" id="c-address" placeholder="Village, District"></div>
+                </div>
+            </div>
 
-            &lt;!-- Section 2: History &amp; Vaccination --&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;📋 2. Clinical History &amp; Anamnesis &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Chief Complaint / Presenting Problem&lt;/label&gt;&lt;textarea id="c-complaint" placeholder="Describe the owner's primary concern..."&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Duration of Illness&lt;/label&gt;&lt;input type="text" id="c-duration" placeholder="e.g. 2 days, 1 week"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Progression&lt;/label&gt;
-                        &lt;select id="c-progression"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;Sudden onset&lt;/option&gt;&lt;option&gt;Gradual onset&lt;/option&gt;&lt;option&gt;Intermittent&lt;/option&gt;&lt;option&gt;Improving&lt;/option&gt;&lt;option&gt;Worsening&lt;/option&gt;&lt;option&gt;Stable&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Vaccination Status&lt;/label&gt;
-                        &lt;select id="c-vacc"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;Up to date&lt;/option&gt;&lt;option&gt;Overdue&lt;/option&gt;&lt;option&gt;Partially vaccinated&lt;/option&gt;&lt;option&gt;Never vaccinated&lt;/option&gt;&lt;option&gt;Unknown&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Last Deworming&lt;/label&gt;&lt;input type="text" id="c-deworm" placeholder="Date or duration ago"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Ectoparasite Control&lt;/label&gt;
-                        &lt;select id="c-ecto"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;Regular&lt;/option&gt;&lt;option&gt;Irregular&lt;/option&gt;&lt;option&gt;None&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Previous Medical History / Surgeries&lt;/label&gt;&lt;textarea id="c-history" style="min-height:60px;" placeholder="Past illnesses, surgeries, medications..."&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Current Medications (if any)&lt;/label&gt;&lt;input type="text" id="c-current-meds" placeholder="Drug name, dose"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Diet / Feeding&lt;/label&gt;&lt;input type="text" id="c-diet" placeholder="Commercial feed, home diet, grazing..."&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <!-- Section 2: History & Vaccination -->
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">📋 2. Clinical History & Anamnesis <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="form-group col-12"><label>Chief Complaint / Presenting Problem</label><textarea id="c-complaint" placeholder="Describe the owner's primary concern..."></textarea></div>
+                    <div class="form-group col-6"><label>Duration of Illness</label><input type="text" id="c-duration" placeholder="e.g. 2 days, 1 week"></div>
+                    <div class="form-group col-6"><label>Progression</label>
+                        <select id="c-progression"><option value="">-</option><option>Sudden onset</option><option>Gradual onset</option><option>Intermittent</option><option>Improving</option><option>Worsening</option><option>Stable</option></select>
+                    </div>
+                    <div class="form-group col-4"><label>Vaccination Status</label>
+                        <select id="c-vacc"><option value="">-</option><option>Up to date</option><option>Overdue</option><option>Partially vaccinated</option><option>Never vaccinated</option><option>Unknown</option></select>
+                    </div>
+                    <div class="form-group col-4"><label>Last Deworming</label><input type="text" id="c-deworm" placeholder="Date or duration ago"></div>
+                    <div class="form-group col-4"><label>Ectoparasite Control</label>
+                        <select id="c-ecto"><option value="">-</option><option>Regular</option><option>Irregular</option><option>None</option></select>
+                    </div>
+                    <div class="form-group col-12"><label>Previous Medical History / Surgeries</label><textarea id="c-history" style="min-height:60px;" placeholder="Past illnesses, surgeries, medications..."></textarea></div>
+                    <div class="form-group col-6"><label>Current Medications (if any)</label><input type="text" id="c-current-meds" placeholder="Drug name, dose"></div>
+                    <div class="form-group col-6"><label>Diet / Feeding</label><input type="text" id="c-diet" placeholder="Commercial feed, home diet, grazing..."></div>
+                </div>
+            </div>
 
-            &lt;!-- Section 3: Vitals --&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header" onclick="toggleC(this)"&gt;🌡️ 3. Physical Examination &amp; Vital Signs &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="section-title"&gt;Vital Signs&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Temperature (°F)&lt;/label&gt;&lt;span class="range-hint" id="h-temp"&gt;&lt;/span&gt;&lt;input type="number" step="0.1" id="c-temp" oninput="checkVital('temp')" placeholder="Normal"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Heart Rate (bpm)&lt;/label&gt;&lt;span class="range-hint" id="h-hr"&gt;&lt;/span&gt;&lt;input type="number" id="c-hr" oninput="checkVital('hr')" placeholder="Normal"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Resp. Rate (/min)&lt;/label&gt;&lt;span class="range-hint" id="h-rr"&gt;&lt;/span&gt;&lt;input type="number" id="c-rr" oninput="checkVital('rr')" placeholder="Normal"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;CRT (seconds)&lt;/label&gt;
-                        &lt;select id="c-crt"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;&lt; 2 sec (Normal)&lt;/option&gt;&lt;option&gt;2-3 sec (Borderline)&lt;/option&gt;&lt;option&gt;&gt; 3 sec (Prolonged)&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Mucous Membranes&lt;/label&gt;
-                        &lt;select id="c-mmb"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;Pink (Normal)&lt;/option&gt;&lt;option&gt;Pale/White (Anaemia)&lt;/option&gt;&lt;option&gt;Pale Pink&lt;/option&gt;&lt;option&gt;Cyanotic (Blue)&lt;/option&gt;&lt;option&gt;Icteric (Yellow)&lt;/option&gt;&lt;option&gt;Congested (Red)&lt;/option&gt;&lt;option&gt;Muddy&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Hydration Status&lt;/label&gt;
-                        &lt;select id="c-hydration"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;&lt; 5% (Normal)&lt;/option&gt;&lt;option&gt;5-7% (Mild)&lt;/option&gt;&lt;option&gt;7-9% (Moderate)&lt;/option&gt;&lt;option&gt;&gt; 10% (Severe)&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="section-title"&gt;Clinical Signs (Check all that apply)&lt;/div&gt;
-                    &lt;div class="col-12"&gt;
-                        &lt;div class="custom-checkboxes" id="clinicSigns"&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Vomiting"&gt; Vomiting&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Diarrhoea"&gt; Diarrhoea&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Anorexia"&gt; Anorexia&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Lethargy"&gt; Lethargy&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Coughing"&gt; Coughing&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Sneezing"&gt; Sneezing&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Nasal discharge"&gt; Nasal Discharge&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Ocular discharge"&gt; Ocular Discharge&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Fever"&gt; Fever&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Lameness"&gt; Lameness&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Urinary issues"&gt; Urinary Issues&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Seizures"&gt; Seizures&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Abdominal pain"&gt; Abdominal Pain&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Skin lesions"&gt; Skin Lesions&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Weight loss"&gt; Weight Loss&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Polydipsia/PU"&gt; Polydipsia/PU&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Bloat/GI distension"&gt; Bloat/GI distension&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Milk drop"&gt; Milk Drop&lt;/label&gt;
-                            &lt;label class="chk-pill"&gt;&lt;input type="checkbox" value="Dystocia"&gt; Dystocia&lt;/label&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;&lt;label&gt;Detailed Examination Findings&lt;/label&gt;&lt;textarea id="c-notes" placeholder="Systems examination: Auscultation, palpation findings..."&gt;&lt;/textarea&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <!-- Section 3: Vitals -->
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🌡️ 3. Physical Examination & Vital Signs <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="section-title">Vital Signs</div>
+                    <div class="form-group col-4"><label>Temperature (°F)</label><span class="range-hint" id="h-temp"></span><input type="number" step="0.1" id="c-temp" oninput="checkVital('temp')" placeholder="Normal"></div>
+                    <div class="form-group col-4"><label>Heart Rate (bpm)</label><span class="range-hint" id="h-hr"></span><input type="number" id="c-hr" oninput="checkVital('hr')" placeholder="Normal"></div>
+                    <div class="form-group col-4"><label>Resp. Rate (/min)</label><span class="range-hint" id="h-rr"></span><input type="number" id="c-rr" oninput="checkVital('rr')" placeholder="Normal"></div>
+                    <div class="form-group col-4"><label>CRT (seconds)</label>
+                        <select id="c-crt"><option value="">-</option><option>< 2 sec (Normal)</option><option>2-3 sec (Borderline)</option><option>> 3 sec (Prolonged)</option></select>
+                    </div>
+                    <div class="form-group col-4"><label>Mucous Membranes</label>
+                        <select id="c-mmb"><option value="">-</option><option>Pink (Normal)</option><option>Pale/White (Anaemia)</option><option>Pale Pink</option><option>Cyanotic (Blue)</option><option>Icteric (Yellow)</option><option>Congested (Red)</option><option>Muddy</option></select>
+                    </div>
+                    <div class="form-group col-4"><label>Hydration Status</label>
+                        <select id="c-hydration"><option value="">-</option><option>< 5% (Normal)</option><option>5-7% (Mild)</option><option>7-9% (Moderate)</option><option>> 10% (Severe)</option></select>
+                    </div>
+                    <div class="section-title">Clinical Signs (Check all that apply)</div>
+                    <div class="col-12">
+                        <div class="custom-checkboxes" id="clinicSigns">
+                            <label class="chk-pill"><input type="checkbox" value="Vomiting"> Vomiting</label>
+                            <label class="chk-pill"><input type="checkbox" value="Diarrhoea"> Diarrhoea</label>
+                            <label class="chk-pill"><input type="checkbox" value="Anorexia"> Anorexia</label>
+                            <label class="chk-pill"><input type="checkbox" value="Lethargy"> Lethargy</label>
+                            <label class="chk-pill"><input type="checkbox" value="Coughing"> Coughing</label>
+                            <label class="chk-pill"><input type="checkbox" value="Sneezing"> Sneezing</label>
+                            <label class="chk-pill"><input type="checkbox" value="Nasal discharge"> Nasal Discharge</label>
+                            <label class="chk-pill"><input type="checkbox" value="Ocular discharge"> Ocular Discharge</label>
+                            <label class="chk-pill"><input type="checkbox" value="Fever"> Fever</label>
+                            <label class="chk-pill"><input type="checkbox" value="Lameness"> Lameness</label>
+                            <label class="chk-pill"><input type="checkbox" value="Urinary issues"> Urinary Issues</label>
+                            <label class="chk-pill"><input type="checkbox" value="Seizures"> Seizures</label>
+                            <label class="chk-pill"><input type="checkbox" value="Abdominal pain"> Abdominal Pain</label>
+                            <label class="chk-pill"><input type="checkbox" value="Skin lesions"> Skin Lesions</label>
+                            <label class="chk-pill"><input type="checkbox" value="Weight loss"> Weight Loss</label>
+                            <label class="chk-pill"><input type="checkbox" value="Polydipsia/PU"> Polydipsia/PU</label>
+                            <label class="chk-pill"><input type="checkbox" value="Bloat/GI distension"> Bloat/GI distension</label>
+                            <label class="chk-pill"><input type="checkbox" value="Milk drop"> Milk Drop</label>
+                            <label class="chk-pill"><input type="checkbox" value="Dystocia"> Dystocia</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-12"><label>Detailed Examination Findings</label><textarea id="c-notes" placeholder="Systems examination: Auscultation, palpation findings..."></textarea></div>
+                </div>
+            </div>
 
-            &lt;!-- Section 4: Diagnosis &amp; Treatment --&gt;
-            &lt;div class="card" style="border-color: rgba(0,229,160,0.2);"&gt;
-                &lt;div class="card-header" style="color: var(--accent);"&gt;💊 4. Diagnosis &amp; Treatment Plan &lt;span class="toggle-icon"&gt;▾&lt;/span&gt;&lt;/div&gt;
-                &lt;div class="card-body" style="overflow: visible;"&gt;
-                    &lt;div class="form-group col-8"&gt;&lt;label&gt;Diagnosis / Condition&lt;/label&gt;&lt;input type="text" id="c-diag" placeholder="Primary diagnosis"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Tentative / Differential&lt;/label&gt;&lt;input type="text" id="c-diff-diag" placeholder="Rule-outs..."&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Lab / Diagnostics Ordered&lt;/label&gt;&lt;input type="text" id="c-labs" placeholder="CBC, Biochem, X-ray, USG..."&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Prognosis&lt;/label&gt;
-                        &lt;select id="c-prognosis"&gt;&lt;option value=""&gt;-&lt;/option&gt;&lt;option&gt;Excellent&lt;/option&gt;&lt;option&gt;Good&lt;/option&gt;&lt;option&gt;Fair / Guarded&lt;/option&gt;&lt;option&gt;Poor&lt;/option&gt;&lt;option&gt;Grave&lt;/option&gt;&lt;/select&gt;
-                    &lt;/div&gt;
+            <!-- Section 4: Diagnosis & Treatment -->
+            <div class="card" style="border-color: rgba(0,229,160,0.2);">
+                <div class="card-header" style="color: var(--accent);">💊 4. Diagnosis & Treatment Plan <span class="toggle-icon">▾</span></div>
+                <div class="card-body" style="overflow: visible;">
+                    <div class="form-group col-8"><label>Diagnosis / Condition</label><input type="text" id="c-diag" placeholder="Primary diagnosis"></div>
+                    <div class="form-group col-4"><label>Tentative / Differential</label><input type="text" id="c-diff-diag" placeholder="Rule-outs..."></div>
+                    <div class="form-group col-6"><label>Lab / Diagnostics Ordered</label><input type="text" id="c-labs" placeholder="CBC, Biochem, X-ray, USG..."></div>
+                    <div class="form-group col-6"><label>Prognosis</label>
+                        <select id="c-prognosis"><option value="">-</option><option>Excellent</option><option>Good</option><option>Fair / Guarded</option><option>Poor</option><option>Grave</option></select>
+                    </div>
                     
-                    &lt;div class="col-12 section-title"&gt;Prescription (Rx)&lt;/div&gt;
-                    &lt;div class="form-group col-12"&gt;
-                        &lt;label&gt;Search &amp; Add Drug&lt;/label&gt;
-                        &lt;input type="text" id="drugSearch" placeholder="Type generic or brand name..." autocomplete="off" style="border-color: rgba(0,229,160,0.3);"&gt;
-                        &lt;div class="ac-results" id="acResults"&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12" id="prescribedList"&gt;&lt;/div&gt;
+                    <div class="col-12 section-title">Prescription (Rx)</div>
+                    <div class="form-group col-12">
+                        <label>Search & Add Drug</label>
+                        <input type="text" id="drugSearch" placeholder="Type generic or brand name..." autocomplete="off" style="border-color: rgba(0,229,160,0.3);">
+                        <div class="ac-results" id="acResults"></div>
+                    </div>
+                    <div class="col-12" id="prescribedList"></div>
 
-                    &lt;div class="form-group col-6"&gt;&lt;label&gt;Treatment Notes / Instructions&lt;/label&gt;&lt;textarea id="c-tx-notes" style="min-height:60px;" placeholder="Supportive care, advised tests, nursing care..."&gt;&lt;/textarea&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-6"&gt;
-                        &lt;div class="form-group"&gt;&lt;label&gt;Follow-up Date&lt;/label&gt;&lt;input type="date" id="c-fup"&gt;&lt;/div&gt;
-                        &lt;div class="form-group" style="margin-top:10px;"&gt;&lt;label&gt;Case Status&lt;/label&gt;
-                            &lt;select id="c-status"&gt;&lt;option value="active"&gt;🟡 Active&lt;/option&gt;&lt;option value="recovered"&gt;🟢 Recovered&lt;/option&gt;&lt;option value="referred"&gt;🔵 Referred&lt;/option&gt;&lt;option value="deceased"&gt;🔴 Deceased&lt;/option&gt;&lt;/select&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+                    <div class="form-group col-6"><label>Treatment Notes / Instructions</label><textarea id="c-tx-notes" style="min-height:60px;" placeholder="Supportive care, advised tests, nursing care..."></textarea></div>
+                    <div class="form-group col-6">
+                        <div class="form-group"><label>Follow-up Date</label><input type="date" id="c-fup"></div>
+                        <div class="form-group" style="margin-top:10px;"><label>Case Status</label>
+                            <select id="c-status"><option value="active">🟡 Active</option><option value="recovered">🟢 Recovered</option><option value="referred">🔵 Referred</option><option value="deceased">🔴 Deceased</option></select>
+                        </div>
+                    </div>
                     
-                    &lt;div class="col-12" style="display:flex; justify-content: flex-end; gap: 12px; margin-top: 8px; flex-wrap:wrap; border-top: 1px solid var(--border); padding-top: 16px;"&gt;
-                        &lt;button class="btn btn-secondary" onclick="printPrescription()"&gt;🖨️ Print Rx&lt;/button&gt;
-                        &lt;button class="btn btn-secondary" onclick="openInvoice()"&gt;🧾 Invoice&lt;/button&gt;
-                        &lt;button class="btn btn-primary" onclick="saveCase()"&gt;💾 Save Case&lt;/button&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+                    <div class="col-12" style="display:flex; justify-content: flex-end; gap: 12px; margin-top: 8px; flex-wrap:wrap; border-top: 1px solid var(--border); padding-top: 16px;">
+                        <button class="btn btn-secondary" onclick="printPrescription()">🖨️ Print Rx</button>
+                        <button class="btn btn-secondary" onclick="openInvoice()">🧾 Invoice</button>
+                        <button class="btn btn-primary" onclick="saveCase()">💾 Save Case</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- SCHEDULES &amp; FOLLOW-UPS --&gt;
-        &lt;div id="page-schedules" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-sched"&gt;Schedule &amp; Follow-ups&lt;/h1&gt;&lt;div class="subtitle"&gt;Vaccination &amp; Follow-up Management&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;
-                        &lt;label class="t-species"&gt;Filter by Type&lt;/label&gt;
-                        &lt;select id="sched-filter" onchange="renderSchedules()"&gt;
-                            &lt;option value=""&gt;All Types&lt;/option&gt;
-                            &lt;option value="vacc_dose"&gt;Vaccination Dose&lt;/option&gt;
-                            &lt;option value="bandage"&gt;Bandage Change&lt;/option&gt;
-                            &lt;option value="suture"&gt;Suture Removal&lt;/option&gt;
-                            &lt;option value="deworming"&gt;Deworming&lt;/option&gt;
-                            &lt;option value="antibiotic"&gt;Antibiotic Review&lt;/option&gt;
-                            &lt;option value="lab"&gt;Lab Results&lt;/option&gt;
-                            &lt;option value="custom"&gt;Custom&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12" id="schedContent" style="margin-top: 20px;"&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- SCHEDULES & FOLLOW-UPS -->
+        <div id="page-schedules" class="page">
+            <div class="header"><div><h1 class="title t-sched">Schedule & Follow-ups</h1><div class="subtitle">Vaccination & Follow-up Management</div></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4">
+                        <label class="t-species">Filter by Type</label>
+                        <select id="sched-filter" onchange="renderSchedules()">
+                            <option value="">All Types</option>
+                            <option value="vacc_dose">Vaccination Dose</option>
+                            <option value="bandage">Bandage Change</option>
+                            <option value="suture">Suture Removal</option>
+                            <option value="deworming">Deworming</option>
+                            <option value="antibiotic">Antibiotic Review</option>
+                            <option value="lab">Lab Results</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="col-12" id="schedContent" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- VACCINATION SCHEDULES --&gt;
-        &lt;div id="page-vaccines" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-vacc"&gt;Vaccination Schedules&lt;/h1&gt;&lt;div class="subtitle"&gt;Reference &amp; Patient-Specific&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;
-                        &lt;label&gt;Select Species&lt;/label&gt;
-                        &lt;select id="v-species" onchange="renderVaccSched()"&gt;
-                            &lt;option value="Dog"&gt;🐕 Dog&lt;/option&gt;&lt;option value="Cat"&gt;🐈 Cat&lt;/option&gt;
-                            &lt;option value="Rabbit"&gt;🐇 Rabbit&lt;/option&gt;&lt;option value="Ferret"&gt;🦦 Ferret&lt;/option&gt;
-                            &lt;option value="Bird"&gt;🦜 Birds&lt;/option&gt;&lt;option value="Reptile"&gt;🦎 Reptiles&lt;/option&gt;
-                        &lt;/select&gt;
-                    &lt;/div&gt;
-                    &lt;div class="col-12" id="vaccContent" style="margin-top: 20px;"&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- VACCINATION SCHEDULES -->
+        <div id="page-vaccines" class="page">
+            <div class="header"><div><h1 class="title t-vacc">Vaccination Schedules</h1><div class="subtitle">Reference & Patient-Specific</div></div></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group col-4">
+                        <label>Select Species</label>
+                        <select id="v-species" onchange="renderVaccSched()">
+                            <option value="Dog">🐕 Dog</option><option value="Cat">🐈 Cat</option>
+                            <option value="Rabbit">🐇 Rabbit</option><option value="Ferret">🦦 Ferret</option>
+                            <option value="Bird">🦜 Birds</option><option value="Reptile">🦎 Reptiles</option>
+                        </select>
+                    </div>
+                    <div class="col-12" id="vaccContent" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- DRUG REFERENCE --&gt;
-        &lt;div id="page-drugs" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-drugs"&gt;💊 Drug Reference&lt;/h1&gt;&lt;div class="subtitle" id="dbCountStr"&gt;Comprehensive veterinary formulary&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;"&gt;
-                &lt;input type="text" id="refSearch" placeholder="🔍 Search drug name, brand, indication..." style="max-width:420px; flex:1;" oninput="renderRef()"&gt;
-                &lt;select id="refSpecies" onchange="renderRef()" style="max-width:160px;"&gt;
-                    &lt;option value=""&gt;All Species&lt;/option&gt;
-                    &lt;option value="Dog"&gt;🐕 Dog&lt;/option&gt;
-                    &lt;option value="Cat"&gt;🐈 Cat&lt;/option&gt;
-                    &lt;option value="Exotic"&gt;🐇 Exotic&lt;/option&gt;
-                &lt;/select&gt;
-            &lt;/div&gt;
-            &lt;div id="refGrid"&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- DRUG REFERENCE -->
+        <div id="page-drugs" class="page">
+            <div class="header"><div><h1 class="title t-drugs">💊 Drug Reference</h1><div class="subtitle" id="dbCountStr">Comprehensive veterinary formulary</div></div></div>
+            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+                <input type="text" id="refSearch" placeholder="🔍 Search drug name, brand, indication..." style="max-width:420px; flex:1;" oninput="renderRef()">
+                <select id="refSpecies" onchange="renderRef()" style="max-width:160px;">
+                    <option value="">All Species</option>
+                    <option value="Dog">🐕 Dog</option>
+                    <option value="Cat">🐈 Cat</option>
+                    <option value="Exotic">🐇 Exotic</option>
+                </select>
+            </div>
+            <div id="refGrid"></div>
+        </div>
 
-        &lt;!-- STOCK INVENTORY --&gt;
-        &lt;div id="page-inventory" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title t-inv1"&gt;Stock Inventory&lt;/h1&gt;&lt;div class="subtitle"&gt;Batch Tracking&lt;/div&gt;&lt;/div&gt;
-                &lt;button class="btn btn-secondary" onclick="exportInvCSV()"&gt;📥 Export CSV&lt;/button&gt;
-            &lt;/div&gt;
+        <!-- STOCK INVENTORY -->
+        <div id="page-inventory" class="page">
+            <div class="header">
+                <div><h1 class="title t-inv1">Stock Inventory</h1><div class="subtitle">Batch Tracking</div></div>
+                <button class="btn btn-secondary" onclick="exportInvCSV()">📥 Export CSV</button>
+            </div>
             
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;Add Stock&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;div class="form-group col-4"&gt;&lt;label&gt;Item Name&lt;/label&gt;&lt;input type="text" id="i-name"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label class="t-batch"&gt;Batch&lt;/label&gt;&lt;input type="text" id="i-batch"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label&gt;Qty&lt;/label&gt;&lt;input type="number" id="i-qty"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label&gt;Unit Price&lt;/label&gt;&lt;input type="number" id="i-price"&gt;&lt;/div&gt;
-                    &lt;div class="form-group col-2"&gt;&lt;label class="t-exp"&gt;Expiry&lt;/label&gt;&lt;input type="date" id="i-exp"&gt;&lt;/div&gt;
-                    &lt;div class="col-12" style="display:flex; justify-content:flex-end;"&gt;&lt;button class="btn btn-primary" style="width:100%" onclick="addInv()"&gt;Add / Update Item&lt;/button&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+            <div class="card">
+                <div class="card-header">Add Stock</div>
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Item Name</label><input type="text" id="i-name"></div>
+                    <div class="form-group col-2"><label class="t-batch">Batch</label><input type="text" id="i-batch"></div>
+                    <div class="form-group col-2"><label>Qty</label><input type="number" id="i-qty"></div>
+                    <div class="form-group col-2"><label>Unit Price</label><input type="number" id="i-price"></div>
+                    <div class="form-group col-2"><label class="t-exp">Expiry</label><input type="date" id="i-exp"></div>
+                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addInv()">Add / Update Item</button></div>
+                </div>
+            </div>
 
-            &lt;div class="card"&gt;
-                &lt;div style="overflow-x:auto;"&gt;
-                    &lt;table&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Item&lt;/th&gt;&lt;th class="t-batch"&gt;Batch&lt;/th&gt;&lt;th&gt;Qty&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th class="t-exp"&gt;Expiry&lt;/th&gt;&lt;th&gt;Action&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody id="invTableBody"&gt;&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+            <div class="card">
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead><tr><th>Item</th><th class="t-batch">Batch</th><th>Qty</th><th>Price</th><th class="t-exp">Expiry</th><th>Action</th></tr></thead>
+                        <tbody id="invTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- CRM &amp; RETENTION --&gt;
-        &lt;div id="page-crm" class="page"&gt;
-            &lt;div class="header"&gt;
-                &lt;div&gt;&lt;h1 class="title"&gt;Revenue &amp; CRM&lt;/h1&gt;&lt;div class="subtitle"&gt;Automated Follow-up &amp; WhatsApp Alerts&lt;/div&gt;&lt;/div&gt;
-                &lt;button class="btn btn-primary" onclick="window.open('https://web.whatsapp.com/')"&gt;📱 Open WhatsApp&lt;/button&gt;
-            &lt;/div&gt;
-            &lt;div class="stats-grid"&gt;
-                &lt;div class="stat-card" style="border-color:var(--accent2);"&gt;&lt;div class="stat-val" id="crm-vacc-due"&gt;12&lt;/div&gt;&lt;div class="stat-lbl"&gt;Vaccinations Due&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color:var(--danger);"&gt;&lt;div class="stat-val" id="crm-fup-missed"&gt;4&lt;/div&gt;&lt;div class="stat-lbl"&gt;Missed Follow-ups&lt;/div&gt;&lt;/div&gt;
-                &lt;div class="stat-card" style="border-color:var(--accent);"&gt;&lt;div class="stat-val" id="crm-revenue"&gt;₹6,400&lt;/div&gt;&lt;div class="stat-lbl"&gt;Recoverable Revenue&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;Action Required&lt;/div&gt;
-                &lt;div style="overflow-x:auto;padding:0 24px 24px;"&gt;
-                    &lt;table&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Client / Patient&lt;/th&gt;&lt;th&gt;Alert Type&lt;/th&gt;&lt;th&gt;Due&lt;/th&gt;&lt;th&gt;Action&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody id="crmAlerts"&gt;
-                            &lt;tr&gt;&lt;td&gt;Rajesh / Tommy (Dog)&lt;/td&gt;&lt;td&gt;Annual DHLPPi Vaccine&lt;/td&gt;&lt;td style="color:var(--warn)"&gt;Today&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543210?text=Hi Rajesh, Tommy\'s annual DHLPPi vaccination is due today at NalamVet. Please visit us!')"&gt;📱 WhatsApp&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
-                            &lt;tr&gt;&lt;td&gt;Meena / Lucy (Cat)&lt;/td&gt;&lt;td&gt;Tick Fever Follow-up&lt;/td&gt;&lt;td style="color:var(--danger)"&gt;Overdue 2d&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543211?text=Hi Meena, Lucy\'s follow-up is overdue. Please update us on her health at NalamVet.')"&gt;📱 WhatsApp&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
-                            &lt;tr&gt;&lt;td&gt;Suresh / Max (Dog)&lt;/td&gt;&lt;td&gt;Deworming Due&lt;/td&gt;&lt;td style="color:var(--warn)"&gt;Tomorrow&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543212?text=Hi Suresh, Max\'s deworming is scheduled for tomorrow at NalamVet.')"&gt;📱 WhatsApp&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
-                            &lt;tr&gt;&lt;td&gt;Kavitha / Roja (Cow)&lt;/td&gt;&lt;td&gt;Foot &amp; Mouth Vaccine&lt;/td&gt;&lt;td style="color:var(--accent)"&gt;In 3 days&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543213?text=Hi Kavitha, Roja\'s FMD vaccination is due in 3 days at NalamVet.')"&gt;📱 WhatsApp&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
-                        &lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+        <!-- CRM & RETENTION -->
+        <div id="page-crm" class="page">
+            <div class="header">
+                <div><h1 class="title">Revenue & CRM</h1><div class="subtitle">Automated Follow-up & WhatsApp Alerts</div></div>
+                <button class="btn btn-primary" onclick="window.open('https://web.whatsapp.com/')">📱 Open WhatsApp</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" style="border-color:var(--accent2);"><div class="stat-val" id="crm-vacc-due">12</div><div class="stat-lbl">Vaccinations Due</div></div>
+                <div class="stat-card" style="border-color:var(--danger);"><div class="stat-val" id="crm-fup-missed">4</div><div class="stat-lbl">Missed Follow-ups</div></div>
+                <div class="stat-card" style="border-color:var(--accent);"><div class="stat-val" id="crm-revenue">₹6,400</div><div class="stat-lbl">Recoverable Revenue</div></div>
+            </div>
+            <div class="card">
+                <div class="card-header">Action Required</div>
+                <div style="overflow-x:auto;padding:0 24px 24px;">
+                    <table>
+                        <thead><tr><th>Client / Patient</th><th>Alert Type</th><th>Due</th><th>Action</th></tr></thead>
+                        <tbody id="crmAlerts">
+                            <tr><td>Rajesh / Tommy (Dog)</td><td>Annual DHLPPi Vaccine</td><td style="color:var(--warn)">Today</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543210?text=Hi Rajesh, Tommy\'s annual DHLPPi vaccination is due today at NalamVet. Please visit us!')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Meena / Lucy (Cat)</td><td>Tick Fever Follow-up</td><td style="color:var(--danger)">Overdue 2d</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543211?text=Hi Meena, Lucy\'s follow-up is overdue. Please update us on her health at NalamVet.')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Suresh / Max (Dog)</td><td>Deworming Due</td><td style="color:var(--warn)">Tomorrow</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543212?text=Hi Suresh, Max\'s deworming is scheduled for tomorrow at NalamVet.')">📱 WhatsApp</button></td></tr>
+                            <tr><td>Kavitha / Roja (Cow)</td><td>Foot & Mouth Vaccine</td><td style="color:var(--accent)">In 3 days</td><td><button class="btn btn-sm btn-primary" onclick="window.open('https://wa.me/919876543213?text=Hi Kavitha, Roja\'s FMD vaccination is due in 3 days at NalamVet.')">📱 WhatsApp</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        &lt;!-- SETTINGS --&gt;
-        &lt;div id="page-settings" class="page"&gt;
-            &lt;div class="header"&gt;&lt;div&gt;&lt;h1 class="title t-settings"&gt;Settings&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class="card"&gt;&lt;div class="card-body"&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Clinic Name&lt;/label&gt;&lt;input type="text" id="st-clinic"&gt;&lt;/div&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;Vet Name &amp; VCI Reg&lt;/label&gt;&lt;input type="text" id="st-vet" placeholder="Dr. Hareshkumar"&gt;&lt;/div&gt;
-                &lt;div class="form-group col-4"&gt;&lt;label&gt;UPI ID&lt;/label&gt;&lt;input type="text" id="st-upi"&gt;&lt;/div&gt;
-                &lt;div class="col-12" style="display:flex; gap:12px; margin-top:16px;"&gt;
-                    &lt;button class="btn btn-primary" onclick="saveSt()"&gt;Save Settings&lt;/button&gt;
-                    &lt;button class="btn btn-secondary" onclick="exportBackup()"&gt;Export Backup JSON&lt;/button&gt;
-                    &lt;button class="btn btn-danger" onclick="if(confirm('Wipe ALL data?')){localStorage.clear();location.reload();}"&gt;Wipe Data&lt;/button&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        <!-- SETTINGS -->
+        <div id="page-settings" class="page">
+            <div class="header"><div><h1 class="title t-settings">Settings</h1></div></div>
+            <div class="card"><div class="card-body">
+                <div class="form-group col-4"><label>Clinic Name</label><input type="text" id="st-clinic"></div>
+                <div class="form-group col-4"><label>Vet Name & VCI Reg</label><input type="text" id="st-vet" placeholder="Dr. Hareshkumar"></div>
+                <div class="form-group col-4"><label>UPI ID</label><input type="text" id="st-upi"></div>
+                <div class="col-12" style="display:flex; gap:12px; margin-top:16px;">
+                    <button class="btn btn-primary" onclick="saveSt()">Save Settings</button>
+                    <button class="btn btn-secondary" onclick="exportBackup()">Export Backup JSON</button>
+                    <button class="btn btn-danger" onclick="if(confirm('Wipe ALL data?')){localStorage.clear();location.reload();}">Wipe Data</button>
+                </div>
+            </div></div>
+        </div>
 
-        &lt;!-- PRINT VIEW --&gt;
-        &lt;div id="page-print" class="page"&gt;
-            &lt;div class="print-paper" id="printContent"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/main&gt;
+        <!-- PRINT VIEW -->
+        <div id="page-print" class="page">
+            <div class="print-paper" id="printContent"></div>
+        </div>
+    </main>
 
-    &lt;!-- INVOICE MODAL --&gt;
-    &lt;div class="modal-overlay" id="invModal" onclick="if(event.target===this) this.classList.remove('active')"&gt;
-        &lt;div class="modal"&gt;&lt;div class="modal-body"&gt;
-            &lt;h2&gt;Generate Invoice&lt;/h2&gt;
-            &lt;div style="display:flex; gap:16px; margin: 20px 0;"&gt;
-                &lt;div class="form-group" style="flex:1"&gt;&lt;label&gt;Consultation (₹)&lt;/label&gt;&lt;input type="number" id="i-fee"&gt;&lt;/div&gt;
-                &lt;div class="form-group" style="flex:1"&gt;&lt;label&gt;Drugs/Lab (₹)&lt;/label&gt;&lt;input type="number" id="i-med"&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;button class="btn btn-primary" onclick="printInvoice()"&gt;Print GST Invoice&lt;/button&gt;
-        &lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
+    <!-- INVOICE MODAL -->
+    <div class="modal-overlay" id="invModal" onclick="if(event.target===this) this.classList.remove('active')">
+        <div class="modal"><div class="modal-body">
+            <h2>Generate Invoice</h2>
+            <div style="display:flex; gap:16px; margin: 20px 0;">
+                <div class="form-group" style="flex:1"><label>Consultation (₹)</label><input type="number" id="i-fee"></div>
+                <div class="form-group" style="flex:1"><label>Drugs/Lab (₹)</label><input type="number" id="i-med"></div>
+            </div>
+            <button class="btn btn-primary" onclick="printInvoice()">Print GST Invoice</button>
+        </div></div>
+    </div>
+</div>
+</body>
 
-&lt;script&gt;
+<script>
 // ============================================================
 // LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
 // ============================================================
@@ -653,7 +653,7 @@
     const doctorTemplate = {
         id: 'DOC-001',
         name: 'Dr. Priya Sharma',
-        designation: 'BVSc &amp; AH, MVSc (Medicine)',
+        designation: 'BVSc & AH, MVSc (Medicine)',
         vciReg: 'TN/VCI/2019/1234',
         phone: '+91 98765 43210',
         specialization: 'Small Animal Medicine',
@@ -692,27 +692,27 @@
     // ===== LANGUAGE SYSTEM =====
     const TMap = {
         en: {
-            'dash': 'Dashboard', 'consult': 'New Consultation', 'sched': 'Schedule &amp; Follow-ups',
+            'dash': 'Dashboard', 'consult': 'New Consultation', 'sched': 'Schedule & Follow-ups',
             'vacc': 'Vaccination Schedules', 'drugs': 'Drug Reference', 'inv1': 'Stock Inventory',
-            'crm': 'CRM &amp; Retention', 'settings': 'Settings', 'cid': 'Case ID', 'date': 'Date',
+            'crm': 'CRM & Retention', 'settings': 'Settings', 'cid': 'Case ID', 'date': 'Date',
             'owner': 'Owner Name', 'animal': 'Animal Name', 'species': 'Species', 'weight': 'Weight (kg)',
             'complaint': 'Chief Complaint', 'exam': 'Examination Notes', 'diag': 'Diagnosis',
             'adddrug': 'Add Drug', 'save': 'Save Case', 'print': 'Prescription', 'invoice': 'Invoice',
             'recent': 'Recent Cases', 'batch': 'Batch Number', 'exp': 'Expiry Date'
         },
         ta: {
-            'dash': 'முகப்பு பக்கம்', 'consult': 'புதிய பரிசோதனை', 'sched': 'அட்டவணை &amp; மறு வருகை',
+            'dash': 'முகப்பு பக்கம்', 'consult': 'புதிய பரிசோதனை', 'sched': 'அட்டவணை & மறு வருகை',
             'vacc': 'தடுப்பூசி அட்டவணை', 'drugs': 'மருந்து குறிப்பு', 'inv1': 'பங்கு சரக்கு',
-            'crm': 'CRM &amp; தக்கவைப்பு', 'settings': 'அமைப்புகள்', 'cid': 'வழக்கு அடையாளம்', 'date': 'தேதி',
+            'crm': 'CRM & தக்கவைப்பு', 'settings': 'அமைப்புகள்', 'cid': 'வழக்கு அடையாளம்', 'date': 'தேதி',
             'owner': 'உரிமையாளர் பெயர்', 'animal': 'விலங்கின் பெயர்', 'species': 'இனம்', 'weight': 'எடை (கிலோ)',
             'complaint': 'முதன்மை புகார்', 'exam': 'பரிசோதனை குறிப்புகள்', 'diag': 'நோயறிதல்',
             'adddrug': 'மருந்து சேர்', 'save': 'வழக்கை சேமி', 'print': 'மருந்துச் சீட்டு', 'invoice': 'ரசீது',
             'recent': 'சமீபத்திய வழக்குகள்', 'batch': 'தொகுதி எண்', 'exp': 'காலாவதி தேதி'
         },
         hi: {
-            'dash': 'मुख्य पृष्ठ', 'consult': 'नया परामर्श', 'sched': 'अनुसूची &amp; फॉलो-अप',
+            'dash': 'मुख्य पृष्ठ', 'consult': 'नया परामर्श', 'sched': 'अनुसूची & फॉलो-अप',
             'vacc': 'टीकाकरण अनुसूची', 'drugs': 'दवा संदर्भ', 'inv1': 'स्टॉक इन्वेंटरी',
-            'crm': 'CRM &amp; प्रतिधारण', 'settings': 'सेटिंग्स', 'cid': 'केस ID', 'date': 'तारीख',
+            'crm': 'CRM & प्रतिधारण', 'settings': 'सेटिंग्स', 'cid': 'केस ID', 'date': 'तारीख',
             'owner': 'मालिक का नाम', 'animal': 'पशु का नाम', 'species': 'प्रजाति', 'weight': 'वजन (किलोग्राम)',
             'complaint': 'मुख्य शिकायत', 'exam': 'परीक्षा नोट्स', 'diag': 'निदान',
             'adddrug': 'दवा जोड़ें', 'save': 'केस सहेजें', 'print': 'दवा की पर्ची', 'invoice': 'चालान',
@@ -722,11 +722,11 @@
 
     function setLang(code) {
         State.lang = code;
-        document.querySelectorAll('.lang-btn').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
         localStorage.setItem(PREFIX + 'lang', code);
-        Object.keys(TMap[code]).forEach(cls =&gt; {
-            document.querySelectorAll('.' + cls).forEach(el =&gt; el.textContent = TMap[code][cls]);
+        Object.keys(TMap[code]).forEach(cls => {
+            document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
         });
     }
 
@@ -751,8 +751,8 @@
             document.getElementById('auth-err').style.display = 'block';
             return;
         }
-        const doctor = State.doctors.find(d =&gt; d.id === doctorId);
-        if (doctor &amp;&amp; doctor.pin === pin) {
+        const doctor = State.doctors.find(d => d.id === doctorId);
+        if (doctor && doctor.pin === pin) {
             currentDoctor = doctor;
             document.getElementById('auth-screen').style.display = 'none';
             document.querySelector('.app-layout').style.display = 'flex';
@@ -765,8 +765,8 @@
 
     // ===== NAVIGATION =====
     function nav(id, el) {
-        document.querySelectorAll('.page').forEach(p =&gt; p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(b =&gt; b.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         document.getElementById('page-' + id).classList.add('active');
         if(el) el.classList.add('active');
         if(id==='dashboard') renderDashboard();
@@ -780,11 +780,11 @@
     // ===== DASHBOARD =====
     function renderDashboard() {
         const today = new Date().toISOString().split('T')[0];
-        const cases = State.cases.filter(c =&gt; currentDoctor.role === 'owner' || c.doctorId === currentDoctor.id);
-        const active = cases.filter(c =&gt; !c.status || c.status === 'active').length;
-        const fueDue = State.followups.filter(f =&gt; f.scheduledDate &lt;= today &amp;&amp; f.status !== 'completed').length;
-        const recovered = cases.filter(c =&gt; c.status === 'recovered').length;
-        const vaccDue = State.followups.filter(f =&gt; f.type === 'vacc_dose' &amp;&amp; f.scheduledDate === today).length;
+        const cases = State.cases.filter(c => currentDoctor.role === 'owner' || c.doctorId === currentDoctor.id);
+        const active = cases.filter(c => !c.status || c.status === 'active').length;
+        const fueDue = State.followups.filter(f => f.scheduledDate <= today && f.status !== 'completed').length;
+        const recovered = cases.filter(c => c.status === 'recovered').length;
+        const vaccDue = State.followups.filter(f => f.type === 'vacc_dose' && f.scheduledDate === today).length;
 
         document.getElementById('s-total').textContent = cases.length;
         document.getElementById('s-active').textContent = active;
@@ -796,13 +796,13 @@
         const tbody = document.querySelector('#caseTable tbody');
         if (tbody) {
             if (!cases.length) {
-                tbody.innerHTML = '&lt;tr&gt;&lt;td colspan="5" style="text-align:center;color:var(--muted);padding:32px;"&gt;No cases yet. Click &lt;strong&gt;New Case&lt;/strong&gt; to add your first patient.&lt;/td&gt;&lt;/tr&gt;';
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px;">No cases yet. Click <strong>New Case</strong> to add your first patient.</td></tr>';
             } else {
-                tbody.innerHTML = cases.slice(0,20).map(c =&gt; {
+                tbody.innerHTML = cases.slice(0,20).map(c => {
                     const statusMap = { active:'badge-warn', recovered:'badge-green', referred:'badge-blue', deceased:'badge-danger' };
                     const sp = c.sp || c.species || '-';
-                    const statusBadge = c.status ? `&lt;span class="badge ${statusMap[c.status] || 'badge-warn'}"&gt;${c.status}&lt;/span&gt;` : '&lt;span class="badge badge-warn"&gt;Active&lt;/span&gt;';
-                    return `&lt;tr&gt;&lt;td&gt;&lt;strong&gt;${c.id||'-'}&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;${c.dt||c.date||'-'}&lt;/td&gt;&lt;td&gt;${c.ow||c.owner||'-'}&lt;/td&gt;&lt;td&gt;${c.a||c.animal||'-'}&lt;/td&gt;&lt;td&gt;&lt;span style="font-size:12px;color:var(--muted);"&gt;${sp}&lt;/span&gt; ${statusBadge}&lt;/td&gt;&lt;/tr&gt;`;
+                    const statusBadge = c.status ? `<span class="badge ${statusMap[c.status] || 'badge-warn'}">${c.status}</span>` : '<span class="badge badge-warn">Active</span>';
+                    return `<tr><td><strong>${c.id||'-'}</strong></td><td>${c.dt||c.date||'-'}</td><td>${c.ow||c.owner||'-'}</td><td>${c.a||c.animal||'-'}</td><td><span style="font-size:12px;color:var(--muted);">${sp}</span> ${statusBadge}</td></tr>`;
                 }).join('');
             }
         }
@@ -813,9 +813,9 @@
     function initConsultForm() {
         const today = new Date().toISOString().split('T')[0];
         const el = document.getElementById('c-date');
-        if (el &amp;&amp; !el.value) el.value = today;
+        if (el && !el.value) el.value = today;
         const idEl = document.getElementById('c-id');
-        if (idEl &amp;&amp; !idEl.value) idEl.value = 'NV-' + Date.now().toString().slice(-6);
+        if (idEl && !idEl.value) idEl.value = 'NV-' + Date.now().toString().slice(-6);
         State.rxTmp = [];
         renderRxList();
     }
@@ -845,7 +845,7 @@
         const sel = document.getElementById('c-breed');
         if (!sel) return;
         const breeds = BREED_DB[sp] || ['Other'];
-        sel.innerHTML = '&lt;option value=""&gt;- Select Breed -&lt;/option&gt;' + breeds.map(b =&gt; `&lt;option value="${b}"&gt;${b}&lt;/option&gt;`).join('');
+        sel.innerHTML = '<option value="">- Select Breed -</option>' + breeds.map(b => `<option value="${b}">${b}</option>`).join('');
     }
 
     // ===== VITALS =====
@@ -864,14 +864,14 @@
             document.getElementById('h-temp').innerText = `(${VM[s].t.join('-')})`;
             document.getElementById('h-hr').innerText = `(${VM[s].hr.join('-')})`;
             document.getElementById('h-rr').innerText = `(${VM[s].rr.join('-')})`;
-        } else { ['temp','hr','rr'].forEach(v=&gt;document.getElementById('h-'+v).innerText=''); }
+        } else { ['temp','hr','rr'].forEach(v=>document.getElementById('h-'+v).innerText=''); }
         document.getElementById('drugSearch').value=''; 
     }
 
     function checkVital(id) {
         let s = document.getElementById('c-species').value; if(!VM[s]) return;
         let v = parseFloat(document.getElementById('c-'+id).value); if(!v) return;
-        if(v &lt; VM[s][id][0] || v &gt; VM[s][id][1]) document.getElementById('c-'+id).classList.add('error');
+        if(v < VM[s][id][0] || v > VM[s][id][1]) document.getElementById('c-'+id).classList.add('error');
         else document.getElementById('c-'+id).classList.remove('error');
     }
 
@@ -881,11 +881,11 @@
     function renderRef() {
         const q = (document.getElementById('refSearch')?.value || '').toLowerCase();
         const sp = document.getElementById('refSpecies')?.value || '';
-        let arr = DRUG_DB.filter(d =&gt; {
+        let arr = DRUG_DB.filter(d => {
             const txt = (d.generic + ' ' + (d.brands||'') + ' ' + (d.indications||'')).toLowerCase();
             const matchQ = !q || txt.includes(q);
-            const matchSp = !sp || (d.species &amp;&amp; d.species.includes(sp)) || (d['dose'+sp] &amp;&amp; d['dose'+sp].length &gt; 2);
-            return matchQ &amp;&amp; matchSp;
+            const matchSp = !sp || (d.species && d.species.includes(sp)) || (d['dose'+sp] && d['dose'+sp].length > 2);
+            return matchQ && matchSp;
         });
         document.getElementById('dbCountStr').textContent = `${arr.length} drugs in NalamVet Formulary`;
 
@@ -893,31 +893,31 @@
         if (!grid) return;
 
         if (q || sp) {
-            grid.innerHTML = '&lt;div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;"&gt;' +
-            arr.slice(0,60).map(d =&gt; `
-                &lt;div class="drug-card" onclick="showDrugDetail('${d.id}')"&gt;
-                    &lt;strong&gt;${d.generic}&lt;/strong&gt;
-                    &lt;div class="dc-brands"&gt;${(d.brands||'-').substring(0,60)}${d.brands &amp;&amp; d.brands.length &gt; 60 ? '...' : ''}&lt;/div&gt;
-                    &lt;div style="font-size:11px;color:var(--text);margin:6px 0 6px;"&gt;${(d.indications||'').substring(0,80)}...&lt;/div&gt;
-                    &lt;div class="dc-dose"&gt;🐕 ${(d.doseDog||'-').substring(0,50)} | 🐈 ${(d.doseCat||'-').substring(0,30)}&lt;/div&gt;
-                &lt;/div&gt;`).join('') + '&lt;/div&gt;';
+            grid.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;">' +
+            arr.slice(0,60).map(d => `
+                <div class="drug-card" onclick="showDrugDetail('${d.id}')">
+                    <strong>${d.generic}</strong>
+                    <div class="dc-brands">${(d.brands||'-').substring(0,60)}${d.brands && d.brands.length > 60 ? '...' : ''}</div>
+                    <div style="font-size:11px;color:var(--text);margin:6px 0 6px;">${(d.indications||'').substring(0,80)}...</div>
+                    <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,50)} | 🐈 ${(d.doseCat||'-').substring(0,30)}</div>
+                </div>`).join('') + '</div>';
         } else {
             const cats = getCategories(arr);
-            grid.innerHTML = cats.map((cat, i) =&gt; `
-                &lt;div class="drug-category"&gt;
-                    &lt;div class="drug-cat-header" onclick="toggleCat(this)"&gt;
-                        &lt;span&gt;${cat.name} &lt;span style="font-size:12px;font-weight:400;color:var(--muted);"&gt;(${cat.drugs.length} drugs)&lt;/span&gt;&lt;/span&gt;
-                        &lt;span style="color:var(--muted);font-size:13px;"&gt;▾&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div class="drug-cat-body ${i &gt; 0 ? 'hidden' : ''}"&gt;
-                        ${cat.drugs.slice(0,40).map(d =&gt; `
-                        &lt;div class="drug-card" onclick="showDrugDetail('${d.id}')"&gt;
-                            &lt;strong&gt;${d.generic}&lt;/strong&gt;
-                            &lt;div class="dc-brands"&gt;${(d.brands||'-').substring(0,50)}&lt;/div&gt;
-                            &lt;div class="dc-dose"&gt;🐕 ${(d.doseDog||'-').substring(0,45)}&lt;/div&gt;
-                        &lt;/div&gt;`).join('')}
-                    &lt;/div&gt;
-                &lt;/div&gt;`).join('');
+            grid.innerHTML = cats.map((cat, i) => `
+                <div class="drug-category">
+                    <div class="drug-cat-header" onclick="toggleCat(this)">
+                        <span>${cat.name} <span style="font-size:12px;font-weight:400;color:var(--muted);">(${cat.drugs.length} drugs)</span></span>
+                        <span style="color:var(--muted);font-size:13px;">▾</span>
+                    </div>
+                    <div class="drug-cat-body ${i > 0 ? 'hidden' : ''}">
+                        ${cat.drugs.slice(0,40).map(d => `
+                        <div class="drug-card" onclick="showDrugDetail('${d.id}')">
+                            <strong>${d.generic}</strong>
+                            <div class="dc-brands">${(d.brands||'-').substring(0,50)}</div>
+                            <div class="dc-dose">🐕 ${(d.doseDog||'-').substring(0,45)}</div>
+                        </div>`).join('')}
+                    </div>
+                </div>`).join('');
         }
     }
 
@@ -934,53 +934,53 @@
     }
 
     function showDrugDetail(id) {
-        const d = DRUG_DB.find(x =&gt; x.id === id);
+        const d = DRUG_DB.find(x => x.id === id);
         if (!d) return;
         const modal = document.createElement('div');
         modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);';
         modal.innerHTML = `
-            &lt;div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;"&gt;
-                &lt;div style="display:flex;justify-content:space-between;margin-bottom:16px;"&gt;
-                    &lt;h3 style="font-size:18px;font-weight:800;"&gt;${d.generic}&lt;/h3&gt;
-                    &lt;button onclick="this.closest('[style]').remove()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;"&gt;&amp;times;&lt;/button&gt;
-                &lt;/div&gt;
-                &lt;p style="font-size:12px;color:var(--accent);margin-bottom:12px;"&gt;${d.brands||''}&lt;/p&gt;
-                &lt;p style="font-size:13px;margin-bottom:16px;color:var(--text);"&gt;${d.indications||''}&lt;/p&gt;
-                &lt;table style="width:100%;font-size:12px;"&gt;
-                    ${d.doseDog ? `&lt;tr&gt;&lt;td style="padding:6px 0;color:var(--muted);width:100px;"&gt;🐕 Dog&lt;/td&gt;&lt;td&gt;${d.doseDog}&lt;/td&gt;&lt;/tr&gt;` : ''}
-                    ${d.doseCat ? `&lt;tr&gt;&lt;td style="padding:6px 0;color:var(--muted);"&gt;🐈 Cat&lt;/td&gt;&lt;td&gt;${d.doseCat}&lt;/td&gt;&lt;/tr&gt;` : ''}
-                    ${d.route ? `&lt;tr&gt;&lt;td style="padding:6px 0;color:var(--muted);"&gt;Route&lt;/td&gt;&lt;td&gt;${d.route}&lt;/td&gt;&lt;/tr&gt;` : ''}
-                    ${d.contraindications ? `&lt;tr&gt;&lt;td style="padding:6px 0;color:var(--danger);vertical-align:top;"&gt;⚠️ Caution&lt;/td&gt;&lt;td style="font-size:11px;"&gt;${d.contraindications.substring(0,200)}&lt;/td&gt;&lt;/tr&gt;` : ''}
-                &lt;/table&gt;
-                &lt;button onclick="prescribeFromRef('${d.id}')" style="margin-top:16px;" class="btn btn-primary" style="width:100%"&gt;➕ Add to Prescription&lt;/button&gt;
-            &lt;/div&gt;`;
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:16px;">
+                    <h3 style="font-size:18px;font-weight:800;">${d.generic}</h3>
+                    <button onclick="this.closest('[style]').remove()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;">&times;</button>
+                </div>
+                <p style="font-size:12px;color:var(--accent);margin-bottom:12px;">${d.brands||''}</p>
+                <p style="font-size:13px;margin-bottom:16px;color:var(--text);">${d.indications||''}</p>
+                <table style="width:100%;font-size:12px;">
+                    ${d.doseDog ? `<tr><td style="padding:6px 0;color:var(--muted);width:100px;">🐕 Dog</td><td>${d.doseDog}</td></tr>` : ''}
+                    ${d.doseCat ? `<tr><td style="padding:6px 0;color:var(--muted);">🐈 Cat</td><td>${d.doseCat}</td></tr>` : ''}
+                    ${d.route ? `<tr><td style="padding:6px 0;color:var(--muted);">Route</td><td>${d.route}</td></tr>` : ''}
+                    ${d.contraindications ? `<tr><td style="padding:6px 0;color:var(--danger);vertical-align:top;">⚠️ Caution</td><td style="font-size:11px;">${d.contraindications.substring(0,200)}</td></tr>` : ''}
+                </table>
+                <button onclick="prescribeFromRef('${d.id}')" style="margin-top:16px;" class="btn btn-primary" style="width:100%">➕ Add to Prescription</button>
+            </div>`;
         modal.onclick = function(e) { if(e.target === modal) modal.remove(); };
         document.body.appendChild(modal);
     }
 
     function prescribeFromRef(id) {
-        const d = DRUG_DB.find(x =&gt; x.id === id);
+        const d = DRUG_DB.find(x => x.id === id);
         if (!d) return;
         if (!State.rxTmp) State.rxTmp = [];
-        if (!State.rxTmp.find(r =&gt; r.id === d.id)) {
+        if (!State.rxTmp.find(r => r.id === d.id)) {
             State.rxTmp.push({ id: d.id, n: d.generic, d: d.doseDog, r: d.route, wi: d.withdrawalMilk, wm: d.withdrawalMeat });
             renderRxList();
         }
-        document.querySelectorAll('[style*="position:fixed"]').forEach(el =&gt; { if(el.innerHTML.includes('Add to Prescription')) el.remove(); });
+        document.querySelectorAll('[style*="position:fixed"]').forEach(el => { if(el.innerHTML.includes('Add to Prescription')) el.remove(); });
         nav('consult', document.querySelectorAll('.nav-item')[1]);
     }
 
     function renderRxList() {
         const el = document.getElementById('prescribedList');
         if (!el) return;
-        if (!State.rxTmp || !State.rxTmp.length) { el.innerHTML = '&lt;div style="color:var(--muted);font-size:13px;padding:8px 0;"&gt;No drugs added yet. Search above to add.&lt;/div&gt;'; return; }
-        el.innerHTML = State.rxTmp.map((r, i) =&gt; `
-            &lt;div class="rx-row"&gt;
-                &lt;div class="rx-name"&gt;${r.n}&lt;/div&gt;
-                &lt;input type="text" value="${r.d||''}" placeholder="Dose / Frequency" style="width:220px;font-size:12px;padding:6px 10px;" onchange="State.rxTmp[${i}].d=this.value"&gt;
-                &lt;input type="text" value="${r.r||''}" placeholder="Route" style="width:90px;font-size:12px;padding:6px 10px;" onchange="State.rxTmp[${i}].r=this.value"&gt;
-                &lt;span class="rx-del" onclick="State.rxTmp.splice(${i},1);renderRxList();"&gt;✕&lt;/span&gt;
-            &lt;/div&gt;`);
+        if (!State.rxTmp || !State.rxTmp.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:8px 0;">No drugs added yet. Search above to add.</div>'; return; }
+        el.innerHTML = State.rxTmp.map((r, i) => `
+            <div class="rx-row">
+                <div class="rx-name">${r.n}</div>
+                <input type="text" value="${r.d||''}" placeholder="Dose / Frequency" style="width:220px;font-size:12px;padding:6px 10px;" onchange="State.rxTmp[${i}].d=this.value">
+                <input type="text" value="${r.r||''}" placeholder="Route" style="width:90px;font-size:12px;padding:6px 10px;" onchange="State.rxTmp[${i}].r=this.value">
+                <span class="rx-del" onclick="State.rxTmp.splice(${i},1);renderRxList();">✕</span>
+            </div>`);
     }
 
     // ===== SAVE CASE =====
@@ -989,10 +989,10 @@
         const animal = document.getElementById('c-animal')?.value?.trim();
         const species = document.getElementById('c-species').value;
         if (!owner || !animal || !species) {
-            alert('Please fill in at minimum: Owner Name, Animal Name &amp; Species');
+            alert('Please fill in at minimum: Owner Name, Animal Name & Species');
             return;
         }
-        const signs = [...document.querySelectorAll('#clinicSigns input:checked')].map(i =&gt; i.value);
+        const signs = [...document.querySelectorAll('#clinicSigns input:checked')].map(i => i.value);
         const c = {
             id: document.getElementById('c-id')?.value || 'NV-'+Date.now(),
             dt: document.getElementById('c-date')?.value || new Date().toISOString().split('T')[0],
@@ -1024,7 +1024,7 @@
         State.cases.unshift(c);
         localStorage.setItem(PREFIX + 'cases', JSON.stringify(State.cases));
         showToast('✅ Case saved! ID: ' + c.id);
-        setTimeout(() =&gt; { initConsultForm(); document.getElementById('c-species').value = ''; }, 800);
+        setTimeout(() => { initConsultForm(); document.getElementById('c-species').value = ''; }, 800);
     }
 
     // ===== FOLLOW-UP SCHEDULER =====
@@ -1041,7 +1041,7 @@
             ownerPhone: document.getElementById('c-phone').value,
             doctorId: currentDoctor.id,
             type: type,
-            typeLabel: FOLLOWUP_TYPES.find(t =&gt; t.id === type).label,
+            typeLabel: FOLLOWUP_TYPES.find(t => t.id === type).label,
             scheduledDate: date,
             notes: notes,
             status: 'pending'
@@ -1054,32 +1054,32 @@
     // ===== SCHEDULES PAGE =====
     function renderSchedules() {
         const filter = document.getElementById('sched-filter').value;
-        let followups = State.followups.filter(f =&gt; currentDoctor.role === 'owner' || f.doctorId === currentDoctor.id);
-        if (filter) followups = followups.filter(f =&gt; f.type === filter);
-        followups.sort((a,b) =&gt; new Date(a.scheduledDate) - new Date(b.scheduledDate));
+        let followups = State.followups.filter(f => currentDoctor.role === 'owner' || f.doctorId === currentDoctor.id);
+        if (filter) followups = followups.filter(f => f.type === filter);
+        followups.sort((a,b) => new Date(a.scheduledDate) - new Date(b.scheduledDate));
         
         const content = document.getElementById('schedContent');
         if (!followups.length) {
-            content.innerHTML = '&lt;div style="text-align:center;color:var(--muted);padding:32px;"&gt;No follow-ups scheduled.&lt;/div&gt;';
+            content.innerHTML = '<div style="text-align:center;color:var(--muted);padding:32px;">No follow-ups scheduled.</div>';
             return;
         }
-        content.innerHTML = '&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Patient&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Action&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;' +
-            followups.map(f =&gt; {
+        content.innerHTML = '<table><thead><tr><th>Patient</th><th>Type</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody>' +
+            followups.map(f => {
                 const today = new Date().toISOString().split('T')[0];
-                const statusColor = f.status === 'completed' ? 'var(--accent)' : f.scheduledDate &lt; today ? 'var(--danger)' : f.scheduledDate === today ? 'var(--warn)' : 'var(--text)';
-                return `&lt;tr&gt;&lt;td&gt;${f.patientName} (${f.ownerName})&lt;/td&gt;&lt;td&gt;${f.typeLabel}&lt;/td&gt;&lt;td style="color:${statusColor}"&gt;${f.scheduledDate}&lt;/td&gt;&lt;td&gt;&lt;span class="badge ${f.status === 'completed' ? 'badge-green' : 'badge-warn'}"&gt;${f.status}&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-primary" onclick="sendWhatsApp('${f.id}')"&gt;📱 WA&lt;/button&gt; &lt;button class="btn btn-sm btn-secondary" onclick="markComplete('${f.id}')"&gt;✅ Done&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`;
-            }).join('') + '&lt;/tbody&gt;&lt;/table&gt;';
+                const statusColor = f.status === 'completed' ? 'var(--accent)' : f.scheduledDate < today ? 'var(--danger)' : f.scheduledDate === today ? 'var(--warn)' : 'var(--text)';
+                return `<tr><td>${f.patientName} (${f.ownerName})</td><td>${f.typeLabel}</td><td style="color:${statusColor}">${f.scheduledDate}</td><td><span class="badge ${f.status === 'completed' ? 'badge-green' : 'badge-warn'}">${f.status}</span></td><td><button class="btn btn-sm btn-primary" onclick="sendWhatsApp('${f.id}')">📱 WA</button> <button class="btn btn-sm btn-secondary" onclick="markComplete('${f.id}')">✅ Done</button></td></tr>`;
+            }).join('') + '</tbody></table>';
     }
 
     function sendWhatsApp(id) {
-        const f = State.followups.find(f =&gt; f.id === id);
+        const f = State.followups.find(f => f.id === id);
         if (!f) return;
         const msg = getWhatsAppTemplate(f, State.lang);
         window.open(`https://wa.me/91${f.ownerPhone.replace(/[^0-9]/g,'')}?text=${encodeURIComponent(msg)}`);
     }
 
     function markComplete(id) {
-        const f = State.followups.find(f =&gt; f.id === id);
+        const f = State.followups.find(f => f.id === id);
         if (f) {
             f.status = 'completed';
             localStorage.setItem(PREFIX + 'followups', JSON.stringify(State.followups));
@@ -1093,26 +1093,26 @@
         const species = document.getElementById('v-species').value;
         const content = document.getElementById('vaccContent');
         if (!species || !VACCINE_SCHEDULES[species]) {
-            content.innerHTML = '&lt;div style="text-align:center;color:var(--muted);padding:32px;"&gt;Select a species to view vaccination schedules.&lt;/div&gt;';
+            content.innerHTML = '<div style="text-align:center;color:var(--muted);padding:32px;">Select a species to view vaccination schedules.</div>';
             return;
         }
         const sched = VACCINE_SCHEDULES[species];
-        content.innerHTML = Object.keys(sched).map(vaccine =&gt; `
-            &lt;div class="card"&gt;
-                &lt;div class="card-header"&gt;${vaccine}&lt;/div&gt;
-                &lt;div class="card-body"&gt;
-                    &lt;table&gt;
-                        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Dose&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                        &lt;tbody&gt;${sched[vaccine].map(d =&gt; `&lt;tr&gt;&lt;td&gt;${d.dose || d.booster}&lt;/td&gt;&lt;td&gt;${d.week ? `Week ${d.week}` : d.booster}&lt;/td&gt;&lt;/tr&gt;`).join('')}&lt;/tbody&gt;
-                    &lt;/table&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;`).join('');
+        content.innerHTML = Object.keys(sched).map(vaccine => `
+            <div class="card">
+                <div class="card-header">${vaccine}</div>
+                <div class="card-body">
+                    <table>
+                        <thead><tr><th>Dose</th><th>Age</th></tr></thead>
+                        <tbody>${sched[vaccine].map(d => `<tr><td>${d.dose || d.booster}</td><td>${d.week ? `Week ${d.week}` : d.booster}</td></tr>`).join('')}</tbody>
+                    </table>
+                </div>
+            </div>`).join('');
     }
 
     // ===== INVENTORY =====
     function renderInv() {
         const tbody = document.getElementById('invTableBody');
-        tbody.innerHTML = State.inv.map(i =&gt; `&lt;tr&gt;&lt;td&gt;${i.n}&lt;/td&gt;&lt;td&gt;${i.b||'-'}&lt;/td&gt;&lt;td&gt;${i.q}&lt;/td&gt;&lt;td&gt;₹${i.p}&lt;/td&gt;&lt;td&gt;${i.e||'-'}&lt;/td&gt;&lt;td&gt;&lt;button class="btn btn-sm btn-danger" onclick="delInv('${i.id}')"&gt;Delete&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join('');
+        tbody.innerHTML = State.inv.map(i => `<tr><td>${i.n}</td><td>${i.b||'-'}</td><td>${i.q}</td><td>₹${i.p}</td><td>${i.e||'-'}</td><td><button class="btn btn-sm btn-danger" onclick="delInv('${i.id}')">Delete</button></td></tr>`).join('');
     }
 
     function addInv() {
@@ -1127,19 +1127,19 @@
         localStorage.setItem(PREFIX + 'inv', JSON.stringify(State.inv));
         renderInv();
         renderInvAlert();
-        ['i-name','i-batch','i-qty','i-price','i-exp'].forEach(id =&gt; document.getElementById(id).value = '');
+        ['i-name','i-batch','i-qty','i-price','i-exp'].forEach(id => document.getElementById(id).value = '');
         showToast('Item added to inventory!');
     }
 
     function delInv(id) {
-        State.inv = State.inv.filter(i =&gt; i.id !== id);
+        State.inv = State.inv.filter(i => i.id !== id);
         localStorage.setItem(PREFIX + 'inv', JSON.stringify(State.inv));
         renderInv();
         renderInvAlert();
     }
 
     function renderInvAlert() {
-        const low = State.inv.filter(i =&gt; i.q &lt; 10);
+        const low = State.inv.filter(i => i.q < 10);
         const alert = document.getElementById('lowStockAlert');
         if (low.length) {
             alert.querySelector('#lowStockText').textContent = `${low.length} items low in stock`;
@@ -1194,11 +1194,11 @@
         t.style.opacity = '1';
         t.style.transform = 'translateY(0)';
         clearTimeout(t._timer);
-        t._timer = setTimeout(() =&gt; { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
+        t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
     }
 
     // ===== INIT =====
-    window.onload = () =&gt; {
+    window.onload = () => {
         // Load data
         let sc = localStorage.getItem(PREFIX + 'cases'); if(sc) State.cases = JSON.parse(sc);
         let si = localStorage.getItem(PREFIX + 'inv'); if(si) State.inv = JSON.parse(si);
@@ -1210,12 +1210,12 @@
         // Populate doctor dropdown
         const doctorSel = document.getElementById('auth-doctor');
         if (State.doctors.length) {
-            doctorSel.innerHTML = '&lt;option value=""&gt;Choose Doctor...&lt;/option&gt;' + State.doctors.map(d =&gt; `&lt;option value="${d.id}"&gt;${d.name} (${d.role})&lt;/option&gt;`).join('');
+            doctorSel.innerHTML = '<option value="">Choose Doctor...</option>' + State.doctors.map(d => `<option value="${d.id}">${d.name} (${d.role})</option>`).join('');
         } else {
             // Default doctor
             State.doctors = [doctorTemplate];
             localStorage.setItem(PREFIX + 'doctors', JSON.stringify(State.doctors));
-            doctorSel.innerHTML = `&lt;option value="${doctorTemplate.id}"&gt;${doctorTemplate.name} (${doctorTemplate.role})&lt;/option&gt;`;
+            doctorSel.innerHTML = `<option value="${doctorTemplate.id}">${doctorTemplate.name} (${doctorTemplate.role})</option>`;
         }
 
         // Set clinic info
@@ -1224,7 +1224,7 @@
         document.getElementById('st-vet').value = State.settings.vet || '';
         document.getElementById('st-upi').value = State.settings.upi || '';
 
-        console.log("NalamVet Pets &amp; Exotic Loaded.");
+        console.log("NalamVet Pets & Exotic Loaded.");
     };
 
     // ===== TOGGLE CARDS =====
@@ -1243,24 +1243,24 @@
             rx: State.rxTmp
         };
         const content = `
-            &lt;div class="print-paper"&gt;
-                &lt;div class="print-header"&gt;
-                    &lt;div style="font-size:24px;font-weight:800;"&gt;NalamVet&lt;/div&gt;
-                    &lt;div&gt;${State.settings.clinic || 'Veterinary Clinic'}&lt;/div&gt;
-                    &lt;div&gt;${currentDoctor.name} (${currentDoctor.designation})&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;h3&gt;Prescription&lt;/h3&gt;
-                &lt;p&gt;&lt;strong&gt;Case ID:&lt;/strong&gt; ${c.id}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Owner:&lt;/strong&gt; ${c.owner}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Animal:&lt;/strong&gt; ${c.animal} (${c.species})&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Diagnosis:&lt;/strong&gt; ${c.diag}&lt;/p&gt;
-                &lt;table&gt;
-                    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Drug&lt;/th&gt;&lt;th&gt;Dose&lt;/th&gt;&lt;th&gt;Route&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                    &lt;tbody&gt;${c.rx.map(r =&gt; `&lt;tr&gt;&lt;td&gt;${r.n}&lt;/td&gt;&lt;td&gt;${r.d}&lt;/td&gt;&lt;td&gt;${r.r}&lt;/td&gt;&lt;/tr&gt;`).join('')}&lt;/tbody&gt;
-                &lt;/table&gt;
-                &lt;p&gt;&lt;strong&gt;Doctor:&lt;/strong&gt; ${currentDoctor.name}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; ${new Date().toLocaleDateString()}&lt;/p&gt;
-            &lt;/div&gt;`;
+            <div class="print-paper">
+                <div class="print-header">
+                    <div style="font-size:24px;font-weight:800;">NalamVet</div>
+                    <div>${State.settings.clinic || 'Veterinary Clinic'}</div>
+                    <div>${currentDoctor.name} (${currentDoctor.designation})</div>
+                </div>
+                <h3>Prescription</h3>
+                <p><strong>Case ID:</strong> ${c.id}</p>
+                <p><strong>Owner:</strong> ${c.owner}</p>
+                <p><strong>Animal:</strong> ${c.animal} (${c.species})</p>
+                <p><strong>Diagnosis:</strong> ${c.diag}</p>
+                <table>
+                    <thead><tr><th>Drug</th><th>Dose</th><th>Route</th></tr></thead>
+                    <tbody>${c.rx.map(r => `<tr><td>${r.n}</td><td>${r.d}</td><td>${r.r}</td></tr>`).join('')}</tbody>
+                </table>
+                <p><strong>Doctor:</strong> ${currentDoctor.name}</p>
+                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+            </div>`;
         document.getElementById('printContent').innerHTML = content;
         window.print();
     }
@@ -1274,57 +1274,57 @@
         const med = document.getElementById('i-med').value;
         const total = (parseFloat(fee) || 0) + (parseFloat(med) || 0);
         const content = `
-            &lt;div class="print-paper"&gt;
-                &lt;div class="print-header"&gt;
-                    &lt;div style="font-size:24px;font-weight:800;"&gt;NalamVet&lt;/div&gt;
-                    &lt;div&gt;${State.settings.clinic || 'Veterinary Clinic'}&lt;/div&gt;
-                    &lt;div&gt;GST Invoice&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;p&gt;&lt;strong&gt;Case ID:&lt;/strong&gt; ${document.getElementById('c-id').value}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Owner:&lt;/strong&gt; ${document.getElementById('c-owner').value}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Animal:&lt;/strong&gt; ${document.getElementById('c-animal').value}&lt;/p&gt;
-                &lt;table&gt;
-                    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Item&lt;/th&gt;&lt;th&gt;Amount&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-                    &lt;tbody&gt;
-                        &lt;tr&gt;&lt;td&gt;Consultation Fee&lt;/td&gt;&lt;td&gt;₹${fee}&lt;/td&gt;&lt;/tr&gt;
-                        &lt;tr&gt;&lt;td&gt;Drugs/Lab&lt;/td&gt;&lt;td&gt;₹${med}&lt;/td&gt;&lt;/tr&gt;
-                        &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;₹${total}&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-                    &lt;/tbody&gt;
-                &lt;/table&gt;
-                &lt;p&gt;Pay via UPI: ${State.settings.upi || 'Not set'}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Doctor:&lt;/strong&gt; ${currentDoctor.name}&lt;/p&gt;
-                &lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; ${new Date().toLocaleDateString()}&lt;/p&gt;
-            &lt;/div&gt;`;
+            <div class="print-paper">
+                <div class="print-header">
+                    <div style="font-size:24px;font-weight:800;">NalamVet</div>
+                    <div>${State.settings.clinic || 'Veterinary Clinic'}</div>
+                    <div>GST Invoice</div>
+                </div>
+                <p><strong>Case ID:</strong> ${document.getElementById('c-id').value}</p>
+                <p><strong>Owner:</strong> ${document.getElementById('c-owner').value}</p>
+                <p><strong>Animal:</strong> ${document.getElementById('c-animal').value}</p>
+                <table>
+                    <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+                    <tbody>
+                        <tr><td>Consultation Fee</td><td>₹${fee}</td></tr>
+                        <tr><td>Drugs/Lab</td><td>₹${med}</td></tr>
+                        <tr><td><strong>Total</strong></td><td><strong>₹${total}</strong></td></tr>
+                    </tbody>
+                </table>
+                <p>Pay via UPI: ${State.settings.upi || 'Not set'}</p>
+                <p><strong>Doctor:</strong> ${currentDoctor.name}</p>
+                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+            </div>`;
         document.getElementById('printContent').innerHTML = content;
         window.print();
         document.getElementById('invModal').classList.remove('active');
     }
 
     // ===== DRUG AUTOCOMPLETE =====
-    document.getElementById('drugSearch').addEventListener('input', e =&gt; {
+    document.getElementById('drugSearch').addEventListener('input', e => {
         let val = e.target.value.toLowerCase();
         let res = document.getElementById('acResults');
-        if(val.length &lt; 2) { res.style.display = 'none'; return; }
+        if(val.length < 2) { res.style.display = 'none'; return; }
         
         let sp = document.getElementById('c-species').value;
-        let matches = DRUG_DB.filter(d =&gt; ((d.generic||'').toLowerCase().includes(val) || (d.brands||'').toLowerCase().includes(val))).slice(0, 8);
+        let matches = DRUG_DB.filter(d => ((d.generic||'').toLowerCase().includes(val) || (d.brands||'').toLowerCase().includes(val))).slice(0, 8);
         
         if(matches.length) {
-            res.innerHTML = matches.map(d =&gt; `&lt;div class="ac-item" onclick='addDx(${JSON.stringify(d).replace(/'/g,"&amp;apos;")})'&gt;&lt;div style="font-weight:700;color:var(--accent);"&gt;${d.generic} &lt;span style="font-size:10px;color:var(--warn)"&gt;[${d.schedule||''}]&lt;/span&gt;&lt;/div&gt;&lt;div style="font-size:11px;color:var(--muted)"&gt;${d.brands||'-'}&lt;/div&gt;&lt;/div&gt;`).join('');
+            res.innerHTML = matches.map(d => `<div class="ac-item" onclick='addDx(${JSON.stringify(d).replace(/'/g,"&apos;")})'><div style="font-weight:700;color:var(--accent);">${d.generic} <span style="font-size:10px;color:var(--warn)">[${d.schedule||''}]</span></div><div style="font-size:11px;color:var(--muted)">${d.brands||'-'}</div></div>`).join('');
             res.style.display = 'block';
         } else { res.style.display = 'none'; }
     });
-    document.addEventListener('click', e =&gt; { if(e.target.id!=='drugSearch') document.getElementById('acResults').style.display='none'; });
+    document.addEventListener('click', e => { if(e.target.id!=='drugSearch') document.getElementById('acResults').style.display='none'; });
 
     function addDx(d) {
         let sp = document.getElementById('c-species').value;
         let ds = d.doseDog;
         if(sp==='Cat') ds = d.doseCat; else if(sp==='Rabbit') ds = d.doseRabbit; else if(sp==='Ferret') ds = d.doseFerret; else if(sp==='Bird') ds = d.doseBird; else if(sp==='Reptile') ds = d.doseReptile;
         
-        let invMatch = State.inv.find(i =&gt; i.n.toLowerCase() === d.generic.toLowerCase());
+        let invMatch = State.inv.find(i => i.n.toLowerCase() === d.generic.toLowerCase());
         if(invMatch) {
             let use = prompt(`Inventory Alert: You have ${invMatch.q} units of ${d.generic} in stock. Enter amount to deduct now, or 0 to skip:`, "1");
-            if(use &amp;&amp; parseInt(use)&gt;0) { invMatch.q -= parseInt(use); localStorage.setItem(PREFIX + 'inv', JSON.stringify(State.inv)); renderInvAlert(); }
+            if(use && parseInt(use)>0) { invMatch.q -= parseInt(use); localStorage.setItem(PREFIX + 'inv', JSON.stringify(State.inv)); renderInvAlert(); }
         }
 
         State.rxTmp.push({ n: d.generic, d: ds, r: d.route, wi: d.withdrawalMilk, wm: d.withdrawalMeat, sc: d.schedule });
@@ -1336,12 +1336,12 @@
 
     // ===== PWA SERVICE WORKER =====
     if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e =&gt; { e.waitUntil(caches.open('nalamvet-pets-v1').then(c =&gt; c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
-        self.addEventListener('fetch', e =&gt; { e.respondWith(caches.match(e.request).then(r =&gt; r || fetch(e.request).catch(() =&gt; caches.match('./')).catch(() =&gt; new Response('Offline')))); });`;
+        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('nalamvet-pets-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
+        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
 
-&lt;/script&gt;
+</script>
 
-&lt;/html&gt;
+</html>
