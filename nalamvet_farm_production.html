@@ -238,7 +238,6 @@
             <div class="nav-item" onclick="nav('breeding', this)"><i>🐄</i> <span class="t-breed">Reproductive Log</span></div>
             <div class="nav-item" onclick="nav('health', this)"><i>🩺</i> <span class="t-health">Herd Health</span></div>
             <div class="nav-item" onclick="nav('vaccines', this)"><i>💉</i> <span class="t-vacc">Vaccination Programs</span></div>
-            <div class="nav-item" onclick="nav('drugs', this)"><i>💊</i> <span class="t-drugs">Drug Reference</span></div>
             <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv">Stock & Consumables</span></div>
             <div class="nav-item" onclick="nav('reports', this)"><i>📈</i> <span class="t-reports">Reports & Export</span></div>
             <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
@@ -398,22 +397,6 @@
                     <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="recordVaccination()">Record Vaccination</button></div>
                 </div>
             </div>
-        </div>
-
-        <!-- DRUG REFERENCE -->
-        <div id="page-drugs" class="page">
-            <div class="header"><div><h1 class="title t-drugs">💊 Drug Reference</h1><div class="subtitle" id="dbCountStr">Farm formulary</div></div></div>
-            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
-                <input type="text" id="refSearch" placeholder="🔍 Search drug..." style="max-width:420px; flex:1;" oninput="renderRef()">
-                <select id="refSpecies" onchange="renderRef()" style="max-width:160px;">
-                    <option value="">All Species</option>
-                    <option value="Cattle">🐄 Cattle</option>
-                    <option value="Goat">🐐 Goat</option>
-                    <option value="Sheep">🐑 Sheep</option>
-                    <option value="Poultry">🐔 Poultry</option>
-                </select>
-            </div>
-            <div id="refGrid"></div>
         </div>
 
         <!-- STOCK & CONSUMABLES -->
@@ -613,7 +596,6 @@
         if(id==='breeding') renderBreeding();
         if(id==='health') renderHealth();
         if(id==='vaccines') renderVaccines();
-        if(id==='drugs') renderRef();
         if(id==='inventory') renderInv();
     }
 
