@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-950 text-neutral-100 antialiased;
+  }
+}
+
+.logo-gradient {
+  background: linear-gradient(135deg, #00e5a0 0%, #0090ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

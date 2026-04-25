@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>அgadham — India's Veterinary Operating System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080b12;
+            --surface: #0f1320;
+            --surface-hover: #161d2e;
+            --accent: #c9a96e;
+            --accent-hover: #e0be82;
+            --secondary: #00c896;
+            --text: #e8edf8;
+            --muted: #7a86a5;
+            --font: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.02em; margin-bottom: 1rem; }
+        h2 { font-size: clamp(2rem, 3vw, 2.5rem); letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        p { color: var(--muted); font-size: 1.1rem; }
+
+        .text-accent { color: var(--accent); }
+        .text-secondary { color: var(--secondary); }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 8rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+            box-shadow: 0 4px 14px rgba(201, 169, 110, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--muted);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background-color: rgba(201, 169, 110, 0.05);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 11, 18, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 5rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(201, 169, 110, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 200, 150, 0.03) 0%, transparent 40%);
+            animation: rotate 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Cards & Grids */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 169, 110, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Section: Problem */
+        .problem-section {
+            background: var(--surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .problem-item {
+            padding: 1.5rem;
+            background: rgba(255, 59, 92, 0.05);
+            border-left: 3px solid #ff3b5c;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .problem-item h4 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section: Product Overview */
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pill {
+            padding: 1rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Section: Roadmap */
+        .roadmap-card {
+            position: relative;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .badge-now { background: rgba(0, 200, 150, 0.15); color: var(--secondary); border: 1px solid rgba(0, 200, 150, 0.3); }
+        .badge-dev { background: rgba(201, 169, 110, 0.15); color: var(--accent); border: 1px solid rgba(201, 169, 110, 0.3); }
+        .badge-soon { background: rgba(255, 255, 255, 0.05); color: var(--muted); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+        .roadmap-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .roadmap-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--muted);
+        }
+        
+        .roadmap-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Section: Founder */
+        .founder-section {
+            background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+        }
+
+        .founder-box {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            color: var(--muted);
+        }
+
+        /* Section: Contact / CTA */
+        .cta-section {
+            text-align: center;
+            background: var(--surface);
+            padding: 6rem 2rem;
+            border-radius: 24px;
+            margin: 4rem auto;
+            max-width: 1000px;
+            border: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle { display: block; }
+            .hero-actions, .cta-buttons { flex-direction: column; }
+            section { padding: 5rem 0; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><span>அ</span>gadham</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#problem">Problem</a>
+                <a href="#product">Product</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#vision">Vision</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content fade-in">
+            <h1>The Operating System for Veterinary Care in India</h1>
+            <p class="hero-subtitle">அgadham unifies clinic workflow, AI-assisted intake, and the future of specialty, teaching, and field-care infrastructure — built for India, designed to last.</p>
+            <div class="hero-actions">
+                <a href="#vision" class="btn btn-primary">View Product Vision</a>
+                <a href="#contact" class="btn btn-outline">Request Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="fade-in">
+            <h2 class="text-accent">What is அgadham?</h2>
+            <p>We are building intelligent operational systems for veterinary care. Not just a software tool, but the infrastructure layer that enables clinical excellence.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card fade-in">
+                <div class="card-icon">⚡</div>
+                <h3>Workflow First</h3>
+                <p>Designed around the realities of veterinary operations, from front-desk triage to clinical documentation and follow-up continuity.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🧠</div>
+                <h3>Practical AI</h3>
+                <p>AI that assists rather than assumes. Smart intake, urgency detection, and automated drafting, always under veterinarian supervision.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🇮🇳</div>
+                <h3>Built for India</h3>
+                <p>Designed for the scale, constraints, and realities of the Indian veterinary ecosystem, with a vision for global applicability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section">
+        <div class="container fade-in">
+            <h2>Veterinary operations are broken</h2>
+            <p>Clinics lose time, continuity, and revenue because their systems are fundamentally disconnected.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-item fade-in">
+                    <h4>Fragmented Records</h4>
+                    <p>Paper files and scattered digital notes prevent comprehensive patient history.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h4>Broken Intake</h4>
+                    <p>High call volumes lead to missed details and poor prioritization of urgent cases.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h4>Lost Continuity</h4>
+                    <p>No automated follow-ups mean patients fall through the cracks post-treatment.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h4>Zero Intelligence</h4>
+                    <p>Lack of structured data prevents disease surveillance and operational insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section id="product" class="container">
+        <div class="fade-in">
+            <h2>One unified veterinary operating system</h2>
+            <p>Replacing patchwork solutions with a single, coherent platform.</p>
+            
+            <div class="pill-grid">
+                <div class="pill fade-in">Role-Based Access</div>
+                <div class="pill fade-in">Clinic Operations</div>
+                <div class="pill fade-in">AI-Assisted Intake</div>
+                <div class="pill fade-in">Specialty-Ready</div>
+                <div class="pill fade-in">Future Infrastructure</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="container">
+        <div class="fade-in" style="margin-bottom: 3rem;">
+            <h2>Product Roadmap</h2>
+            <p>Our staged approach to redefining veterinary care.</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="card roadmap-card fade-in">
+                <span class="badge badge-now">Available Now</span>
+                <h3 class="text-secondary">V1 — Clinic OS</h3>
+                <p>The foundation of structured clinical workflow.</p>
+                <ul class="roadmap-list">
+                    <li>Role-based login</li>
+                    <li>Patient registration & history</li>
+                    <li>SOAP Consultation</li>
+                    <li>Prescription builder</li>
+                    <li>Inventory & stock alerts</li>
+                    <li>Vaccination scheduler</li>
+                    <li>Automated follow-ups</li>
+                </ul>
+            </div>
+            
+            <div class="card roadmap-card fade-in">
+                <span class="badge badge-dev">In Development</span>
+                <h3 class="text-accent">V2 — AI-Assisted Workflow</h3>
+                <p>Eliminating administrative friction.</p>
+                <ul class="roadmap-list">
+                    <li>AI WhatsApp intake</li>
+                    <li>Urgency detection engine</li>
+                    <li>Smart doctor routing</li>
+                    <li>AI-generated intake summaries</li>
+                    <li>Draft discharge instructions</li>
+                    <li>Human review gates</li>
+                </ul>
+            </div>
+            
+            <div class="card roadmap-card fade-in">
+                <span class="badge badge-soon">Coming Soon</span>
+                <h3>V3 — Network Platform</h3>
+                <p>The connective tissue of the ecosystem.</p>
+                <ul class="roadmap-list">
+                    <li>Specialty referral portal</li>
+                    <li>Teaching hospital mode</li>
+                    <li>Anonymized case library</li>
+                    <li>House-call scheduling</li>
+                    <li>Cross-clinic continuity</li>
+                    <li>Disease surveillance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why India Why Now -->
+    <section class="container">
+        <div class="fade-in" style="margin-bottom: 3rem;">
+            <h2>Why India. Why Now.</h2>
+        </div>
+        <div class="grid-2">
+            <div class="card fade-in">
+                <h3 class="text-accent">~75,000</h3>
+                <p>Registered veterinarians operating in a rapidly growing companion-animal and production market.</p>
+            </div>
+            <div class="card fade-in">
+                <h3 class="text-accent">₹10,000 Cr+</h3>
+                <p>Indian pet industry size, growing at 20% YoY, demanding higher standards of care.</p>
+            </div>
+            <div class="card fade-in">
+                <h3 class="text-accent">Zero Incumbents</h3>
+                <p>No India-first, modern, structured clinical OS exists at scale today.</p>
+            </div>
+            <div class="card fade-in">
+                <h3 class="text-accent">AI & Connectivity</h3>
+                <p>Ubiquitous WhatsApp penetration allows for seamless AI intake without forcing app downloads.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="vision" class="founder-section">
+        <div class="container">
+            <div class="founder-box fade-in">
+                <div>
+                    <h2 style="margin-bottom: 0.5rem;">Haresh Kumar</h2>
+                    <p class="text-accent" style="font-weight: 600;">Founder, அgadham</p>
+                </div>
+                
+                <div class="quote">
+                    "Workflow before buzzwords. Systems before features. Infrastructure before scale."
+                </div>
+                
+                <p class="bio-text">
+                    Builder and systems thinker. At அgadham, we are not building another appointment booking app. We are building the operating system that veterinary care in India will run on. Our focus is on practical technology that reduces friction in serious clinical work, enabling veterinarians to focus on outcomes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Signal -->
+    <section class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 4rem;">
+            <h2>Built to be fundable.<br>Designed to last.</h2>
+        </div>
+        <div class="grid-3">
+            <div class="fade-in" style="text-align: center;">
+                <h3 class="text-secondary">V1 is sellable now</h3>
+                <p>Immediate SaaS revenue potential with low CAC in metro clinics.</p>
+            </div>
+            <div class="fade-in" style="text-align: center;">
+                <h3 class="text-accent">V2 transforms ops</h3>
+                <p>Unlocks premium pricing and creates a proprietary data flywheel.</p>
+            </div>
+            <div class="fade-in" style="text-align: center;">
+                <h3>V3 is the moat</h3>
+                <p>Network effects across teaching, specialty, and field care establish category dominance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="container">
+        <div class="cta-section fade-in">
+            <h2>Let's build this together</h2>
+            <p style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Whether you are an investor looking at the next category-defining vertical SaaS, or a clinic ready to upgrade your operations.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Request Investor Deck</a>
+                <a href="#" class="btn btn-outline">Book a Demo</a>
+                <a href="#" class="btn btn-outline">Partner with us</a>
+            </div>
+            
+            <div class="contact-info">
+                <span>📍 Chennai, India</span>
+                <span>✉️ founder@agadham.in</span>
+                <span>🔗 <a href="#" style="color: var(--muted);">LinkedIn Profile</a></span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem;">
+                <span class="text-accent">அ</span>gadham
+            </div>
+            <p>India's Veterinary Operating System</p>
+            <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 அgadham. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(8, 11, 18, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(201, 169, 110, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(8, 11, 18, 0.8)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+            }
+        });
+
+        // Intersection Observer for Fade-in Animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+        
+        // Trigger initial check for elements already in viewport
+        setTimeout(() => {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>

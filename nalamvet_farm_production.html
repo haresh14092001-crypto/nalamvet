@@ -3,1006 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Agadham Agri-Pro — Dairy Farms, Cooperatives, Production Units</title>
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNmNGE4MjUiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
+    <title>NalamVet Production — Professional Veterinary System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
     <style>
         :root {
             --bg: #080b12; --surface: #0f1320; --surface2: #161d2e; --surface-hover: #1e2740;
-            --border: #232d44; --accent: #f4a825; --accent-hover: #e6931a;
-            --accent2: #ff6b35; --warn: #ffb020; --danger: #ff3b5c;
+            --border: #232d44; --accent: #00e5a0; --accent-hover: #00cc8e;
+            --accent2: #4d9fff; --warn: #ffb020; --danger: #ff3b5c;
             --text: #e8edf8; --muted: #7a86a5;
-            --gradient: linear-gradient(135deg, #f4a825 0%, #ff6b35 100%);
-            --glow: 0 0 30px rgba(244,168,37,0.15);
+            --gradient: linear-gradient(135deg, #00e5a0 0%, #0090ff 100%);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 5px; height: 5px; } 
-        ::-webkit-scrollbar-track { background: transparent; } 
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
-        
-        /* Layout Grid */
         .app-layout { display: none; height: 100vh; overflow: hidden; }
-        .sidebar { width: 264px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 50; flex-shrink: 0; box-shadow: 4px 0 24px rgba(0,0,0,0.3);}
-        .logo-area { padding: 24px 20px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(244,168,37,0.05) 0%, transparent 100%); }
-        .app-name { font-size: 20px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
-        .app-name .logo-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(244,168,37,0.5)); }
-        .app-name span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .app-badge { font-size: 9px; font-weight: 700; background: rgba(244,168,37,0.12); color: var(--accent); padding: 3px 8px; border-radius: 20px; margin-top: 8px; display: inline-block; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(244,168,37,0.2);}
-        
-        .nav-menu { padding: 12px 10px; flex: 1; display: flex; flex-direction: column; gap: 2px; overflow-y: auto;}
-        .nav-section { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; padding: 12px 12px 6px; }
-        .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 10px; cursor: pointer; color: var(--muted); font-size: 13.5px; font-weight: 500; transition: all 0.2s cubic-bezier(0.4,0,0.2,1); position: relative; }
-        .nav-item i { font-size: 17px; font-style: normal; width: 22px; text-align: center; opacity: 0.8; }
-        .nav-item:hover { background: var(--surface2); color: var(--text); transform: translateX(2px); }
-        .nav-item.active { background: rgba(244,168,37,0.08); color: var(--accent); font-weight: 600; }
-        .nav-item.active::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 60%; background: var(--gradient); border-radius: 0 3px 3px 0; }
-        .nav-item.active i { opacity: 1; }
-        
-        .sidebar-footer { padding: 16px; border-top: 1px solid var(--border); }
-        .lang-toggle { display: flex; background: var(--surface2); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 10px;}
-        .lang-btn { flex: 1; text-align: center; font-size: 11px; font-weight: 600; padding: 8px; cursor: pointer; color: var(--muted); transition: all 0.2s; }
-        .lang-btn.active { background: linear-gradient(135deg, #f4a825, #e6931a); color: #000; }
-        .clinic-info { font-size: 11px; color: var(--muted); text-align: center; padding: 8px 0 0; opacity: 0.7; }
-        
-        /* Main Container */
-        .main-content { flex: 1; overflow-y: auto; scroll-behavior: smooth; position: relative; background: var(--bg); }
-        .page { display: none; padding: 32px; max-width: 1320px; margin: 0 auto; animation: fadeIn 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .sidebar { width: 260px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+        .logo-area { padding: 24px; border-bottom: 1px solid var(--border); }
+        .app-name { font-size: 20px; font-weight: 800; }
+        .app-name span { color: var(--accent); }
+        .nav-menu { padding: 12px; flex: 1; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 10px; cursor: pointer; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
+        .nav-item.active { background: rgba(0,229,160,0.1); color: var(--accent); font-weight: 600; }
+        .lang-toggle { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 4px; }
+        .lang-btn { flex: 1; text-align: center; font-size: 10px; font-weight: 700; padding: 8px; cursor: pointer; background: var(--surface2); border-radius: 6px; }
+        .lang-btn.active { background: var(--accent); color: #000; }
+        .main-content { flex: 1; overflow-y: auto; background: var(--bg); position: relative; }
+        .page { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.3s; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes countUp { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
-        
-        .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;}
-        .title { font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-        .subtitle { font-size: 13px; color: var(--muted); margin-top: 5px; }
-        
-        /* Buttons */
-        .btn { border: none; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; outline: none; white-space: nowrap; letter-spacing: 0.2px;}
-        .btn-primary { background: linear-gradient(135deg, #f4a825, #e6931a); color: #000; box-shadow: 0 4px 15px rgba(244,168,37,0.25); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244,168,37,0.35); }
-        .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
-        .btn-secondary:hover { background: var(--surface-hover); border-color: var(--muted); transform: translateY(-1px); }
-        .btn-danger { background: rgba(255, 59, 92, 0.1); color: var(--danger); border: 1px solid rgba(255, 59, 92, 0.25); }
-        .btn-danger:hover { background: rgba(255, 59, 92, 0.18); transform: translateY(-1px); }
-        .btn-sm { padding: 6px 12px; font-size: 11px; border-radius: 7px; }
-        .btn-icon { width: 36px; height: 36px; padding: 0; justify-content: center; border-radius: 8px; }
-
-        /* Structural Cards */
-        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.25); transition: border-color 0.2s; }
-        .card:hover { border-color: rgba(244,168,37,0.15); }
-        .card-header { padding: 16px 22px; border-bottom: 1px solid var(--border); font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; letter-spacing: 0.2px; }
-        .card-header:hover { background: rgba(255,255,255,0.02); border-radius: 14px 14px 0 0; }
-        .card-header .toggle-icon { font-size: 11px; color: var(--muted); transition: transform 0.3s; }
-        .card-header.collapsed .toggle-icon { transform: rotate(-90deg); }
-        .card-body { padding: 22px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; transition: all 0.3s ease; }
-        .card-body.collapsed { display: none; }
-        
-        .col-2 { grid-column: span 2; } .col-3 { grid-column: span 3; } 
-        .col-4 { grid-column: span 4; } .col-6 { grid-column: span 6; } 
-        .col-8 { grid-column: span 8; } .col-12 { grid-column: span 12; }
-        
-        /* Form Components */
-        .form-group { display: flex; flex-direction: column; gap: 7px; position: relative;}
-        label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; }
-        input[type="text"], input[type="number"], input[type="date"], select, textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-radius: 9px; padding: 11px 13px; font-size: 14px; transition: all 0.2s; font-family: 'Inter', sans-serif; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(244,168,37,0.1); background: rgba(244,168,37,0.03); }
-        input.error { border-color: var(--danger); box-shadow: 0 0 0 2px rgba(255,59,92,0.1);}
-        textarea { resize: vertical; min-height: 80px; }
-        .range-hint { position: absolute; right: 0; top: 0; font-size: 10px; color: var(--warn); font-weight: 700; background: rgba(255,176,32,0.1); padding: 2px 6px; border-radius: 4px;}
-        select option { background: var(--surface2); }
-
-        /* Modern Checkboxes */
-        .custom-checkboxes { display: flex; flex-wrap: wrap; gap: 8px; }
-        .chk-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text); cursor: pointer; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; transition: all 0.15s; }
-        .chk-pill:hover { border-color: var(--accent); color: var(--accent); } 
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .header { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .btn { border: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--accent); color: #000; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 20px; padding: 20px; }
+        .card-header { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; display: flex; justify-content: space-between; cursor: pointer; }
+        .form-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; }
+        .col-4 { grid-column: span 4; } .col-6 { grid-column: span 6; } .col-12 { grid-column: span 12; }
+        label { font-size: 10px; color: var(--muted); text-transform: uppercase; font-weight: 700; margin-bottom: 5px; display: block; }
+        input, select, textarea { width: 100%; padding: 10px; background: var(--surface2); border: 1px solid var(--border); color: #fff; border-radius: 6px; }
+        .chk-pill { background: var(--surface2); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin: 2px; }
+        .chk-pill.active { background: rgba(0,229,160,0.15); border-color: var(--accent); color: var(--accent); }
         .chk-pill input { display: none; }
-        .chk-pill.checked { background: rgba(244,168,37,0.1); border-color: var(--accent); color: var(--accent); }
-        /* Legacy support */
-        .chk-wrap { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); cursor: pointer;}
-        .chk-wrap input { width: auto; accent-color: var(--accent); cursor: pointer;}
-
-        /* Stats & Grids */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
-        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
-        .stat-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 50%; opacity: 0.04; }
-        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .stat-card .stat-icon { font-size: 24px; margin-bottom: 10px; display: block; }
-        .stat-val { font-size: 34px; font-weight: 800; margin-bottom: 6px; animation: countUp 0.5s ease; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .stat-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;}
-        .stat-accent { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; }
-        
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13.5px;}
-        th { color: var(--muted); font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.7px; background: rgba(255,255,255,0.01); padding: 10px 16px; }
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background: rgba(255,255,255,0.025); }
-        tbody tr { transition: background 0.15s; }
-        
-        /* Colored Badges */
-        .badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; letter-spacing: 0.3px; }
-        .badge-green { background: rgba(244,168,37,0.12); color: var(--accent); border: 1px solid rgba(244,168,37,0.2); }
-        .badge-blue { background: rgba(77,159,255,0.12); color: var(--accent2); border: 1px solid rgba(77,159,255,0.2); }
-        .badge-warn { background: rgba(255,176,32,0.12); color: var(--warn); border: 1px solid rgba(255,176,32,0.2); }
-        .badge-danger { background: rgba(255,59,92,0.12); color: var(--danger); border: 1px solid rgba(255,59,92,0.2); }
-        .bg-red-alert { background: rgba(255, 59, 92, 0.06); border-left: 3px solid var(--danger); }
-        .bg-orange-alert { background: rgba(255, 176, 32, 0.06); border-left: 3px solid var(--warn); }
-        .alert { padding: 14px 16px; border-radius: 10px; font-size: 13px; font-weight: 500; display: none; margin-bottom: 16px; align-items: flex-start; gap: 12px; grid-column: span 12;}
-        .alert.show { display: flex; }
-        .alert-danger { background: rgba(255, 59, 92, 0.08); border: 1px solid rgba(255, 59, 92, 0.25); color: #fff; }
-        
-        /* Drug Reference */
-        .drug-category { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-        .drug-cat-header { padding: 14px 18px; background: var(--surface2); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; transition: background 0.2s; }
-        .drug-cat-header:hover { background: var(--surface-hover); }
-        .drug-cat-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; padding: 14px; background: var(--bg); }
-        .drug-cat-body.hidden { display: none; }
-        .drug-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; cursor: pointer; transition: all 0.2s; }
-        .drug-card:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(244,168,37,0.1); transform: translateY(-1px); }
-        .drug-card strong { display: block; font-size: 13px; margin-bottom: 4px; color: var(--text); }
-        .drug-card .dc-brands { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-        .drug-card .dc-dose { font-size: 11px; color: var(--accent); background: rgba(244,168,37,0.06); padding: 4px 8px; border-radius: 5px; }
-
-        /* Modals */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; display: none; align-items: center; justify-content: center; backdrop-filter: blur(6px);}
-        .modal-overlay.active { display: flex; }
-        .modal { background: var(--surface); width: 100%; max-width: 620px; max-height: 90vh; border-radius: 18px; border: 1px solid var(--border); overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5);}
-        .modal-body { padding: 32px; }
-        
-        /* Autocomplete */
-        .ac-results { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--surface); border: 1px solid var(--accent); border-radius: 10px; max-height: 260px; overflow-y: auto; z-index: 100; box-shadow: 0 12px 40px rgba(0,0,0,0.5); display: none;}
-        .ac-item { padding: 12px 16px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; font-size: 13px; }
-        .ac-item:last-child { border-bottom: none; }
-        .ac-item:hover { background: rgba(244,168,37,0.06); color: var(--accent); }
-        .ac-item .ac-brand { font-size: 11px; color: var(--muted); }
-
-        /* prescribed drug rows */
-        .rx-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
-        .rx-name { flex: 1; font-size: 13px; font-weight: 600; }
-        .rx-dose { font-size: 12px; color: var(--muted); }
-        .rx-del { cursor: pointer; color: var(--danger); font-size: 16px; padding: 4px; border-radius: 6px; transition: background 0.15s; }
-        .rx-del:hover { background: rgba(255,59,92,0.1); }
-
-        /* Section Dividers */
-        .section-divider { grid-column: span 12; border: none; border-top: 1px solid var(--border); margin: 4px 0; }
-        .section-title { grid-column: span 12; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; padding: 4px 0 2px; border-bottom: 1px solid rgba(244,168,37,0.15); }
-
-        /* Print */
-        @media print {
-            body { background: #fff !important; color: #000 !important; font-size: 12px !important; }
-            .sidebar, .nav-menu, .btn, .header { display: none !important; }
-            .main-content { margin: 0; padding: 0; overflow: visible; }
-            .page { display: none !important; }
-            #page-print { display: block !important; position: absolute; top:0; left:0; width: 100%;}
-            .print-paper { padding: 0; background: transparent; border: none; width: 100%; }
-            .print-header { border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 20px; text-align: center; }
-            .print-title { font-size: 24px; font-weight: 800; text-transform: uppercase;}
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th { border-bottom: 2px solid #000; color: #000; padding: 8px; font-size: 11px;}
-            td { border-bottom: 1px solid #ccc; padding: 8px; font-size: 11px;}
-            .finding-block { border: 1px solid #000; padding: 12px; margin-top: 20px; font-size: 11px; page-break-inside: avoid;}
-        }
-        
-        @media(max-width: 768px) {
-            .app-layout { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-            .logo-area { padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
-            .nav-menu { flex-direction: row; padding: 6px; overflow-x: auto; gap: 4px; }
-            .nav-section { display: none; }
-            .nav-item { padding: 8px 12px; font-size: 12px; white-space: nowrap; border-radius: 8px; }
-            .nav-item.active::before { display: none; }
-            .nav-item.active { border-bottom: none; }
-            .col-2, .col-3, .col-4, .col-6, .col-8 { grid-column: span 12; }
-            .page { padding: 14px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        }
+        .hint-box { background: rgba(0,229,160,0.05); border: 1px dashed var(--accent); color: var(--accent); padding: 12px; border-radius: 8px; font-size: 12px; margin-top: 10px; }
+        .rx-row { background: var(--surface2); border-left: 4px solid var(--accent); padding: 12px; border-radius: 6px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .rx-del { color: var(--danger); cursor: pointer; font-weight: 700; }
+        .ac-box { position: absolute; background: var(--surface2); border: 1px solid var(--accent); z-index: 1000; border-radius: 8px; max-height: 200px; overflow-y: auto; width: 100%; display: none; }
+        .ac-item { padding: 10px; cursor: pointer; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .ac-item:hover { background: var(--accent); color: #000; }
+        @media print { .sidebar, .no-print { display: none !important; } .main-content { background: #fff; color: #000; overflow: visible; } body { background: #fff; } .page { display: none !important; } #print-view { display: block !important; padding: 40px; } }
     </style>
 </head>
-
 <body>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen" style="position:fixed; inset:0; background:var(--bg); z-index:9999; display:flex; align-items:center; justify-content:center;">
-    <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;box-shadow:0 20px 60px rgba(244,168,37,0.15);">
-        <div style="font-size:48px;margin-bottom:12px;">🐄</div>
-        <div style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;">Agadham <span style="color:var(--accent);">Agri-Pro</span></div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:32px;">India's Comprehensive Farm Veterinary System</div>
-        <div style="text-align:left;margin-bottom:12px;">
-            <label style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Master Passcode</label>
-            <input type="password" id="auth-pin" placeholder="Enter Farm PIN (default: 1234)" 
-                style="width:100%;padding:16px;font-size:20px;text-align:center;letter-spacing:6px;margin-top:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;"
-                autocomplete="off">
+<div id="auth-screen" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;">
+    <div style="max-width:440px;width:100%;background:var(--surface);padding:48px 40px;border-radius:20px;border:1px solid rgba(0,229,160,0.3);text-align:center;box-shadow:0 20px 60px rgba(0,229,160,0.15);">
+        <div style="font-size:52px;margin-bottom:14px;filter:drop-shadow(0 0 12px rgba(0,229,160,0.4));">🌾</div>
+        <div style="font-size:28px;font-weight:800;margin-bottom:6px;">NalamVet <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Production</span></div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:28px;">Farm & Clinic Operations System</div>
+
+        <div style="text-align:left;margin-bottom:14px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px;">Select Role</label>
+            <select id="auth-role" onchange="updateProdRolePreview()" style="width:100%;padding:13px 16px;font-size:15px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);outline:none;">
+                <option value="">— Choose Role —</option>
+                <option value="farm_manager">🌾 Farm Manager</option>
+                <option value="veterinarian">🩺 Veterinarian</option>
+            </select>
         </div>
-        <div style="text-align:left;margin-bottom:12px;">
-            <input type="checkbox" id="legal-consent" style="margin-right:8px;">
-            <label for="legal-consent" style="font-size:12px;color:var(--muted);">I agree that the data entered can be used for future veterinary studies and research purposes. This software is for educational use only and does not provide medical advice.</label>
+
+        <div id="prod-role-preview" style="margin-bottom:14px;display:none;">
+            <div id="prod-role-badge" style="display:inline-block;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;"></div>
         </div>
-        <button onclick="unlockApp()" style="width:100%;padding:14px;background:var(--accent);color:#000;font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;margin-top:8px;">🔓 Unlock Farm System</button>
-        <div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;">❌ Invalid PIN. Try: 1234</div>
+
+        <div style="text-align:left;margin-bottom:14px;">
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px;">PIN</label>
+            <input type="password" id="pin" placeholder="· · · ·" maxlength="6" style="width:100%;padding:14px;font-size:22px;text-align:center;letter-spacing:10px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);outline:none;" onkeypress="if(event.key==='Enter') auth()">
+        </div>
+
+        <button class="btn btn-primary" onclick="auth()" style="width:100%;justify-content:center;padding:14px;font-size:15px;">🔓 Unlock System</button>
+        <div id="auth-err" style="color:var(--danger);font-size:12px;margin-top:12px;display:none;padding:8px;background:rgba(255,59,92,0.08);border-radius:8px;"></div>
     </div>
 </div>
 
-<div class="app-layout">
-    <!-- SIDEBAR -->
+<div class="app-layout" id="app">
     <aside class="sidebar">
-        <div class="logo-area">
-            <div class="app-name">🐄 Agadham <span>Agri-Pro</span></div>
-            <div class="app-badge">Agri-Pro | Farm & Cooperative</div>
+        <div class="logo-area"><h1 class="app-name">NalamVet <span>Production</span></h1></div>
+        <div id="user-pill" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border-radius:10px;margin:8px 12px 0;border:1px solid var(--border);">
+          <span id="sidebar-avatar" style="font-size:20px;">🌾</span>
+          <div style="flex:1;min-width:0;">
+            <div id="sidebar-name" style="font-size:12px;font-weight:700;color:var(--text);">—</div>
+            <div id="sidebar-role" style="font-size:10px;color:var(--muted);">—</div>
+          </div>
+          <span onclick="logout()" title="Logout" style="cursor:pointer;color:var(--muted);font-size:13px;padding:3px;">⏏</span>
         </div>
-        <nav class="nav-menu">
-            <div class="nav-item active" onclick="nav('dashboard', this)"><i>📊</i> <span class="t-dash">Dashboard</span></div>
-            <div class="nav-item" onclick="nav('registry', this)"><i>📋</i> <span class="t-reg">Animal Registry</span></div>
-            <div class="nav-item" onclick="nav('production', this)"><i>🥛</i> <span class="t-prod">Milk / Yield Tracker</span></div>
-            <div class="nav-item" onclick="nav('breeding', this)"><i>🐄</i> <span class="t-breed">Reproductive Log</span></div>
-            <div class="nav-item" onclick="nav('health', this)"><i>🩺</i> <span class="t-health">Herd Health</span></div>
-            <div class="nav-item" onclick="nav('vaccines', this)"><i>💉</i> <span class="t-vacc">Vaccination Programs</span></div>
-            <div class="nav-item" onclick="nav('inventory', this)"><i>📦</i> <span class="t-inv">Stock & Consumables</span></div>
-            <div class="nav-item" onclick="nav('feed', this)"><i>🌾</i> <span class="t-feed">Feed Management</span></div>
-            <div class="nav-item" onclick="nav('feed-optimizer', this)"><i>⚖️</i> <span class="t-feed-opt">Feed Optimizer</span></div>
-            <div class="nav-item" onclick="nav('reports', this)"><i>📈</i> <span class="t-reports">Reports & Export</span></div>
-            <div class="nav-item" onclick="nav('settings', this)"><i>⚙️</i> <span class="t-settings">Settings</span></div>
+        <nav class="nav-menu" id="navMenu">
+            <div class="nav-item active" data-page="dash" onclick="nav('dash',this)">📊 <span data-i18n="Dashboard">Dashboard</span></div>
+            <div class="nav-item" data-page="cons" onclick="nav('cons',this)">🩺 <span data-i18n="Consultation">Consultation</span></div>
+            <div class="nav-item" data-page="drugs" onclick="nav('drugs',this)">💊 <span data-i18n="Medicines">Medicines</span></div>
+            <div class="nav-item" data-page="sets" onclick="nav('sets',this)">⚙️ <span data-i18n="Settings">Settings</span></div>
         </nav>
-        <div class="sidebar-footer">
-            <div class="lang-toggle">
-                <div class="lang-btn active" onclick="setLang('en', this)">English</div>
-                <div class="lang-btn" onclick="setLang('ta', this)">தமிழ்</div>
-                <div class="lang-btn" onclick="setLang('hi', this)">हिंदी</div>
-            </div>
-            <div class="clinic-info" id="clinic-info"></div>
+        <div class="lang-toggle">
+            <div class="lang-btn active" onclick="setL('en',this)">EN</div>
+            <div class="lang-btn" onclick="setL('ta',this)">தமிழ்</div>
+            <div class="lang-btn" onclick="setL('hi',this)">हिंदी</div>
         </div>
     </aside>
-
     <main class="main-content">
-        <!-- DASHBOARD -->
-        <div id="page-dashboard" class="page active">
-            <div class="header">
-                <div><h1 class="title t-dash">Dashboard</h1><div class="subtitle">Farm Overview</div></div>
-            </div>
-            
+        <div id="p-dash" class="page active">
+            <div class="header"><div><h2 data-i18n="Clinical Overview">Clinical Overview</h2></div><button class="btn btn-primary" onclick="nav('cons')">➕ <span data-i18n="New Case">New Case</span></button></div>
+            <div class="card"><h3 data-i18n="Recent Records">Recent Records</h3><table id="dashTable" style="width:100%;margin-top:15px;border-collapse:collapse;"></table></div>
+        </div>
+        <div id="p-cons" class="page">
+            <div class="header"><h2 data-i18n="New Consultation">New Consultation</h2><button class="btn btn-primary" onclick="save()">💾 <span data-i18n="Save Record">Save Record</span></button></div>
             <div class="card">
-                <div class="card-header" onclick="toggleC(this)">🏭 WHY MILMA/AAVIN FARMS NEED THIS <span class="toggle-icon">▾</span></div>
-                <div class="card-body">
-                    <div class="col-12">
-                        <p>Gap 1: Paper milk records → ₹40,000 loss/year from missed peak yield detection</p>
-                        <p>Gap 2: Manual heat detection → 35% missed conception → ₹800-2000/missed AI cycle</p>
-                        <p>Gap 3: No withdrawal tracking → milk rejection at collection center (FSSAI violation)</p>
-                        <p>Gap 4: No vaccination schedule → FMD outbreak = 30-40% production drop</p>
-                        <p>Gap 5: No herd-level disease aggregation → outbreak spreads to 60% before noticed</p>
-                        <p>Gap 6: No calving-to-dry-off workflow → incorrect dry period = mastitis risk</p>
-                        <p>Gap 7: Feed cost vs yield ratio unknown → 15-20% feed wastage common</p>
-                        <p><strong>Agadham Agri-Pro closes all 7 gaps.</strong></p>
-                    </div>
+                <div class="card-header"><span data-i18n="Patient Details">Patient Details</span></div>
+                <div class="form-grid">
+                    <div class="col-4"><label data-i18n="Owner Name">Owner Name</label><input type="text" id="owner"></div>
+                    <div class="col-4"><label data-i18n="Species">Species</label><select id="species" onchange="calc()"><option value="Dog">Dog</option><option value="Cattle">Cattle</option><option value="Poultry">Poultry</option></select></div>
+                    <div class="col-4"><label data-i18n="Weight (kg)">Weight (kg)</label><input type="number" id="wt" oninput="calc()"></div>
                 </div>
             </div>
-
             <div class="card">
-                <div class="card-header" onclick="toggleC(this)">⚖️ LEGAL DISCLAIMER <span class="toggle-icon">▾</span></div>
-                <div class="card-body">
-                    <div class="col-12">
-                        <p><strong>IMPORTANT LEGAL NOTICE:</strong> This software is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment. All veterinary decisions must be made by qualified professionals. Data entered may be used for research under IPC Section 304A exemption and Patents Act 3(j) exclusion. By using this software, you agree to these terms.</p>
-                    </div>
+                <div class="card-header"><span data-i18n="Clinical Signs">Clinical Signs</span></div>
+                <div id="signs-box">
+                    <label class="chk-pill" onclick="tglSigns(this)"><input type="checkbox" value="Fever"> <span data-i18n="Fever">Fever</span></label>
+                    <label class="chk-pill" onclick="tglSigns(this)"><input type="checkbox" value="Milk Drop"> <span data-i18n="Milk Drop">Milk Drop</span></label>
+                    <label class="chk-pill" onclick="tglSigns(this)"><input type="checkbox" value="Bloat"> <span data-i18n="Bloat">Bloat</span></label>
+                    <label class="chk-pill" onclick="tglSigns(this)"><input type="checkbox" value="Off-feed"> <span data-i18n="Off-feed">Off-feed</span></label>
+                    <label class="chk-pill" onclick="tglSigns(this)"><input type="checkbox" value="Vomiting"> <span data-i18n="Vomiting">Vomiting</span></label>
                 </div>
+                <div id="hint" class="hint-box" style="display:none"></div>
             </div>
-
-            <div class="stats-grid">
-                <div class="stat-card" style="border-color: var(--accent);"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total Animals</div></div>
-                <div class="stat-card" style="border-color: var(--accent2);"><div class="stat-val" id="s-milk">0</div><div class="stat-lbl">In Milk</div></div>
-                <div class="stat-card" style="border-color: var(--warn);"><div class="stat-val" id="s-dry">0</div><div class="stat-lbl">Dry</div></div>
-                <div class="stat-card" style="border-color: #9b59b6;"><div class="stat-val" id="s-preg">0</div><div class="stat-lbl">Pregnant</div></div>
-                <div class="stat-card" style="border-color: #2ecc71;"><div class="stat-val" id="s-sick">0</div><div class="stat-lbl">Sick/Treated</div></div>
-            </div>
-
-            <div class="alert alert-danger" id="alerts-panel">
-                <i style="font-style:normal;font-size:18px;">⚠️</i> <div><strong style="display:block; margin-bottom:4px;">Farm Alerts</strong><span id="alerts-text"></span></div>
-            </div>
-
             <div class="card">
-                <div class="card-header t-yield">Today's Yield (L)</div>
-                <div style="padding: 22px;"><canvas id="yieldChart"></canvas></div>
+                <div class="card-header"><span data-i18n="Prescription">Prescription</span></div>
+                <div style="position:relative"><label data-i18n="Search Medicine">Search Medicine</label><input type="text" id="srch" oninput="ac(this.value)"><div id="ac" class="ac-box"></div></div>
+                <div id="rx-list" style="margin-top:20px;"></div>
+                <div style="margin-top:20px;text-align:right"><button class="btn btn-primary" onclick="window.print()" data-i18n="Print Receipt">Print Receipt</button></div>
             </div>
         </div>
-
-        <!-- ANIMAL REGISTRY -->
-        <div id="page-registry" class="page">
-            <div class="header">
-                <div><h1 class="title t-reg">Animal Registry</h1><div class="subtitle">Register each animal</div></div>
-                <button class="btn btn-primary" onclick="addAnimalModal()">➕ Add Animal</button>
-            </div>
-            <div class="card">
-                <div style="overflow-x:auto;">
-                    <table id="animalTable">
-                        <thead><tr><th>Tag</th><th>Name</th><th>Species</th><th>Breed</th><th>Sex</th><th>DOB</th><th>Status</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
+        <div id="p-sets" class="page">
+            <div class="header"><h2 data-i18n="Clinic Settings">Clinic Settings</h2></div>
+            <div class="card"><label data-i18n="Clinic Name">Clinic Name</label><input type="text" id="cname"></div>
         </div>
-
-        <!-- PRODUCTION TRACKER -->
-        <div id="page-production" class="page">
-            <div class="header"><div><h1 class="title t-prod">Milk / Yield Tracker</h1></div></div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Select Animal</label><select id="prod-animal" onchange="loadProdChart()"></select></div>
-                    <div class="col-12"><canvas id="prodChart"></canvas></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">Add Record</div>
-                <div class="card-body">
-                    <div class="form-group col-3"><label>Date</label><input type="date" id="prod-date"></div>
-                    <div class="form-group col-3"><label>Yield (L)</label><input type="number" step="0.1" id="prod-yield"></div>
-                    <div class="form-group col-3"><label>BCS (1-5)</label><input type="number" step="0.1" id="prod-bcs"></div>
-                    <div class="col-3" style="display:flex; align-items:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addProdRecord()">Save</button></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BREEDING LOG -->
-        <div id="page-breeding" class="page">
-            <div class="header"><div><h1 class="title t-breed">Reproductive Log</h1></div></div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Select Animal</label><select id="breed-animal" onchange="loadBreedLog()"></select></div>
-                    <div class="col-12"><h3>Heat & AI Log</h3></div>
-                    <div class="form-group col-3"><label>Heat Date</label><input type="date" id="heat-date"></div>
-                    <div class="form-group col-6"><label>Signs</label><input type="text" id="heat-signs" placeholder="Mounting, discharge..."></div>
-                    <div class="form-group col-3"><label>AI Date</label><input type="date" id="ai-date"></div>
-                    <div class="col-12"><h3>Calving & Dry</h3></div>
-                    <div class="form-group col-3"><label>Last Calving</label><input type="date" id="calv-date" onchange="calcNextHeat()"></div>
-                    <div class="form-group col-3"><label>Dry-off Date</label><input type="date" id="dry-date"></div>
-                    <div class="form-group col-6">
-                        <div style="background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.3); padding:16px; border-radius:8px; height:100%;">
-                            <label style="color:var(--text)">Expected Next Heat</label>
-                            <div id="next-heat" style="font-size:20px; font-weight:800; color:var(--accent2); margin-top:4px;">- Select last calving -</div>
-                        </div>
-                    </div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveBreedLog()">Save Log</button></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- HERD HEALTH -->
-        <div id="page-health" class="page">
-            <div class="header"><div><h1 class="title t-health">Herd Health</h1></div></div>
-            <div class="card">
-                <div class="card-header">Treatment Record</div>
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Animal(s)</label><select id="health-animal" multiple></select></div>
-                    <div class="form-group col-4"><label>Diagnosis</label><input type="text" id="health-diag"></div>
-                    <div class="form-group col-4"><label>Treatment Date</label><input type="date" id="health-date"></div>
-                    <div class="form-group col-6"><label>Drugs Used</label><input type="text" id="health-drugs"></div>
-                    <div class="form-group col-6"><label>Withdrawal Period</label><input type="text" id="health-withdrawal" readonly></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveHealthRecord()">Save Treatment</button></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VACCINATION PROGRAMS -->
-        <div id="page-vaccines" class="page">
-            <div class="header"><div><h1 class="title t-vacc">Vaccination Programs</h1></div></div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Program</label>
-                        <select id="vacc-program">
-                            <option value="fmd">FMD (Foot & Mouth Disease)</option>
-                            <option value="bq">BQ (Black Quarter)</option>
-                            <option value="hs">HS (Haemorrhagic Septicaemia)</option>
-                            <option value="brucella">Brucella</option>
-                            <option value="ppr">PPR (Goat)</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-4"><label>Animals</label><select id="vacc-animals" multiple></select></div>
-                    <div class="form-group col-4"><label>Vaccination Date</label><input type="date" id="vacc-date"></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="recordVaccination()">Record Vaccination</button></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- STOCK & CONSUMABLES -->
-        <div id="page-inventory" class="page">
-            <div class="header">
-                <div><h1 class="title t-inv">Stock & Consumables</h1></div>
-                <button class="btn btn-secondary" onclick="exportInvCSV()">📥 Export CSV</button>
-            </div>
-            <div class="card">
-                <div class="card-header">Add Item</div>
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Item Name</label><input type="text" id="inv-name"></div>
-                    <div class="form-group col-2"><label>Batch</label><input type="text" id="inv-batch"></div>
-                    <div class="form-group col-2"><label>Qty</label><input type="number" id="inv-qty"></div>
-                    &lt class="form-group col-2"><label>Unit Price</label><input type="number" id="inv-price"></div>
-                    <div class="form-group col-2"><label>Expiry</label><input type="date" id="inv-exp"></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" style="width:100%" onclick="addInvItem()">Add Item</button></div>
-                </div>
-            </div>
-            <div class="card">
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead><tr><th>Item</th><th>Batch</th><th>Qty</th><th>Price</th><th>Expiry</th><th>Action</th></tr></thead>
-                        <tbody id="invTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- FEED MANAGEMENT -->
-        <div id="page-feed" class="page">
-            <div class="header">
-                <div><h1 class="title t-feed">Feed Management</h1></div>
-            </div>
-            <div class="card">
-                <div class="card-header">Common Feeds Available in India</div>
-                <div class="card-body">
-                    <div class="col-12">
-                        <p>Green Fodder: Maize, Sorghum, Bajra, Lucerne, Berseem</p>
-                        <p>Dry Fodder: Rice Straw, Wheat Straw, Paddy Straw</p>
-                        <p>Concentrates: Maize, Wheat Bran, Rice Bran, Cotton Seed Cake, Groundnut Cake, Soybean Meal</p>
-                        <p>Mineral Supplements: Salt, Calcium, Phosphorus, Vitamins</p>
-                        <p>Silage: Maize Silage, Sorghum Silage</p>
-                        <p>Hay: Lucerne Hay, Berseem Hay</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">Feed Inventory</div>
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Feed Type</label><input type="text" id="feed-name"></div>
-                    <div class="form-group col-2"><label>Quantity (kg)</label><input type="number" id="feed-qty"></div>
-                    <div class="form-group col-2"><label>Cost/kg</label><input type="number" id="feed-cost"></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="addFeedItem()">Add Feed</button></div>
-                </div>
-            </div>
-            <div class="card">
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead><tr><th>Feed Type</th><th>Quantity (kg)</th><th>Cost/kg</th><th>Total Cost</th><th>Action</th></tr></thead>
-                        <tbody id="feedTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- FEED OPTIMIZER -->
-        <div id="page-feed-optimizer" class="page">
-            <div class="header">
-                <div><h1 class="title t-feed-opt">Feed Optimizer</h1></div>
-            </div>
-            <div class="card">
-                <div class="card-header">Feed Ration Calculator</div>
-                <div class="card-body">
-                    <div class="form-group col-3"><label>Animal Type</label>
-                        <select id="animal-type">
-                            <option value="cow">Cow</option>
-                            <option value="buffalo">Buffalo</option>
-                            <option value="goat">Goat</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-3"><label>Weight (kg)</label><input type="number" id="animal-weight"></div>
-                    <div class="form-group col-3"><label>Milk Yield (L/day)</label><input type="number" id="milk-yield"></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="calculateRation()">Calculate Ration</button></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">Recommended Ration</div>
-                <div class="card-body" id="ration-result">
-                    <p>Enter details and click Calculate to see recommended feed ration.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- REPORTS -->
-        <div id="page-reports" class="page">
-            <div class="header"><div><h1 class="title t-reports">Reports & Export</h1></div></div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Report Type</label>
-                        <select id="report-type">
-                            <option value="production">Monthly Production</option>
-                            <option value="vaccination">Vaccination Log</option>
-                            <option value="health">Health Records</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-4"><label>From Date</label><input type="date" id="report-from"></div>
-                    <div class="form-group col-4"><label>To Date</label><input type="date" id="report-to"></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="generateReport()">Generate CSV</button></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SETTINGS -->
-        <div id="page-settings" class="page">
-            <div class="header"><div><h1 class="title t-settings">Settings</h1></div></div>
-            <div class="card"><div class="card-body">
-                <div class="form-group col-4"><label>Farm Name</label><input type="text" id="farm-name"></div>
-                <div class="form-group col-4"><label>Owner Name</label><input type="text" id="farm-owner"></div>
-                <div class="form-group col-4"><label>Cooperative ID</label><input type="text" id="farm-coop"></div>
-                <div class="col-12" style="display:flex; gap:12px; margin-top:16px;">
-                    <button class="btn btn-primary" onclick="saveFarmSettings()">Save Settings</button>
-                    <button class="btn btn-secondary" onclick="exportBackup()">Export Backup</button>
-                </div>
-            </div></div>
-        </div>
-
-        <!-- PRINT VIEW -->
-        <div id="page-print" class="page">
-            <div class="print-paper" id="printContent"></div>
-        </div>
+        <div id="print-view" style="display:none"></div>
     </main>
-
-    <!-- MODALS -->
-    <div class="modal-overlay" id="animalModal" onclick="if(event.target===this) this.classList.remove('active')">
-        <div class="modal"><div class="modal-body">
-            <h2>Add Animal</h2>
-            <div class="form-group"><label>Tag Number</label><input type="text" id="animal-tag"></div>
-            <div class="form-group"><label>Name (Optional)</label><input type="text" id="animal-name"></div>
-            <div class="form-group"><label>Species</label><select id="animal-species"><option>Cattle</option><option>Buffalo</option><option>Goat</option><option>Sheep</option></select></div>
-            <div class="form-group"><label>Breed</label><input type="text" id="animal-breed"></div>
-            <div class="form-group"><label>Sex</label><select id="animal-sex"><option>Female</option><option>Male</option></select></div>
-            <div class="form-group"><label>Date of Birth</label><input type="date" id="animal-dob"></div>
-            <button class="btn btn-primary" onclick="saveAnimal()">Save Animal</button>
-        </div></div>
-    </div>
 </div>
-</body>
 
 <script>
-// ============================================================
-// LEGAL ANALYSIS BY SUPREME COURT & MEDICAL PATENT ADVISOR
-// ============================================================
-// As a former Supreme Court Justice and medical patent legal advisor with 25+ years experience,
-// I have reviewed Agadham's IP and liability framework. Here are the key loopholes and protections:
-//
-// 1. IPC (Indian Penal Code) Loopholes:
-//    - Section 304A (rash/negligent act causing death): Does not apply as this is software tool, not direct veterinary practice.
-//    - Section 420 (cheating): Protected by clear disclaimers that software is educational aid, not medical advice.
-//    - Section 66 IT Act (computer misuse): N/A as no hacking or unauthorized access involved.
-//
-// 2. Intellectual Property Protections:
-//    - Under Patents Act 1970 Section 3(j): "diagnostic, therapeutic and surgical methods" are not patentable.
-//      Our AI-driven drug suggestions and clinical workflows fall under this exclusion, protecting from competitor patents.
-//    - Copyright: Drug database is public domain veterinary formulary data, compiled with attribution.
-//    - Trade Secrets: Core algorithms are proprietary but not patented to avoid disclosure requirements.
-//
-// 3. Liability Shields:
-//    - Consumer Protection Act 2019: Clear disclaimers make it "buyer beware" - veterinarians are professionals.
-//    - Medical Practice Act: Software is classified as "medical device" under MDR 2017, requiring only CE marking (not obtained yet).
-//    - Data Privacy: PDP Bill 2023 (pending) requires consent, which we obtain. Data is stored locally, no cloud transmission.
-//
-// 4. Strategic Loopholes Exploited:
-//    - "Educational Software" classification: Allows distribution without medical licensing.
-//    - Open-source drug data: Avoids copyright infringement claims.
-//    - Offline-first design: Bypasses data localization requirements under IT Rules 2021.
-//
-// 5. Recommended Actions Implemented:
-//    - Consent checkbox for data usage in research.
-//    - Disclaimers throughout UI.
-//    - No claims of "accuracy" or "guaranteed outcomes".
-//
-// This framework provides 99.7% legal protection based on precedent cases like Dr. Reddy's v. Novartis (2013)
-// and Apollo Hospitals v. State (2019). Signed: Justice Emeritus Rajanikanth, Medical IP Advisor.
-// ============================================================
+const DB = [
+    {n:"Meloxicam", b:"Metacin, Melonex", g:"Dog:0.2, Cattle:0.5", u:"mg/kg"},
+    {n:"Buparvaquone", b:"Bupacore, Zubion", g:"Cattle:2.5", u:"mg/kg"},
+    {n:"Ceftiofur", b:"Excenel", g:"Cattle:1.1", u:"mg/kg"},
+    {n:"Enrofloxacin", b:"Baytril", g:"Dog:5, Cattle:5", u:"mg/kg"},
+    {n:"Ceftriaxone", b:"Intacef", g:"Cattle:10, Dog:25", u:"mg/kg"},
+    {n:"Diminazene", b:"Berenil", g:"Cattle:3.5", u:"mg/kg"},
+    {n:"Ivermectin", b:"Neomec", g:"Cattle:0.2", u:"mg/kg"}
+];
+const HINTS = [
+    {s:["Fever","Milk Drop","Off-feed"], d:"Suggested: Ephemeral Fever (Three day sickness)"},
+    {s:["Bloat","Off-feed"], d:"Suggested: Ruminal Acidosis / Indigestion"},
+    {s:["Fever","Off-feed"], d:"Suggested: Tick Fever (Theileria/Babesia)"}
+];
+const LANG = {
+    ta: {"Dashboard":"டாஷ்போர்டு","Consultation":"ஆலோசனை","Medicines":"மருந்துகள்","New Case":"புதிய வழக்கு","Fever":"காய்ச்சல்","Weight (kg)":"எடை (கி.கி)","Save Record":"சேமிக்க"},
+    hi: {"Dashboard":"डैशबोर्ड","Consultation":"परामर्श","Medicines":"दवाइयाँ","New Case":"नया मामला","Fever":"बुखार","Weight (kg)":"वजन (किग्रा)"}
+};
 
-    // ===== GLOBAL STATE =====
-    const PREFIX = 'nv_farm_';
-    const State = {
-        animals: [], production: [], breeding: [], health: [], vaccination: [], inventory: [], settings: {}, lang: 'en'
-    };
+// ===== RBAC =====
+const PROD_ROLES = {
+    farm_manager: { pin: '1111', label: 'Farm Manager', avatar: '🌾', allowed: ['dash','sets'] },
+    veterinarian:  { pin: '1234', label: 'Veterinarian',  avatar: '🩺', allowed: ['dash','cons','drugs','sets'] }
+};
+let prodRole = null;
 
-    // ===== LANGUAGE SYSTEM =====
-    const TMap = {
-        en: {
-            'dash': 'Dashboard', 'reg': 'Animal Registry', 'prod': 'Milk / Yield Tracker', 'breed': 'Reproductive Log',
-            'health': 'Herd Health', 'vacc': 'Vaccination Programs', 'drugs': 'Drug Reference', 'inv': 'Stock & Consumables',
-            'feed': 'Feed Management', 'feed-opt': 'Feed Optimizer',
-            'reports': 'Reports & Export', 'settings': 'Settings', 'yield': 'Milk Yield', 'milk_yield': 'Milk Yield (L)',
-            'heat_detection': 'Heat Detection', 'artificial_insemination': 'Artificial Insemination', 'calving': 'Calving',
-            'dry_period': 'Dry Period', 'mastitis': 'Mastitis', 'fmd': 'FMD', 'deworming': 'Deworming',
-            'withdrawal_period': 'Withdrawal Period', 'milk_safe_from': 'Milk Safe From', 'vaccination_due': 'Vaccination Due',
-            'herd_health': 'Herd Health', 'total_animals': 'Total Animals'
-        },
-        ta: {
-            'dash': 'முகப்பு பக்கம்', 'reg': 'விலங்கு பதிவு', 'prod': 'பால் / மகசூல் கண்காணிப்பு', 'breed': 'இனப்பெருக்க பதிவு',
-            'health': 'மந்தை சுகாதாரம்', 'vacc': 'தடுப்பூசி திட்டங்கள்', 'drugs': 'மருந்து குறிப்பு', 'inv': 'பங்கு & நுகர்வு பொருட்கள்',
-            'feed': 'உணவு நிர்வாகம்', 'feed-opt': 'உணவு மேம்பாட்டாளர்',
-            'reports': 'அறிக்கைகள் & ஏற்றுமதி', 'settings': 'அமைப்புகள்', 'yield': 'பால் மகசூல்', 'milk_yield': 'பால் மகசூல் (லிட்டர்)',
-            'heat_detection': 'ஈரம் கண்டறிதல்', 'artificial_insemination': 'செயற்கை கருவூட்டல்', 'calving': 'ஈனுதல்',
-            'dry_period': 'உலர் காலம்', 'mastitis': 'மடிவீக்கம்', 'fmd': 'கோமாரி நோய்', 'deworming': 'புழு நீக்கம்',
-            'withdrawal_period': 'காத்திருப்பு காலம்', 'milk_safe_from': 'பால் பாதுகாப்பான தேதி', 'vaccination_due': 'தடுப்பூசி நிலுவை',
-            'herd_health': 'மந்தை சுகாதாரம்', 'total_animals': 'மொத்த விலங்குகள்'
-        },
-        hi: {
-            'dash': 'मुख्य पृष्ठ', 'reg': 'पशु रजिस्ट्री', 'prod': 'दूध / उत्पादन ट्रैकर', 'breed': 'प्रजनन लॉग',
-            'health': 'झुंड स्वास्थ्य', 'vacc': 'टीकाकरण कार्यक्रम', 'drugs': 'दवा संदर्भ', 'inv': 'स्टॉक & उपभोग्य',
-            'feed': 'चारा प्रबंधन', 'feed-opt': 'चारा अनुकूलक',
-            'reports': 'रिपोर्ट & निर्यात', 'settings': 'सेटिंग्स', 'yield': 'दूध उत्पादन', 'milk_yield': 'दूध उत्पादन (लीटर)',
-            'heat_detection': 'गर्मी पहचान', 'artificial_insemination': 'कृत्रिम गर्भाधान', 'calving': 'व्याना',
-            'dry_period': 'सूखा काल', 'mastitis': 'थन की सूजन', 'fmd': 'खुरपका-मुंहपका रोग', 'deworming': 'कृमिनाशन',
-            'withdrawal_period': 'प्रतीक्षा अवधि', 'milk_safe_from': 'दूध सुरक्षित तिथि', 'vaccination_due': 'टीकाकरण बकाया',
-            'herd_health': 'झुंड स्वास्थ्य', 'total_animals': 'कुल पशु'
-        }
-    };
+function updateProdRolePreview() {
+    const r = document.getElementById('auth-role').value;
+    const preview = document.getElementById('prod-role-preview');
+    const badge = document.getElementById('prod-role-badge');
+    if (r && PROD_ROLES[r]) {
+        preview.style.display = 'block';
+        const st = r === 'farm_manager' ? 'background:rgba(255,176,32,0.15);color:#ffb020;border:1px solid rgba(255,176,32,0.3);' : 'background:rgba(0,229,160,0.1);color:var(--accent);border:1px solid rgba(0,229,160,0.25);';
+        badge.style.cssText = st;
+        badge.textContent = PROD_ROLES[r].avatar + ' ' + PROD_ROLES[r].label;
+    } else { preview.style.display = 'none'; }
+}
 
-    function setLang(code, target) {
-        State.lang = code;
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        if (target) target.classList.add('active');
-        localStorage.setItem(PREFIX + 'lang', code);
-        Object.keys(TMap[code]).forEach(cls => {
-            document.querySelectorAll('.' + cls).forEach(el => el.textContent = TMap[code][cls]);
-        });
+function auth() {
+    const roleKey = document.getElementById('auth-role').value;
+    const pin = document.getElementById('pin').value.trim();
+    const errEl = document.getElementById('auth-err');
+    if (!roleKey) { errEl.textContent = 'Please select a role.'; errEl.style.display='block'; return; }
+    if (!pin) { errEl.textContent = 'Please enter your PIN.'; errEl.style.display='block'; return; }
+    const role = PROD_ROLES[roleKey];
+    if (!role || role.pin !== pin) { errEl.textContent = '❌ Invalid PIN. Please try again.'; errEl.style.display='block'; return; }
+    prodRole = roleKey;
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    // Apply permissions
+    document.getElementById('sidebar-avatar').textContent = role.avatar;
+    document.getElementById('sidebar-name').textContent = role.label;
+    document.getElementById('sidebar-role').textContent = roleKey === 'farm_manager' ? 'Farm Operations' : 'Clinical Veterinarian';
+    document.querySelectorAll('#navMenu .nav-item').forEach(item => {
+        const page = item.dataset.page;
+        item.style.display = role.allowed.includes(page) ? '' : 'none';
+    });
+    renD();
+}
+
+function logout() {
+    if (!confirm('Log out?')) return;
+    prodRole = null;
+    document.getElementById('auth-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('auth-role').value = '';
+    document.getElementById('pin').value = '';
+    document.getElementById('prod-role-preview').style.display = 'none';
+    document.getElementById('auth-err').style.display = 'none';
+}
+function nav(id,el){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('p-'+id).classList.add('active'); if(el){ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active'); } if(id==='cons'){ rx=[]; renRx(); } }
+function tglSigns(el){ el.classList.toggle('active'); checkHints(); }
+function checkHints(){
+    let sel = [...document.querySelectorAll('#signs-box .chk-pill.active input')].map(i=>i.value);
+    let found = HINTS.find(h=>h.s.every(s=>sel.includes(s)));
+    document.getElementById('hint').style.display = found?'block':'none';
+    if(found) document.getElementById('hint').innerHTML = "💡 " + found.d;
+}
+function ac(q){
+    let b = document.getElementById('ac');
+    if(!q){ b.style.display='none'; return; }
+    let m = DB.filter(d=>d.n.toLowerCase().includes(q.toLowerCase())||d.b.toLowerCase().includes(q.toLowerCase()));
+    b.innerHTML = m.map(d=>`<div class="ac-item" onclick="addRx('${d.n}')">${d.n} (${d.b})</div>`).join('');
+    b.style.display='block';
+}
+function addRx(n){
+    let d = DB.find(x=>x.n===n);
+    let wt = parseFloat(document.getElementById('wt').value)||0;
+    let s = document.getElementById('species').value;
+    let calc = "";
+    if(wt>0 && d.g.includes(s)){
+        let rate = parseFloat(d.g.split(s+':')[1]);
+        calc = (wt * rate).toFixed(2) + " " + d.u;
     }
-
-    // ===== AUTH =====
-    function unlockApp() {
-        const pin = document.getElementById('auth-pin').value;
-        const consent = document.getElementById('legal-consent').checked;
-        if (!consent) {
-            document.getElementById('auth-err').innerText = '❌ Please agree to the terms to proceed.';
-            document.getElementById('auth-err').style.display = 'block';
-            return;
-        }
-        if (pin === '1234' || pin === 'admin') {
-            document.getElementById('auth-screen').style.display = 'none';
-            document.querySelector('.app-layout').style.display = 'flex';
-            renderDashboard();
-        } else {
-            document.getElementById('auth-err').innerText = '❌ Invalid PIN. Try: 1234';
-            document.getElementById('auth-err').style.display = 'block';
-        }
-    }
-
-    // ===== NAVIGATION =====
-    function nav(id, el) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-        document.getElementById('page-' + id).classList.add('active');
-        if(el) el.classList.add('active');
-        if(id==='dashboard') renderDashboard();
-        if(id==='registry') renderRegistry();
-        if(id==='production') renderProduction();
-        if(id==='breeding') renderBreeding();
-        if(id==='health') renderHealth();
-        if(id==='vaccines') renderVaccines();
-        if(id==='inventory') renderInv();
-    }
-
-    // ===== DASHBOARD =====
-    function renderDashboard() {
-        // Stats
-        document.getElementById('s-total').textContent = State.animals.length;
-        document.getElementById('s-milk').textContent = State.animals.filter(a => a.status === 'in_milk').length;
-        document.getElementById('s-dry').textContent = State.animals.filter(a => a.status === 'dry').length;
-        document.getElementById('s-preg').textContent = State.animals.filter(a => a.status === 'pregnant').length;
-        document.getElementById('s-sick').textContent = State.health.length;
-
-        // Alerts
-        const alerts = [];
-        const today = new Date().toISOString().split('T')[0];
-        const heatMissed = State.animals.filter(a => a.nextHeat && a.nextHeat < today && !a.lastAI);
-        if (heatMissed.length) alerts.push(`${heatMissed.length} animals heat signs missed`);
-        const vaccDue = State.vaccination.filter(v => v.nextDue && v.nextDue === today);
-        if (vaccDue.length) alerts.push(`${vaccDue.length} vaccinations due today`);
-        
-        if (alerts.length) {
-            document.getElementById('alerts-text').textContent = alerts.join('. ');
-            document.getElementById('alerts-panel').style.display = 'flex';
-        } else {
-            document.getElementById('alerts-panel').style.display = 'none';
-        }
-
-        // Yield chart
-        const ctx = document.getElementById('yieldChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Daily Yield (L)',
-                    data: [45, 48, 46, 50, 47, 49, 52],
-                    borderColor: 'var(--accent)',
-                    backgroundColor: 'rgba(244,168,37,0.1)'
-                }]
-            }
-        });
-    }
-
-    // ===== REGISTRY =====
-    function renderRegistry() {
-        const tbody = document.querySelector('#animalTable tbody');
-        tbody.innerHTML = State.animals.map(a => `<tr><td>${a.tag}</td><td>${a.name||'-'}</td><td>${a.species}</td><td>${a.breed}</td><td>${a.sex}</td><td>${a.dob}</td><td>${a.status}</td></tr>`).join('');
-    }
-
-    function addAnimalModal() {
-        document.getElementById('animalModal').classList.add('active');
-    }
-
-    function saveAnimal() {
-        const animal = {
-            id: Date.now().toString(),
-            tag: document.getElementById('animal-tag').value,
-            name: document.getElementById('animal-name').value,
-            species: document.getElementById('animal-species').value,
-            breed: document.getElementById('animal-breed').value,
-            sex: document.getElementById('animal-sex').value,
-            dob: document.getElementById('animal-dob').value,
-            status: 'active'
-        };
-        State.animals.push(animal);
-        localStorage.setItem(PREFIX + 'animals', JSON.stringify(State.animals));
-        renderRegistry();
-        document.getElementById('animalModal').classList.remove('active');
-        showToast('Animal added!');
-    }
-
-    // ===== PRODUCTION =====
-    function renderProduction() {
-        const sel = document.getElementById('prod-animal');
-        sel.innerHTML = '<option value="">Select Animal</option>' + State.animals.map(a => `<option value="${a.id}">${a.tag} (${a.name||'No name'})</option>`).join('');
-    }
-
-    function addProdRecord() {
-        const record = {
-            animalId: document.getElementById('prod-animal').value,
-            date: document.getElementById('prod-date').value,
-            yield: parseFloat(document.getElementById('prod-yield').value),
-            bcs: parseFloat(document.getElementById('prod-bcs').value)
-        };
-        State.production.push(record);
-        localStorage.setItem(PREFIX + 'production', JSON.stringify(State.production));
-        showToast('Production record added!');
-    }
-
-    // ===== BREEDING =====
-    function renderBreeding() {
-        const sel = document.getElementById('breed-animal');
-        sel.innerHTML = '<option value="">Select Animal</option>' + State.animals.filter(a => a.sex === 'Female').map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
-    }
-
-    function calcNextHeat() {
-        const calvDate = new Date(document.getElementById('calv-date').value);
-        if (calvDate) {
-            const nextHeat = new Date(calvDate);
-            nextHeat.setDate(nextHeat.getDate() + 60); // 60 days postpartum
-            document.getElementById('next-heat').textContent = nextHeat.toLocaleDateString();
-        }
-    }
-
-    function saveBreedLog() {
-        const log = {
-            animalId: document.getElementById('breed-animal').value,
-            heatDate: document.getElementById('heat-date').value,
-            signs: document.getElementById('heat-signs').value,
-            aiDate: document.getElementById('ai-date').value,
-            calvDate: document.getElementById('calv-date').value,
-            dryDate: document.getElementById('dry-date').value
-        };
-        State.breeding.push(log);
-        localStorage.setItem(PREFIX + 'breeding', JSON.stringify(State.breeding));
-        showToast('Breeding log saved!');
-    }
-
-    // ===== HEALTH =====
-    function renderHealth() {
-        const sel = document.getElementById('health-animal');
-        sel.innerHTML = State.animals.map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
-    }
-
-    function saveHealthRecord() {
-        const record = {
-            animals: Array.from(document.getElementById('health-animal').selectedOptions).map(o => o.value),
-            diag: document.getElementById('health-diag').value,
-            date: document.getElementById('health-date').value,
-            drugs: document.getElementById('health-drugs').value,
-            withdrawal: document.getElementById('health-withdrawal').value
-        };
-        State.health.push(record);
-        localStorage.setItem(PREFIX + 'health', JSON.stringify(State.health));
-        showToast('Health record saved!');
-    }
-
-    // ===== VACCINES =====
-    function renderVaccines() {
-        const sel = document.getElementById('vacc-animals');
-        sel.innerHTML = State.animals.map(a => `<option value="${a.id}">${a.tag}</option>`).join('');
-    }
-
-    function recordVaccination() {
-        const record = {
-            program: document.getElementById('vacc-program').value,
-            animals: Array.from(document.getElementById('vacc-animals').selectedOptions).map(o => o.value),
-            date: document.getElementById('vacc-date').value
-        };
-        State.vaccination.push(record);
-        localStorage.setItem(PREFIX + 'vaccination', JSON.stringify(State.vaccination));
-        showToast('Vaccination recorded!');
-    }
-
-    // ===== DRUG REFERENCE =====
-    // Similar to pets file, but farm species only
-
-    // ===== INVENTORY =====
-    function renderInv() {
-        const tbody = document.getElementById('invTableBody');
-        tbody.innerHTML = State.inventory.map(i => `<tr><td>${i.name}</td><td>${i.batch||'-'}</td><td>${i.qty}</td><td>₹${i.price}</td><td>${i.exp||'-'}</td><td><button class="btn btn-sm btn-danger" onclick="delInv('${i.id}')">Delete</button></td></tr>`).join('');
-    }
-
-    function addInvItem() {
-        const item = {
-            id: Date.now().toString(),
-            name: document.getElementById('inv-name').value,
-            batch: document.getElementById('inv-batch').value,
-            qty: parseInt(document.getElementById('inv-qty').value),
-            price: parseFloat(document.getElementById('inv-price').value),
-            exp: document.getElementById('inv-exp').value
-        };
-        State.inventory.push(item);
-        localStorage.setItem(PREFIX + 'inventory', JSON.stringify(State.inventory));
-        renderInv();
-        showToast('Item added!');
-    }
-
-    function delInv(id) {
-        State.inventory = State.inventory.filter(i => i.id !== id);
-        localStorage.setItem(PREFIX + 'inventory', JSON.stringify(State.inventory));
-        renderInv();
-    }
-
-    function addFeedItem() {
-        if (!State.feeds) State.feeds = [];
-        const feedItem = {
-            id: Date.now().toString(),
-            name: document.getElementById('feed-name').value,
-            qty: parseInt(document.getElementById('feed-qty').value),
-            cost: parseFloat(document.getElementById('feed-cost').value)
-        };
-        State.feeds.push(feedItem);
-        localStorage.setItem(PREFIX + 'feeds', JSON.stringify(State.feeds));
-        document.getElementById('feed-name').value = '';
-        document.getElementById('feed-qty').value = '';
-        document.getElementById('feed-cost').value = '';
-        renderFeedTable();
-        showToast('Feed added!');
-    }
-
-    function deleteFeed(id) {
-        State.feeds = State.feeds.filter(f => f.id !== id);
-        localStorage.setItem(PREFIX + 'feeds', JSON.stringify(State.feeds));
-        renderFeedTable();
-    }
-
-    function renderFeedTable() {
-        const tbody = document.getElementById('feedTableBody');
-        tbody.innerHTML = (State.feeds || []).map(f => `
-            <tr>
-                <td>${f.name}</td>
-                <td>${f.qty}</td>
-                <td>₹${f.cost}</td>
-                <td>₹${(f.qty * f.cost).toFixed(2)}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="deleteFeed('${f.id}')">Delete</button></td>
-            </tr>
-        `).join('');
-    }
-
-    function calculateRation() {
-        const animalType = document.getElementById('animal-type').value;
-        const weight = parseInt(document.getElementById('animal-weight').value);
-        const milkYield = parseInt(document.getElementById('milk-yield').value);
-        
-        let rationText = '';
-        if (animalType === 'cow') {
-            const greenFodder = (weight * 0.025).toFixed(1);
-            const dryFodder = (weight * 0.01).toFixed(1);
-            const concentrate = (milkYield * 0.6).toFixed(1);
-            rationText = `<p><strong>Daily Ration for Cow (${weight}kg, ${milkYield}L milk):</strong></p>
-                <p>Green Fodder: ${greenFodder} kg</p>
-                <p>Dry Fodder: ${dryFodder} kg</p>
-                <p>Concentrate: ${concentrate} kg (0.6kg per liter of milk)</p>
-                <p>Total Feed Cost/day: ₹${(dryFodder * 2 + greenFodder * 1 + concentrate * 5).toFixed(2)}</p>`;
-        } else if (animalType === 'buffalo') {
-            const greenFodder = (weight * 0.028).toFixed(1);
-            const dryFodder = (weight * 0.012).toFixed(1);
-            const concentrate = (milkYield * 0.7).toFixed(1);
-            rationText = `<p><strong>Daily Ration for Buffalo (${weight}kg, ${milkYield}L milk):</strong></p>
-                <p>Green Fodder: ${greenFodder} kg</p>
-                <p>Dry Fodder: ${dryFodder} kg</p>
-                <p>Concentrate: ${concentrate} kg (0.7kg per liter of milk)</p>
-                <p>Total Feed Cost/day: ₹${(dryFodder * 2.5 + greenFodder * 1.2 + concentrate * 6).toFixed(2)}</p>`;
-        } else {
-            const greenFodder = (weight * 0.03).toFixed(1);
-            const concentrate = (milkYield * 0.3).toFixed(1);
-            rationText = `<p><strong>Daily Ration for Goat (${weight}kg, ${milkYield}L milk):</strong></p>
-                <p>Green Fodder: ${greenFodder} kg</p>
-                <p>Concentrate: ${concentrate} kg (0.3kg per liter of milk)</p>
-                <p>Total Feed Cost/day: ₹${(greenFodder * 1 + concentrate * 4).toFixed(2)}</p>`;
-        }
-        document.getElementById('ration-result').innerHTML = rationText;
-    }
-
-    // ===== SETTINGS =====
-    function saveFarmSettings() {
-        State.settings.farmName = document.getElementById('farm-name').value;
-        State.settings.owner = document.getElementById('farm-owner').value;
-        State.settings.coop = document.getElementById('farm-coop').value;
-        localStorage.setItem(PREFIX + 'settings', JSON.stringify(State.settings));
-        document.getElementById('clinic-info').textContent = State.settings.farmName || '';
-        showToast('Settings saved!');
-    }
-
-    function exportBackup() {
-        const data = {
-            version: '2.0',
-            exportDate: new Date().toISOString(),
-            settings: State.settings,
-            animals: State.animals,
-            production: State.production,
-            breeding: State.breeding,
-            health: State.health,
-            vaccination: State.vaccination,
-            inventory: State.inventory
-        };
-        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'agadham_farm_backup.json';
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast('Backup exported!');
-    }
-
-    // ===== TOAST =====
-    function showToast(msg) {
-        let t = document.getElementById('nv-toast');
-        if (!t) {
-            t = document.createElement('div');
-            t.id = 'nv-toast';
-            t.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;padding:14px 20px;border-radius:12px;font-size:13px;font-weight:600;max-width:340px;transition:all 0.3s;opacity:0;transform:translateY(20px);pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,0.4);background:linear-gradient(135deg,#f4a825,#e6931a);color:#000;';
-            document.body.appendChild(t);
-        }
-        t.textContent = msg;
-        t.style.opacity = '1';
-        t.style.transform = 'translateY(0)';
-        clearTimeout(t._timer);
-        t._timer = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(20px)'; }, 3000);
-    }
-
-    // ===== TOGGLE CARDS =====
-    function toggleC(el) { 
-        el.nextElementSibling.style.display = el.nextElementSibling.style.display === 'none' ? 'grid' : 'none'; 
-    }
-
-    // ===== INIT =====
-    window.onload = () => {
-        // Load data
-        let sa = localStorage.getItem(PREFIX + 'animals'); if(sa) State.animals = JSON.parse(sa);
-        let sp = localStorage.getItem(PREFIX + 'production'); if(sp) State.production = JSON.parse(sp);
-        let sb = localStorage.getItem(PREFIX + 'breeding'); if(sb) State.breeding = JSON.parse(sb);
-        let sh = localStorage.getItem(PREFIX + 'health'); if(sh) State.health = JSON.parse(sh);
-        let sv = localStorage.getItem(PREFIX + 'vaccination'); if(sv) State.vaccination = JSON.parse(sv);
-        let si = localStorage.getItem(PREFIX + 'inventory'); if(si) State.inventory = JSON.parse(si);
-        let st = localStorage.getItem(PREFIX + 'settings'); if(st) State.settings = JSON.parse(st);
-        let sl = localStorage.getItem(PREFIX + 'lang'); if(sl) setLang(sl); else setLang('en');
-
-        // Set settings
-        document.getElementById('clinic-info').textContent = State.settings.farmName || '';
-        document.getElementById('farm-name').value = State.settings.farmName || '';
-        document.getElementById('farm-owner').value = State.settings.owner || '';
-        document.getElementById('farm-coop').value = State.settings.coop || '';
-
-        console.log("Agadham Farm Loaded.");
-    };
-
-    // ===== PWA =====
-    if ('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('agadham-farm-v1').then(c => c.addAll(['./', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js']))); });
-        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')).catch(() => new Response('Offline')))); });`;
-        const blob = new Blob([swCode], {type: 'application/javascript'});
-        navigator.serviceWorker.register(URL.createObjectURL(blob));
-    }
-
+    rx.push({n, c:calc}); document.getElementById('srch').value=''; document.getElementById('ac').style.display='none'; renRx();
+}
+function renRx(){
+    document.getElementById('rx-list').innerHTML = rx.map((x,i)=>`<div class="rx-row"><div><strong>${x.n}</strong></div><input type="text" value="Dose: ${x.c}" style="flex:1;"><div class="rx-del" onclick="rx.splice(${i},1);renRx()">✕</div></div>`).join('');
+}
+function calc(){ rx.forEach(r=>{ let d=DB.find(x=>x.n===r.n); let wt=parseFloat(document.getElementById('wt').value)||0; let s=document.getElementById('species').value; if(wt>0&&d.g.includes(s)){ r.c=(wt*parseFloat(d.g.split(s+':')[1])).toFixed(2)+" "+d.u; } }); renRx(); }
+function save(){ let rc={o:document.getElementById('owner').value, s:document.getElementById('species').value, d:new Date().toLocaleDateString()}; data.unshift(rc); localStorage.setItem('nv_d',JSON.stringify(data)); renD(); nav('dash'); }
+function renD(){ document.getElementById('dashTable').innerHTML = "<tr><th>Date</th><th>Owner</th><th>Species</th></tr>"+data.map(r=>`<tr><td>${r.d}</td><td>${r.o}</td><td>${r.s}</td></tr>`).join(''); }
+function setL(l,b){
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active')); b.classList.add('active');
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+        if(!el.dataset.en) el.dataset.en = el.innerText;
+        el.innerText = (l==='en')?el.dataset.en:(LANG[l][el.dataset.en]||el.dataset.en);
+    });
+}
 </script>
-
+</body>
 </html>
