@@ -7,6 +7,8 @@
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZldERlc2sgdjYiLAogICJzaG9ydF9uYW1lIjogIlZldERlc2siLAogICJkZXNjcmlwdGlvbiI6ICJPZmZsaW5lLWZpcnN0IFZldGVyaW5hcnkgQ2xpbmljYWwgUmVjb3JkcyIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGFwMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiM4ZTQ0YWQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJz48L3N2Zz4iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXQp9">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="drug_db.js"></script>
+
 
     <style>
         :root {
@@ -258,6 +260,8 @@
         <nav class="nav-menu" id="navMenu">
             <div class="nav-item active" data-page="dashboard" onclick="nav('dashboard', this)"><i>📊</i> <span class="t-dash">Dashboard</span></div>
             <div class="nav-item" data-page="registry" onclick="nav('registry', this)"><i>📋</i> <span class="t-reg">Case Registry</span></div>
+            <div class="nav-item" data-page="consult" onclick="nav('consult', this)"><i>🩺</i> <span>New Consultation</span></div>
+            <div class="nav-item" data-page="emr" onclick="nav('emr', this)"><i>📄</i> <span>EMR Timeline</span></div>
             <div class="nav-item" data-page="departments" onclick="nav('departments', this)"><i>🏥</i> <span class="t-dept">Departments</span></div>
             <div class="nav-item" data-page="surveillance" onclick="nav('surveillance', this)"><i>🔬</i> <span class="t-surv">Disease Surveillance</span></div>
             <div class="nav-item" data-page="teaching" onclick="nav('teaching', this)"><i>📖</i> <span class="t-teach">Teaching Cases</span></div>
@@ -371,21 +375,155 @@
             </div>
         </div>
 
+        <!-- CLINICAL CONSULTATION (Teaching Hospital) -->
+        <div id="page-consult" class="page">
+            <div class="header">
+                <div><h1 class="title">🩺 Clinical Consultation</h1><div class="subtitle">Student Draft Mode — requires Faculty co-sign before printing</div></div>
+                <div style="display:flex;gap:10px;">
+                    <button class="btn btn-secondary" onclick="submitForReview()">📤 Submit for Faculty Review</button>
+                    <button class="btn btn-primary" onclick="saveDraft()">💾 Save Draft</button>
+                </div>
+            </div>
+
+            <div class="card" style="border-color:rgba(255,176,32,0.3);background:rgba(255,176,32,0.03);">
+                <div class="card-body" style="padding:12px 20px;">
+                    <div class="col-12" style="color:var(--warn);font-size:13px;font-weight:600;">⚠️ Student Mode: Prescriptions are DRAFT only. Faculty must co-sign before dispensing. No medications can be printed from this view.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🪪 1. Patient Signalment <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="form-group col-3"><label>Case ID</label><input type="text" id="tc-id" readonly style="opacity:0.6;"></div>
+                    <div class="form-group col-3"><label>Date</label><input type="date" id="tc-date"></div>
+                    <div class="form-group col-6"><label>Owner / Client</label><input type="text" id="tc-owner" placeholder="Full name"></div>
+                    <div class="form-group col-3"><label>Animal Name / Tag</label><input type="text" id="tc-animal"></div>
+                    <div class="form-group col-3"><label>Species</label>
+                        <select id="tc-species">
+                            <option>Dog</option><option>Cat</option><option>Rabbit</option><option>Guinea Pig</option>
+                            <option>Cattle</option><option>Goat</option><option>Sheep</option><option>Pig</option>
+                            <option>Horse</option><option>Poultry</option><option>Parrot</option><option>Tortoise</option><option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3"><label>Breed</label><input type="text" id="tc-breed"></div>
+                    <div class="form-group col-3"><label>Age</label><input type="text" id="tc-age" placeholder="3 years"></div>
+                    <div class="form-group col-3"><label>Weight (kg)</label><input type="number" step="0.1" id="tc-wt"></div>
+                    <div class="form-group col-3"><label>Sex</label><select id="tc-sex"><option>Male (Intact)</option><option>Female (Intact)</option><option>Male (Neutered)</option><option>Female (Spayed)</option></select></div>
+                    <div class="form-group col-6"><label>Owner Phone</label><input type="text" id="tc-phone"></div>
+                    <div class="form-group col-6"><label>Dept / Rotation</label>
+                        <select id="tc-dept"><option>Clinical Medicine</option><option>Surgery</option><option>OBG & Reproduction</option><option>Radiology</option><option>Pharmacology Lab</option><option>Parasitology</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">📋 2. History & Vitals <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="form-group col-12"><label>Chief Complaint</label><textarea id="tc-complaint" placeholder="Owner's primary concern..."></textarea></div>
+                    <div class="form-group col-4"><label>Temperature (°F)</label><input type="number" step="0.1" id="tc-temp" placeholder="101.5"></div>
+                    <div class="form-group col-4"><label>Heart Rate (bpm)</label><input type="number" id="tc-hr" placeholder="80"></div>
+                    <div class="form-group col-4"><label>Resp. Rate (/min)</label><input type="number" id="tc-rr" placeholder="20"></div>
+                    <div class="form-group col-6"><label>Mucous Membranes</label><select id="tc-mmb"><option>Pink (Normal)</option><option>Pale/White (Anaemia)</option><option>Cyanotic (Blue)</option><option>Icteric (Yellow)</option></select></div>
+                    <div class="form-group col-6"><label>Hydration</label><select id="tc-hyd"><option>&lt;5% (Normal)</option><option>5–7% Mild</option><option>7–9% Moderate</option><option>&gt;10% Severe</option></select></div>
+                    <div class="form-group col-12"><label>Clinical Examination Findings</label><textarea id="tc-findings" placeholder="Systematic examination..."></textarea></div>
+                </div>
+            </div>
+
+            <div class="card" style="border-color:rgba(142,68,173,0.3);">
+                <div class="card-header" style="color:var(--accent);" onclick="toggleC(this)">💊 3. Diagnosis & Rx (DRAFT) <span class="toggle-icon">▾</span></div>
+                <div class="card-body" style="overflow:visible;">
+                    <div class="form-group col-8"><label>Diagnosis</label><input type="text" id="tc-diag" placeholder="Primary diagnosis"></div>
+                    <div class="form-group col-4"><label>Differential</label><input type="text" id="tc-diff" placeholder="Rule-outs"></div>
+                    <div class="form-group col-12"><label>Lab / Diagnostics Requested</label><input type="text" id="tc-labs" placeholder="CBC, Biochem, X-ray, USG, Cytology..."></div>
+                    <div class="col-12 section-title">Drug Prescription (DRAFT — Subject to Faculty Review)</div>
+                    <div class="form-group col-12" style="position:relative;">
+                        <label>Search Drug</label>
+                        <input type="text" id="tc-drug-search" placeholder="Type drug name..." oninput="tcDrugAC(this.value)" autocomplete="off" style="border-color:rgba(142,68,173,0.4);">
+                        <div class="ac-results" id="tc-ac-results"></div>
+                    </div>
+                    <div class="col-12" id="tc-rx-list"></div>
+                    <div class="form-group col-12"><label>Teaching Points / Self-Reflection</label><textarea id="tc-teaching" placeholder="What did you learn from this case? What would you do differently?"></textarea></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" onclick="toggleC(this)">🔀 4. Department Transfer <span class="toggle-icon">▾</span></div>
+                <div class="card-body">
+                    <div class="form-group col-4"><label>Transfer To</label><select id="tc-transfer"><option>Surgery</option><option>Radiology</option><option>OBG & Reproduction</option><option>ICU</option><option>Pharmacology Lab</option></select></div>
+                    <div class="form-group col-8"><label>Reason for Transfer</label><input type="text" id="tc-transfer-reason" placeholder="e.g. Surgical candidate, needs X-ray evaluation"></div>
+                    <div class="col-12" style="display:flex;justify-content:flex-end;">
+                        <button class="btn btn-secondary" onclick="transferPatient()">🔀 Initiate Transfer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMR TIMELINE -->
+        <div id="page-emr" class="page">
+            <div class="header"><div><h1 class="title">📋 Patient EMR Timeline</h1><div class="subtitle">Complete patient journey across departments</div></div></div>
+            <div style="display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:280px;flex-shrink:0;">
+                    <div class="card">
+                        <div class="card-header">Search Patient</div>
+                        <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+                            <input type="text" placeholder="Case ID or Animal Name" id="emr-search">
+                            <button class="btn btn-primary" onclick="loadEMR()" style="width:100%;justify-content:center;">Load Timeline</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:1;">
+                    <div id="emr-timeline">
+                        <div style="color:var(--muted);text-align:center;padding:60px;font-size:14px;">Enter a Case ID or Animal Name and click Load Timeline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- TEACHING CASES -->
         <div id="page-teaching" class="page">
-            <div class="header"><div><h1 class="title t-teach">Teaching Cases</h1></div></div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group col-4"><label>Select Case</label><select id="teach-case"></select></div>
-                    <div class="col-12"><h3>Teaching Format</h3></div>
-                    <div class="form-group col-12"><label>Signalment</label><textarea id="signalment"></textarea></div>
-                    <div class="form-group col-12"><label>History</label><textarea id="history"></textarea></div>
-                    <div class="form-group col-12"><label>Clinical Findings</label><textarea id="findings"></textarea></div>
-                    <div class="form-group col-12"><label>Differential Diagnosis</label><textarea id="diff-diag"></textarea></div>
-                    <div class="form-group col-12"><label>Final Diagnosis</label><textarea id="final-diag"></textarea></div>
-                    <div class="form-group col-12"><label>Treatment</label><textarea id="treatment"></textarea></div>
-                    <div class="form-group col-12"><label>Teaching Points</label><textarea id="teaching-points"></textarea></div>
-                    <div class="col-12" style="display:flex; justify-content:flex-end;"><button class="btn btn-primary" onclick="saveTeachingCase()">Save Teaching Case</button></div>
+            <div class="header"><div><h1 class="title t-teach">Academic Case Review</h1><div class="subtitle">Socratic AI Tutor & Faculty Grading</div></div></div>
+            
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:20px;">
+                <!-- Student Submission Panel -->
+                <div class="card">
+                    <div class="card-header">Student Submission: C-2023-081 (Ravi K)</div>
+                    <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+                        <div class="form-group col-12"><label>Signalment</label><textarea id="signalment" readonly style="background:var(--surface); min-height:40px;">5 yr old male Golden Retriever</textarea></div>
+                        <div class="form-group col-12"><label>History & Findings</label><textarea id="history" readonly style="background:var(--surface); min-height:60px;">Lethargy, polyuria/polydipsia, enlarged lymph nodes.</textarea></div>
+                        <div class="form-group col-12"><label>Differential Diagnosis</label><textarea id="diff-diag" readonly style="background:var(--surface); min-height:50px;">Lymphoma, Leishmaniasis, Diabetes Mellitus</textarea></div>
+                        <div class="form-group col-12"><label>Final Diagnosis</label><textarea id="final-diag" readonly style="background:var(--surface); min-height:40px;">Multicentric Lymphoma</textarea></div>
+                        <div class="form-group col-12"><label>Proposed Treatment</label><textarea id="treatment" readonly style="background:var(--surface); min-height:50px;">CHOP Protocol</textarea></div>
+                    </div>
+                </div>
+
+                <!-- AI Socratic Tutor & Grading Panel -->
+                <div style="display:flex; flex-direction:column; gap:20px;">
+                    <div class="card" style="border-color: rgba(0,229,160,0.3);">
+                        <div class="card-header" style="color:#00e5a0;">🤖 Socratic AI Tutor</div>
+                        <div class="card-body" style="display:flex; flex-direction:column; gap:12px;">
+                            <p style="font-size:13px; line-height:1.5; color:var(--text); background:rgba(0,229,160,0.05); padding:14px; border-radius:8px; border-left:3px solid #00e5a0;">
+                                <strong>AI Analysis:</strong> The differential diagnosis is broad. Have you considered tick-borne diseases endemic to this region? How would you rule out Ehrlichiosis based on the blood smear?
+                            </p>
+                            <button class="btn btn-secondary btn-sm" style="align-self:flex-start;">Generate Prompt for Student</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Faculty Grading</div>
+                        <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+                            <div class="form-group col-12">
+                                <label>Clinical Reasoning Score</label>
+                                <select><option>Excellent (A)</option><option>Good (B)</option><option>Needs Improvement (C)</option></select>
+                            </div>
+                            <div class="form-group col-12">
+                                <label>Faculty Feedback</label>
+                                <textarea placeholder="Provide constructive feedback..."></textarea>
+                            </div>
+                            <div class="col-12" style="margin-top:10px;">
+                                <button class="btn btn-primary" style="width:100%; justify-content:center;">Submit Grade & Return to Student</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -827,6 +965,101 @@
         const blob = new Blob([swCode], {type: 'application/javascript'});
         navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
+
+// Teaching Hospital Consultation Functions
+let tcRxList = [];
+
+function initConsult() {
+    const now = new Date();
+    document.getElementById('tc-id').value = 'TH-' + now.getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+    document.getElementById('tc-date').valueAsDate = now;
+}
+
+function tcDrugAC(q) {
+    const box = document.getElementById('tc-ac-results');
+    if (!q || q.length < 2) { box.style.display='none'; return; }
+    const drugs = typeof DRUGS !== 'undefined' ? DRUGS : (typeof RAW_DRUGS !== 'undefined' ? RAW_DRUGS : []);
+    const matches = drugs.filter(d => {
+        const name = d.name || d.n || d.generic || '';
+        return name.toLowerCase().includes(q.toLowerCase());
+    }).slice(0, 10);
+    if (!matches.length) { box.style.display='none'; return; }
+    box.innerHTML = matches.map(d => {
+        const name = d.name || d.n || d.generic || 'Unknown';
+        const brand = d.brand || d.brands || '';
+        return `<div class="ac-item" onclick="tcAddRx('${name}')"><span><strong>${name}</strong><span class="ac-brand"> — ${brand}</span></span></div>`;
+    }).join('');
+    box.style.display = 'block';
+}
+
+function tcAddRx(name) {
+    if (!tcRxList.includes(name)) tcRxList.push(name);
+    document.getElementById('tc-drug-search').value = '';
+    document.getElementById('tc-ac-results').style.display = 'none';
+    renderTcRx();
+}
+
+function renderTcRx() {
+    const wt = parseFloat(document.getElementById('tc-wt').value) || 0;
+    document.getElementById('tc-rx-list').innerHTML = tcRxList.map((name, i) =>
+        `<div class="rx-row">
+            <div class="rx-name">${name}</div>
+            <div class="rx-dose">${wt > 0 ? 'Patient: '+wt+'kg — check formulary for species-specific dose' : 'Enter weight to see dose guidance'}</div>
+            <span class="badge badge-warn" style="margin-left:8px;">DRAFT</span>
+            <div class="rx-del" onclick="tcRxList.splice(${i},1);renderTcRx()">✕</div>
+        </div>`
+    ).join('');
+}
+
+function saveDraft() {
+    const animal = document.getElementById('tc-animal').value || 'Patient';
+    toast('Draft saved for ' + animal + ' — awaiting faculty review');
+}
+
+function submitForReview() {
+    const animal = document.getElementById('tc-animal').value || 'Patient';
+    const diag = document.getElementById('tc-diag').value || '(no diagnosis yet)';
+    toast('Submitted: ' + animal + ' — ' + diag + ' → Faculty Review Queue');
+    // In production: push to State.cases with status='submitted'
+}
+
+function transferPatient() {
+    const to = document.getElementById('tc-transfer').value;
+    const reason = document.getElementById('tc-transfer-reason').value || 'Clinical decision';
+    const animal = document.getElementById('tc-animal').value || 'Patient';
+    toast('Transfer initiated: ' + animal + ' → ' + to + ' (' + reason + ')');
+}
+
+function loadEMR() {
+    const q = document.getElementById('emr-search').value.trim();
+    const tl = document.getElementById('emr-timeline');
+    if (!q) { tl.innerHTML = '<div style="color:var(--muted);text-align:center;padding:40px;">Enter a Case ID to load.</div>'; return; }
+    tl.innerHTML = `
+    <div style="position:relative;padding-left:32px;">
+        <div style="position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--border);"></div>
+        ${[
+            {dept:'Clinical Medicine', date:'25 Apr 2026', note:'Initial presentation. Lethargy, anorexia. Vitals recorded. CBC ordered.', color:'var(--accent)'},
+            {dept:'Radiology', date:'26 Apr 2026', note:'Chest X-ray — mild pleural effusion noted. Referred back to Medicine.', color:'var(--accent2)'},
+            {dept:'Clinical Medicine', date:'27 Apr 2026', note:'Started Amoxicillin + Furosemide. Responded well. Student Rx submitted for review.', color:'var(--accent)'},
+            {dept:'Faculty Review', date:'27 Apr 2026', note:'Dr. Priya co-signed prescription. Grade: B+. Feedback: Include D-dimer next time.', color:'var(--warn)'},
+            {dept:'Follow-up Due', date:'04 May 2026', note:'Scheduled follow-up. Send owner reminder.', color:'var(--muted)'},
+        ].map(e => `
+            <div style="position:relative;margin-bottom:24px;">
+                <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:${e.color};box-shadow:0 0 8px ${e.color};"></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                        <strong style="color:${e.color}">${e.dept}</strong>
+                        <span style="font-size:11px;color:var(--muted)">${e.date}</span>
+                    </div>
+                    <div style="font-size:13px;color:var(--text)">${e.note}</div>
+                </div>
+            </div>
+        `).join('')}
+    </div>`;
+}
+
+// Auto-init consultation form when navigated to
+document.querySelector('[data-page="consult"]').addEventListener('click', initConsult, {once: false});
 
 </script>
 

@@ -8,15 +8,21 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root {
-  --bg: #080b12; --surface: #0f1320; --surface2: #161d2e; --surface-hover: #1e2740;
-  --border: #232d44; --accent: #00e5a0; --accent-hover: #00cc8e;
+  --bg: #0b0f19;
+  --bg-radial: radial-gradient(circle at 15% 50%, rgba(0, 229, 160, 0.08), transparent 25%), radial-gradient(circle at 85% 30%, rgba(77, 159, 255, 0.08), transparent 25%);
+  --surface: rgba(18, 24, 38, 0.65);
+  --surface2: rgba(28, 36, 56, 0.7);
+  --surface-hover: rgba(37, 48, 74, 0.8);
+  --border: rgba(42, 53, 83, 0.5);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --accent: #00e5a0; --accent-hover: #00cc8e;
   --accent2: #4d9fff; --warn: #ffb020; --danger: #ff3b5c;
-  --text: #e8edf8; --muted: #7a86a5;
+  --text: #e8edf8; --muted: #8a9bbd;
   --gradient: linear-gradient(135deg, #00e5a0 0%, #0090ff 100%);
   --glow: 0 0 30px rgba(0,229,160,0.15);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+body { background-color: var(--bg); background-image: var(--bg-radial); color: var(--text); min-height: 100vh; overflow-x: hidden; }
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -47,7 +53,7 @@ body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x:
 
 /* ===== APP LAYOUT ===== */
 .app-layout { display:none; height:100vh; overflow:hidden; }
-.sidebar { width:264px; background:var(--surface); border-right:1px solid var(--border); display:flex; flex-direction:column; z-index:50; flex-shrink:0; box-shadow:4px 0 24px rgba(0,0,0,0.3); }
+.sidebar { width:264px; background:var(--surface); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-right:1px solid var(--border-light); display:flex; flex-direction:column; z-index:50; flex-shrink:0; box-shadow:4px 0 24px rgba(0,0,0,0.3); }
 .logo-area { padding:24px 20px; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(0,229,160,0.05) 0%, transparent 100%); }
 .app-name { font-size:19px; font-weight:800; color:var(--text); display:flex; align-items:center; gap:10px; letter-spacing:-0.5px; }
 .app-name span { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -96,8 +102,8 @@ body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x:
 .btn-sm { padding:6px 12px; font-size:11px; border-radius:7px; }
 
 /* ===== CARDS ===== */
-.card { background:var(--surface); border:1px solid var(--border); border-radius:14px; margin-bottom:20px; box-shadow:0 2px 12px rgba(0,0,0,0.25); transition:border-color 0.2s; }
-.card:hover { border-color:rgba(0,229,160,0.12); }
+.card { background:var(--surface); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--border-light); border-radius:14px; margin-bottom:20px; box-shadow:0 8px 32px rgba(0,0,0,0.2); transition:all 0.3s ease; }
+.card:hover { border-color:rgba(0,229,160,0.2); box-shadow:0 12px 40px rgba(0,0,0,0.3); transform:translateY(-2px); }
 .card-header { padding:16px 22px; border-bottom:1px solid var(--border); font-size:14px; font-weight:700; display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; }
 .card-header .toggle-icon { font-size:11px; color:var(--muted); transition:transform 0.3s; }
 .card-header.collapsed .toggle-icon { transform:rotate(-90deg); }
@@ -792,6 +798,7 @@ tr:hover td { background:rgba(255,255,255,0.025); }
 
 <div id="nv-toast"></div>
 
+<script src="drug_db.js"></script>
 <script>
 // ============================================================
 // NALAMVET COMPANION & EXOTIC — v3.0 RBAC EDITION
@@ -838,23 +845,35 @@ const State = {
 };
 
 // ===== DRUG DATABASE =====
-const DRUGS = [
-  { name:'Meloxicam', brand:'Metacin, Melonex', cat:'NSAIDs', dose:'Dog:0.2mg/kg, Cat:0.05mg/kg', species:['Dog','Cat'], ci:['renal disease','GI ulcer'] },
-  { name:'Amoxicillin', brand:'Amoxil, Vetamox', cat:'Antibiotics', dose:'Dog:10-20mg/kg, Cat:10mg/kg', species:['Dog','Cat','Rabbit'], ci:[] },
-  { name:'Enrofloxacin', brand:'Baytril', cat:'Antibiotics', dose:'Dog:5mg/kg, Cat:5mg/kg (use caution)', species:['Dog','Cat','Exotic'], ci:['young animals','neonates'] },
-  { name:'Metronidazole', brand:'Flagyl, Metoz', cat:'Antibiotics', dose:'Dog:15mg/kg, Cat:10mg/kg', species:['Dog','Cat'], ci:['liver disease'] },
-  { name:'Prednisolone', brand:'Omnacortil', cat:'Steroids', dose:'Dog:0.5-2mg/kg, Cat:1-2mg/kg', species:['Dog','Cat'], ci:['diabetes','active infection'] },
-  { name:'Ivermectin', brand:'Neomec', cat:'Antiparasitics', dose:'Dog:0.006mg/kg, Cat:0.06mg/kg SC', species:['Dog','Cat','Exotic'], ci:['Collie breeds','MDR1 mutation'] },
-  { name:'Cetirizine', brand:'Ceteze, Zyrtec', cat:'Antihistamines', dose:'Dog:1mg/kg, Cat:2.5mg total', species:['Dog','Cat'], ci:[] },
-  { name:'Omeprazole', brand:'Prilosec, Omez', cat:'Gastric', dose:'Dog:0.5-1mg/kg, Cat:0.5mg/kg', species:['Dog','Cat'], ci:[] },
-  { name:'Furosemide', brand:'Lasix, Salix', cat:'Diuretics', dose:'Dog:1-4mg/kg, Cat:1-2mg/kg', species:['Dog','Cat'], ci:['dehydration','hypokalemia'] },
-  { name:'Tramadol', brand:'Tramazac, Ultram', cat:'Analgesics', dose:'Dog:2-5mg/kg, Cat:2mg/kg q12h', species:['Dog','Cat'], ci:['MAO inhibitor use'] },
-  { name:'Doxycycline', brand:'Doxy, Vibramycin', cat:'Antibiotics', dose:'Dog:5-10mg/kg, Cat:5mg/kg', species:['Dog','Cat','Exotic'], ci:['young animals','esophageal disease'] },
-  { name:'Atenolol', brand:'Tenormin', cat:'Cardiac', dose:'Dog:0.25-1mg/kg, Cat:6.25mg total', species:['Dog','Cat'], ci:['bradycardia','asthma'] },
-  { name:'Phenobarbitone', brand:'Gardenal, Luminal', cat:'Anticonvulsants', dose:'Dog:2-5mg/kg, Cat:2mg/kg', species:['Dog','Cat'], ci:['severe liver disease'] },
-  { name:'Maropitant', brand:'Cerenia', cat:'Antiemetics', dose:'Dog:2mg/kg SC, Cat:1mg/kg SC', species:['Dog','Cat'], ci:['<4 months'] },
-  { name:'Cephalexin', brand:'Keflex, Intacef Oral', cat:'Antibiotics', dose:'Dog:15-30mg/kg, Cat:15mg/kg', species:['Dog','Cat'], ci:['penicillin allergy'] }
-];
+// Offline Fallback DB extracted from timestamp
+let DRUGS = [];
+if (typeof RAW_DRUGS !== 'undefined') {
+  DRUGS = RAW_DRUGS.map(d => ({
+    name: d.generic || 'Unknown Drug',
+    brand: d.brands || '-',
+    cat: d.category || 'Other',
+    dose: `Dog: ${d.doseDog || '-'} | Cat: ${d.doseCat || '-'}`,
+    species: d.species || ['Dog', 'Cat'],
+    ci: d.contraindications ? d.contraindications.split(', ') : []
+  }));
+}
+
+// Fallback to API if available (Async)
+fetch('http://localhost:3000/api/drugs').then(res => res.json()).then(data => {
+  if (data && data.length > 0) {
+    DRUGS = data.map(d => ({
+      name: d.generic_name,
+      brand: d.brand_names,
+      cat: d.category,
+      dose: `Dog: ${d.dose_dog} | Cat: ${d.dose_cat}`,
+      species: ['Dog', 'Cat', 'Exotic'],
+      ci: d.contraindications ? [d.contraindications] : []
+    }));
+    if (document.getElementById('dbCountStr')) {
+        document.getElementById('dbCountStr').textContent = `${DRUGS.length} drugs loaded from Agadham API`;
+    }
+  }
+}).catch(e => console.log('Using offline fallback DB.'));
 
 // ===== VACCINE SCHEDULES =====
 const VACC = {

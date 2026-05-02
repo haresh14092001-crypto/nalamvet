@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { SPECIES_DB, validateVitals, calculateDosage } from '../../engine/SpeciesEngine';
+import { Activity, Phone, ClipboardList, Bot, AlertTriangle } from 'lucide-react';
 
 export default function PetsExoticsDashboard() {
+  const [activeTab, setActiveTab] = useState('consult');
   const [activeSpecies, setActiveSpecies] = useState('dog');
   const [weight, setWeight] = useState(10);
   const [temp, setTemp] = useState(101.5);
   const [hr, setHr] = useState(100);
+  const [chatInput, setChatInput] = useState('');
 
   // Mock drug database for demonstration
   const DRUG_DB = [
@@ -25,10 +28,104 @@ export default function PetsExoticsDashboard() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 p-8">
       <header className="mb-8 border-b border-neutral-800 pb-4">
-        <h1 className="text-3xl font-bold text-emerald-400">Pets & Exotics Clinical Hub</h1>
-        <p className="text-neutral-400">Powered by the Agadham Species Engine</p>
+        <h1 className="text-3xl font-bold text-emerald-400 flex items-center gap-3">
+          <Activity className="w-8 h-8" />
+          Pets & Exotics Clinical Hub
+        </h1>
+        <p className="text-neutral-400 mt-2">Powered by the Agadham Species Engine</p>
       </header>
-      
+
+      <div className="flex gap-4 mb-8">
+        <button 
+          onClick={() => setActiveTab('consult')}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'consult' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : 'bg-neutral-900 text-neutral-400 border border-neutral-800 hover:bg-neutral-800'}`}
+        >
+          <ClipboardList className="w-4 h-4" /> New Consultation
+        </button>
+        <button 
+          onClick={() => setActiveTab('intake')}
+          className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'intake' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : 'bg-neutral-900 text-neutral-400 border border-neutral-800 hover:bg-neutral-800'}`}
+        >
+          <Phone className="w-4 h-4" /> AI Intake Layer
+        </button>
+      </div>
+
+      {activeTab === 'intake' && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 flex flex-col h-[600px]">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-neutral-800">
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
+                <Bot className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-bold">NalamVet AI Assistant</h3>
+                <p className="text-xs text-emerald-500 font-semibold flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 block animate-pulse"></span> Online
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+              <div className="flex justify-center">
+                <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold">Today</span>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">🤖</div>
+                <div className="bg-neutral-800 rounded-2xl rounded-tl-sm p-3 text-sm text-neutral-200 max-w-[80%] border border-neutral-700">
+                  Hello! I'm the Agadham AI Intake Assistant. What seems to be the problem with your pet today?
+                </div>
+              </div>
+              <div className="flex gap-3 flex-row-reverse">
+                <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 text-sm">👤</div>
+                <div className="bg-emerald-600 rounded-2xl rounded-tr-sm p-3 text-sm text-white max-w-[80%]">
+                  My dog Tommy has been vomiting since morning and looks very weak.
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">🤖</div>
+                <div className="bg-neutral-800 rounded-2xl rounded-tl-sm p-3 text-sm text-neutral-200 max-w-[80%] border border-neutral-700">
+                  I understand. Can you tell me Tommy's approximate age and breed? Has he eaten anything unusual recently?
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <input 
+                type="text" 
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                placeholder="Type owner's response..."
+                className="w-full bg-neutral-950 border border-neutral-800 rounded-xl py-3 pl-4 pr-12 text-sm focus:border-emerald-500 outline-none text-white"
+              />
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-emerald-500 hover:text-emerald-400">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-white mb-6 border-b border-neutral-800 pb-2">Structured Intake Data</h2>
+              <div className="space-y-4">
+                <div><label className="text-xs text-neutral-500 uppercase font-semibold block mb-1">Owner Name</label><input type="text" className="w-full bg-neutral-950 border border-neutral-800 rounded-lg p-2.5 text-sm text-white" placeholder="Extracted automatically..." value="Unidentified" readOnly/></div>
+                <div><label className="text-xs text-neutral-500 uppercase font-semibold block mb-1">Pet Name & Species</label><input type="text" className="w-full bg-neutral-950 border border-neutral-800 rounded-lg p-2.5 text-sm text-white" placeholder="Extracted automatically..." value="Tommy (Dog)" readOnly/></div>
+                <div><label className="text-xs text-neutral-500 uppercase font-semibold block mb-1">Primary Symptoms</label><textarea className="w-full bg-neutral-950 border border-neutral-800 rounded-lg p-2.5 text-sm text-white resize-none" rows="2" value="Vomiting since morning, weakness" readOnly></textarea></div>
+              </div>
+            </div>
+
+            <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center">
+              <AlertTriangle className="w-10 h-10 text-red-500 mx-auto mb-3" />
+              <h3 className="text-red-400 font-bold mb-2">Elevated Urgency Detected</h3>
+              <p className="text-sm text-red-300/80 mb-4">Symptoms suggest potential dehydration or toxicity. Requires immediate attention.</p>
+              <button className="bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 px-6 rounded-lg w-full transition-colors">
+                Escalate to Duty Doctor
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'consult' && (
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Core Settings */}
@@ -129,6 +226,7 @@ export default function PetsExoticsDashboard() {
         </div>
 
       </div>
+      )}
     </div>
   )
 }

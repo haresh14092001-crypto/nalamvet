@@ -7,6 +7,8 @@ import './App.css';
 import PetsExoticsDashboard from './pages/PetsExotics/Dashboard';
 import FarmProductionDashboard from './pages/FarmProduction/Dashboard';
 import TeachingHospitalDashboard from './pages/TeachingHospital/Dashboard';
+import DrugRefDashboard from './pages/DrugRef/Dashboard';
+import Layout from './components/Layout';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -62,9 +64,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/pets-exotics/*" element={<PetsExoticsDashboard />} />
-        <Route path="/farm/*" element={<FarmProductionDashboard />} />
-        <Route path="/teaching/*" element={<TeachingHospitalDashboard />} />
+        <Route path="/pets-exotics/*" element={<Layout><PetsExoticsDashboard /></Layout>} />
+        <Route path="/farm/*" element={<Layout><FarmProductionDashboard /></Layout>} />
+        <Route path="/teaching/*" element={<Layout><TeachingHospitalDashboard /></Layout>} />
+        <Route path="/drugs/*" element={<Layout><DrugRefDashboard /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
